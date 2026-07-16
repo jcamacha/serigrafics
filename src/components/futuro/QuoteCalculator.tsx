@@ -7,6 +7,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { motion } from "framer-motion";
 
 // --- Tipos ---
 type Proceso = "serigrafia" | "bordado";
@@ -213,10 +214,28 @@ export default function QuoteCalculator() {
               Tu cotización
             </p>
             <p className="mt-1 font-heading text-3xl font-bold">
-              ${active.total.toLocaleString("es-MX")} <span className="text-sm font-normal text-[var(--muted-foreground)]">MXN</span>
+              <motion.span
+                key={active.total}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="inline-block"
+              >
+                ${active.total.toLocaleString("es-MX")}
+              </motion.span>{" "}
+              <span className="text-sm font-normal text-[var(--muted-foreground)]">MXN</span>
             </p>
             <p className="text-xs text-[var(--muted-foreground)] mt-1">
-              ${active.unitPrice} / pieza &middot; {ubicaciones.length} ubicación(es)
+              <motion.span
+                key={active.unitPrice}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="inline-block"
+              >
+                ${active.unitPrice}
+              </motion.span>{" "}
+              / pieza &middot; {ubicaciones.length} ubicación(es)
             </p>
 
             {/* Tabla de precios por volumen */}

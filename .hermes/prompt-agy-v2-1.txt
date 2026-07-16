@@ -1,0 +1,41 @@
+/goal Trabaja en el proyecto en /mnt/c/Users/juanp/Desktop/mas-imagen-web/
+
+PRIMER COMANDO: cd /mnt/c/Users/juanp/Desktop/mas-imagen-web && npm install framer-motion
+
+## Tareas (en orden, una por una)
+
+### 1. Instalar framer-motion
+cd /mnt/c/Users/juanp/Desktop/mas-imagen-web && npm install framer-motion
+
+### 2. Crear src/components/ClientLayoutWrapper.tsx
+Componente "use client" que:
+- Usa usePathname() de next/navigation
+- Envuelve children en <AnimatePresence mode="wait">
+- motion.div con key={pathname}, initial={{opacity:0,y:8}}, animate={{opacity:1,y:0}}, exit={{opacity:0,y:-8}}, transition={{duration:0.35}}
+
+### 3. Modificar src/app/layout.tsx
+- Importar ClientLayoutWrapper desde @/components/ClientLayoutWrapper
+- Reemplazar {children} con <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+- NO toques nada más
+
+### 4. Crear src/components/SectionReveal.tsx
+Componente "use client":
+- Props: children, delay=0
+- motion.div: whileInView={{opacity:1,y:0}}, initial={{opacity:0,y:40}}, viewport={{once:true,margin:"-100px"}}, transition={{duration:0.6,delay}}
+
+### 5. Modificar src/app/page.tsx
+- Importar SectionReveal desde @/components/SectionReveal
+- Envolver CADA <section> (excepto la primera del header) con <SectionReveal delay={...}>
+- Delays: 0, 0.1, 0.2, 0.3, 0.4
+
+### 6. Modificar src/components/Header.tsx
+- Importar AnimatePresence y motion de framer-motion
+- Envolver el dropdown de servicios en AnimatePresence
+- Reemplazar el div con className="animate-dropdown absolute..." por motion.div con animate/exit
+- NO toques el dropdown móvil
+
+### 7. Verificar
+cd /mnt/c/Users/juanp/Desktop/mas-imagen-web && npm run build
+Debe compilar sin errores.
+
+CRITICO: NO guardes reportes. NO uses /artifact. NO leas archivos innecesarios. Si algo falla dime el error exacto.

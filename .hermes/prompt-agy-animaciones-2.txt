@@ -1,0 +1,26 @@
+/goal Añadir filtro animado al portafolio y number transitions a la calculadora en este proyecto Next.js 16 con Tailwind CSS v4 y React 19. Ya tiene framer-motion instalado.
+
+## Tareas puntuales
+
+### 1. Filtro animado en Portafolio (src/app/page.tsx)
+- Añadir botones de filtro justo debajo del título "Trabajos recientes", antes del grid
+- Botones: "Todos", "Serigrafía", "Sublimación", "Grabado láser", "Lonas"
+- Usar useState para filtroActivo (string)
+- Estilo de botones: pills redondeados, border, selected con bg-accent
+- Cada tarjeta del portafolio ahora necesita una prop "categoria" — añádela al array de trabajos
+- Envolver cada tarjeta en motion.div con layout prop para animar reordenamiento
+- Usar AnimatePresence para las tarjetas que se filtran
+
+### 2. Number transitions en QuoteCalculator (src/components/futuro/QuoteCalculator.tsx)
+- El total y el precio unitario deben animarse con un efecto de "number transition"
+- NO uses useSpring — simplemente usa motion.span con key={total} y animate={{ opacity: [0, 1], y: [10, 0] }}
+- Cada vez que cambia el total, el número debe hacer fade-in con slide-up sutil
+- Aplica lo mismo al precio unitario (active.unitPrice)
+- La tabla de precios ya tiene hover — déjala como está
+
+### 3. Verificación
+npm run build DEBE compilar sin errores.
+
+NO modifiques: layout.tsx, Header.tsx, Footer.tsx, SectionReveal.tsx, ningún archivo en api/, lib/, componentes que no sean page.tsx o QuoteCalculator.tsx
+
+CRITICO: NO guardes reportes en archivos. NO uses /artifact. Devuelve un resumen en stdout.

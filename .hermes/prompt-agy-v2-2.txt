@@ -1,0 +1,40 @@
+/goal Trabaja en /mnt/c/Users/juanp/Desktop/mas-imagen-web/
+
+PRIMER COMANDO: cd /mnt/c/Users/juanp/Desktop/mas-imagen-web
+
+## Tu tarea: Añadir filtro animado al portafolio en page.tsx y number transitions en QuoteCalculator.tsx
+
+El proyecto YA tiene framer-motion instalado.
+
+### 1. Filtro animado en src/app/page.tsx
+
+Lee primero el archivo: cat src/app/page.tsx
+
+Busca la sección de Portafolio (tiene un comentario "Portafolio — MSP/RealThread inspired" y el array "trabajos").
+
+Cambios:
+- Añade una prop "categoria" a cada objeto en el array "trabajos": "serigrafia", "sublimacion", "grabado-laser", "lonas"
+- Añade useState para filtroActivo (string, default "todos")
+- Añade botones de filtro tipo pills entre el título "Trabajos recientes" y el grid: "Todos", "Serigrafía", "Sublimación", "Grabado láser", "Lonas"
+- Botón seleccionado: bg-black text-white. No seleccionado: border-gray-200 text-gray-500
+- Filtra el array trabajos según filtroActivo
+- Importa motion y AnimatePresence de framer-motion
+- Envuelve CADA tarjeta del grid en <motion.div layout animate={{opacity:1,scale:1}} exit={{opacity:0,scale:0.95}} initial={{opacity:0,scale:0.95}}>
+- Envuelve el grid entero en AnimatePresence
+
+### 2. Number transitions en src/components/futuro/QuoteCalculator.tsx
+
+Lee primero: cat src/components/futuro/QuoteCalculator.tsx
+
+Busca donde se muestra el total (active.total) y el precio unitario (active.unitPrice).
+
+Cambios:
+- Importa motion de framer-motion
+- Envuelve el precio total en <motion.span key={active.total} initial={{opacity:0,y:-10}} animate={{opacity:1,y:0}} transition={{duration:0.3}}>
+- Lo mismo para el precio unitario
+
+### 3. Verificar
+npm run build
+Debe compilar sin errores.
+
+CRITICO: NO guardes reportes en archivo. NO uses /artifact. Si algo falla dime el error exacto.

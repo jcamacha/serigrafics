@@ -1,4 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import SectionReveal from "@/components/SectionReveal";
 
 const servicios = [
   {
@@ -51,15 +56,21 @@ const faqs = [
 ];
 
 const trabajos = [
-  { nombre: "Playeras corporativas", servicio: "Serigrafía" },
-  { nombre: "Tazas personalizadas", servicio: "Sublimación" },
-  { nombre: "Termos grabados", servicio: "Grabado láser" },
-  { nombre: "Lona publicitaria", servicio: "Lonas" },
-  { nombre: "Uniformes deportivos", servicio: "Serigrafía" },
-  { nombre: "Llaveros metálicos", servicio: "Grabado láser" },
+  { nombre: "Playeras corporativas", servicio: "Serigrafía", categoria: "serigrafia" },
+  { nombre: "Tazas personalizadas", servicio: "Sublimación", categoria: "sublimacion" },
+  { nombre: "Termos grabados", servicio: "Grabado láser", categoria: "grabado-laser" },
+  { nombre: "Lona publicitaria", servicio: "Lonas", categoria: "lonas" },
+  { nombre: "Uniformes deportivos", servicio: "Serigrafía", categoria: "serigrafia" },
+  { nombre: "Llaveros metálicos", servicio: "Grabado láser", categoria: "grabado-laser" },
 ];
 
 export default function Home() {
+  const [filtroActivo, setFiltroActivo] = useState("todos");
+
+  const trabajosFiltrados = filtroActivo === "todos"
+    ? trabajos
+    : trabajos.filter((trabajo) => trabajo.categoria === filtroActivo);
+
   return (
     <>
       {/* Header simple */}
@@ -90,160 +101,229 @@ export default function Home() {
       </section>
 
       {/* Servicios — Bento Grid */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center mb-12">
-          <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
-            Nuestros servicios
-          </h2>
-          <p className="mt-3 text-[var(--muted-foreground)] max-w-lg mx-auto">
-            Cubrimos todo el espectro de impresión y marcado para tu negocio o
-            proyecto personal.
-          </p>
-        </div>
+      <SectionReveal delay={0}>
+        <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-center mb-12">
+            <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+              Nuestros servicios
+            </h2>
+            <p className="mt-3 text-[var(--muted-foreground)] max-w-lg mx-auto">
+              Cubrimos todo el espectro de impresión y marcado para tu negocio o
+              proyecto personal.
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {servicios.map((srv) => (
-            <Link
-              key={srv.titulo}
-              href={srv.href}
-              className="group rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 hover:border-[var(--accent)]/30 transition-all duration-300"
-            >
-              <span className="text-3xl">{srv.icon}</span>
-              <h3 className="mt-4 font-heading text-lg font-semibold group-hover:text-[var(--accent)] transition-colors">
-                {srv.titulo}
-              </h3>
-              <p className="mt-2 text-sm text-[var(--muted-foreground)] leading-relaxed">
-                {srv.desc}
-              </p>
-            </Link>
-          ))}
-        </div>
-      </section>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {servicios.map((srv) => (
+              <Link
+                key={srv.titulo}
+                href={srv.href}
+                className="group rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 hover:border-[var(--accent)]/30 transition-all duration-300"
+              >
+                <span className="text-3xl">{srv.icon}</span>
+                <h3 className="mt-4 font-heading text-lg font-semibold group-hover:text-[var(--accent)] transition-colors">
+                  {srv.titulo}
+                </h3>
+                <p className="mt-2 text-sm text-[var(--muted-foreground)] leading-relaxed">
+                  {srv.desc}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      </SectionReveal>
 
       {/* Portafolio — MSP/RealThread inspired */}
-      <section className="border-t border-[var(--border)]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
-              Trabajos recientes
-            </h2>
-            <p className="mt-3 text-[var(--muted-foreground)] max-w-lg mx-auto">
-              Una muestra de lo que hacemos. Cada pieza con el cuidado que tu
-              proyecto merece.
-            </p>
-          </div>
+      <SectionReveal delay={0.1}>
+        <section className="border-t border-[var(--border)]">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+            <div className="text-center mb-12">
+              <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+                Trabajos recientes
+              </h2>
+              <p className="mt-3 text-[var(--muted-foreground)] max-w-lg mx-auto">
+                Una muestra de lo que hacemos. Cada pieza con el cuidado que tu
+                proyecto merece.
+              </p>
+            </div>
 
-          {/* FIXME: reemplazar con imágenes reales cuando estén disponibles */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4">
-            {trabajos.map((trabajo) => (
-              <div
-                key={trabajo.nombre}
-                className="group relative overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)] aspect-[4/3] flex flex-col items-center justify-center p-4 text-center hover:border-[var(--accent)]/30 transition-all duration-300"
+            <div className="flex flex-wrap justify-center gap-2 mb-8">
+              <button
+                onClick={() => setFiltroActivo("todos")}
+                className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors ${
+                  filtroActivo === "todos"
+                    ? "bg-black text-white border-black"
+                    : "border-gray-200 text-gray-500 hover:bg-gray-50"
+                }`}
               >
-                <p className="text-4xl mb-3 opacity-30">🖼️</p>
-                <h3 className="font-heading text-sm font-semibold group-hover:text-[var(--accent)] transition-colors">
-                  {trabajo.nombre}
-                </h3>
-                <p className="text-xs text-[var(--muted-foreground)] mt-1">
-                  {trabajo.servicio}
-                </p>
-              </div>
-            ))}
-          </div>
+                Todos
+              </button>
+              <button
+                onClick={() => setFiltroActivo("serigrafia")}
+                className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors ${
+                  filtroActivo === "serigrafia"
+                    ? "bg-black text-white border-black"
+                    : "border-gray-200 text-gray-500 hover:bg-gray-50"
+                }`}
+              >
+                Serigrafía
+              </button>
+              <button
+                onClick={() => setFiltroActivo("sublimacion")}
+                className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors ${
+                  filtroActivo === "sublimacion"
+                    ? "bg-black text-white border-black"
+                    : "border-gray-200 text-gray-500 hover:bg-gray-50"
+                }`}
+              >
+                Sublimación
+              </button>
+              <button
+                onClick={() => setFiltroActivo("grabado-laser")}
+                className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors ${
+                  filtroActivo === "grabado-laser"
+                    ? "bg-black text-white border-black"
+                    : "border-gray-200 text-gray-500 hover:bg-gray-50"
+                }`}
+              >
+                Grabado láser
+              </button>
+              <button
+                onClick={() => setFiltroActivo("lonas")}
+                className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors ${
+                  filtroActivo === "lonas"
+                    ? "bg-black text-white border-black"
+                    : "border-gray-200 text-gray-500 hover:bg-gray-50"
+                }`}
+              >
+                Lonas
+              </button>
+            </div>
 
-          <div className="text-center mt-10">
-            <Link
-              href="/contacto"
-              className="inline-flex items-center rounded-lg border border-[var(--border)] px-6 py-3 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--muted)] transition-colors"
-            >
-              ¿Tienes un proyecto similar? Cotízalo
-            </Link>
+            {/* FIXME: reemplazar con imágenes reales cuando estén disponibles */}
+            <AnimatePresence>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4">
+                {trabajosFiltrados.map((trabajo) => (
+                  <motion.div
+                    key={trabajo.nombre}
+                    layout
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    className="group relative overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)] aspect-[4/3] flex flex-col items-center justify-center p-4 text-center hover:border-[var(--accent)]/30 transition-all duration-300"
+                  >
+                    <p className="text-4xl mb-3 opacity-30">🖼️</p>
+                    <h3 className="font-heading text-sm font-semibold group-hover:text-[var(--accent)] transition-colors">
+                      {trabajo.nombre}
+                    </h3>
+                    <p className="text-xs text-[var(--muted-foreground)] mt-1">
+                      {trabajo.servicio}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </AnimatePresence>
+
+            <div className="text-center mt-10">
+              <Link
+                href="/contacto"
+                className="inline-flex items-center rounded-lg border border-[var(--border)] px-6 py-3 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--muted)] transition-colors"
+              >
+                ¿Tienes un proyecto similar? Cotízalo
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </SectionReveal>
 
       {/* FAQ — IndustryPrintShop inspired */}
-      <section className="border-t border-[var(--border)]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
-              Preguntas frecuentes
-            </h2>
-            <p className="mt-3 text-[var(--muted-foreground)] max-w-lg mx-auto">
-              Respuestas rápidas a lo que más nos preguntan.
-            </p>
-          </div>
+      <SectionReveal delay={0.2}>
+        <section className="border-t border-[var(--border)]">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+            <div className="text-center mb-12">
+              <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+                Preguntas frecuentes
+              </h2>
+              <p className="mt-3 text-[var(--muted-foreground)] max-w-lg mx-auto">
+                Respuestas rápidas a lo que más nos preguntan.
+              </p>
+            </div>
 
-          <div className="max-w-2xl mx-auto divide-y divide-[var(--border)]">
-            {faqs.map((faq, i) => (
-              <details key={i} className="group py-5 cursor-pointer">
-                <summary className="flex items-center justify-between font-heading font-semibold text-[var(--foreground)] list-none">
-                  {faq.q}
-                  <svg
-                    className="h-5 w-5 flex-shrink-0 text-[var(--muted-foreground)] group-open:rotate-180 transition-transform"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <p className="mt-3 text-sm text-[var(--muted-foreground)] leading-relaxed pr-8">
-                  {faq.a}
-                </p>
-              </details>
-            ))}
+            <div className="max-w-2xl mx-auto divide-y divide-[var(--border)]">
+              {faqs.map((faq, i) => (
+                <details key={i} className="group py-5 cursor-pointer">
+                  <summary className="flex items-center justify-between font-heading font-semibold text-[var(--foreground)] list-none">
+                    {faq.q}
+                    <svg
+                      className="h-5 w-5 flex-shrink-0 text-[var(--muted-foreground)] group-open:rotate-180 transition-transform"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </summary>
+                  <p className="mt-3 text-sm text-[var(--muted-foreground)] leading-relaxed pr-8">
+                    {faq.a}
+                  </p>
+                </details>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </SectionReveal>
 
       {/* Garantía — RealThread inspired */}
-      <section className="border-t border-[var(--border)]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="font-heading text-2xl font-bold tracking-tight">
-              Garantizamos calidad, precisión y entrega
-            </h2>
-            <p className="mt-4 text-[var(--muted-foreground)]">
-              Cada pedido pasa por revisión de diseño, control de calidad y
-              empaque cuidadoso.
-            </p>
-            <ul className="mt-8 space-y-3 text-left max-w-sm mx-auto">
-              {[
-                "Revisión de diseño sin costo",
-                "Materiales de primera calidad",
-                "Registro y color preciso",
-                "Entrega puntual garantizada",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm text-[var(--muted-foreground)]">
-                  <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  {item}
-                </li>
-              ))}
-            </ul>
+      <SectionReveal delay={0.3}>
+        <section className="border-t border-[var(--border)]">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+            <div className="max-w-2xl mx-auto text-center">
+              <h2 className="font-heading text-2xl font-bold tracking-tight">
+                Garantizamos calidad, precisión y entrega
+              </h2>
+              <p className="mt-4 text-[var(--muted-foreground)]">
+                Cada pedido pasa por revisión de diseño, control de calidad y
+                empaque cuidadoso.
+              </p>
+              <ul className="mt-8 space-y-3 text-left max-w-sm mx-auto">
+                {[
+                  "Revisión de diseño sin costo",
+                  "Materiales de primera calidad",
+                  "Registro y color preciso",
+                  "Entrega puntual garantizada",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-[var(--muted-foreground)]">
+                    <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </SectionReveal>
 
       {/* CTA final */}
-      <section className="border-t border-[var(--border)]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 text-center">
-          <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
-            ¿Listo para empezar?
-          </h2>
-          <p className="mt-4 text-[var(--muted-foreground)] max-w-md mx-auto">
-            Cuéntanos tu proyecto y te damos una cotización sin compromiso.
-          </p>
-          <Link
-            href="/contacto"
-            className="mt-8 inline-flex items-center rounded-lg bg-[var(--accent)] px-8 py-3.5 text-sm font-semibold text-white hover:bg-[var(--accent)]/90 transition-colors"
-          >
-            Contáctanos
-          </Link>
-        </div>
-      </section>
+      <SectionReveal delay={0.4}>
+        <section className="border-t border-[var(--border)]">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 text-center">
+            <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+              ¿Listo para empezar?
+            </h2>
+            <p className="mt-4 text-[var(--muted-foreground)] max-w-md mx-auto">
+              Cuéntanos tu proyecto y te damos una cotización sin compromiso.
+            </p>
+            <Link
+              href="/contacto"
+              className="mt-8 inline-flex items-center rounded-lg bg-[var(--accent)] px-8 py-3.5 text-sm font-semibold text-white hover:bg-[var(--accent)]/90 transition-colors"
+            >
+              Contáctanos
+            </Link>
+          </div>
+        </section>
+      </SectionReveal>
     </>
   );
 }

@@ -1,0 +1,41 @@
+/goal Instalar framer-motion y añadir animaciones premium a este proyecto Next.js 16 (App Router, Tailwind CSS v4, React 19). NO toques nada que no esté en esta lista. NO modifiques lógica de negocio.
+
+## Tareas puntuales
+
+### 1. Instalar dependencia
+npm install framer-motion
+
+### 2. Modificar src/app/layout.tsx — AnimatePresence
+- Importar AnimatePresence y motion de framer-motion
+- NO modifiques los imports de fuentes ni metadata
+- Envolver {children} con AnimatePresence mode="wait"
+- Usar un motion.div con initial/ animate/ exit para fade-in + slide-up (8px)
+- El key debe venir de un componente cliente que use usePathname — crea un ClientLayoutWrapper que haga esto
+- El layout raíz puede seguir siendo server component
+
+### 3. Crear src/components/SectionReveal.tsx
+- Componente "use client"
+- Recibe children y delay? (number, default 0)
+- motion.div con:
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, margin: "-100px" }}
+  transition={{ duration: 0.6, delay }}
+
+### 4. Modificar src/app/page.tsx — Envolver secciones
+- Importar SectionReveal
+- Envolver cada section EXCEPTO la primera (la del header con título) con <SectionReveal>
+- Secciones a envolver: Servicios, Portafolio, FAQ, Garantía, CTA final
+- Usar delay escalonado (0, 0.1, 0.2, 0.3, 0.4)
+
+### 5. Modificar src/components/Header.tsx — Dropdown con Framer Motion
+- El dropdown actual usa CSS @keyframes. Reemplazar con AnimatePresence + motion.div
+- Envolver el dropdown en AnimatePresence
+- motion.div con initial={{ opacity: 0, y: -8 }} / animate={{ opacity: 1, y: 0 }} / exit={{ opacity: 0, y: -8 }}
+
+### Verificación
+npm run build DEBE compilar sin errores. Si hay errores de tipos con framer-motion, intenta con motion/react en lugar de framer-motion (la nueva API de Motion v12).
+
+NO modifiques: servicios/page.tsx, nosotros/page.tsx, contacto/page.tsx, admin/page.tsx, rastreo/page.tsx, ningún archivo en api/, lib/, components/futuro/, components/ContactForm.tsx, components/ContactoInfo.tsx
+
+CRITICO: NO guardes reportes en archivos. NO uses /artifact. Devuelve un resumen de lo que hiciste en stdout. Si algo falla, explica el error.

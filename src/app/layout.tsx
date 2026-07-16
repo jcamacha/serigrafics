@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Manrope, JetBrains_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -57,7 +58,9 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1">
+          <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+        </main>
         <Footer />
       </body>
     </html>
