@@ -59,6 +59,31 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Value badges — MSP-inspired */}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {[
+              { label: "CALIDAD", arrow: "GARANTIZADA" },
+              { label: "TRATO", arrow: "DIRECTO" },
+              { label: "ENTREGA", arrow: "PUNTUAL" },
+            ].map(({ label, arrow }) => (
+              <div
+                key={label}
+                className="group rounded-xl border border-[var(--border)] bg-[var(--card)]/50 px-5 py-4 text-center hover:border-[var(--accent)]/30 transition-all duration-300"
+              >
+                <span className="font-heading text-sm font-semibold tracking-wider text-[var(--foreground)]">
+                  {label}
+                </span>
+                <span className="mx-2 text-[var(--accent)]">→</span>
+                <span className="text-sm text-[var(--muted-foreground)]">
+                  {arrow}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Decoración sutil */}
         <div className="absolute right-0 top-0 -z-10 h-full w-1/2 opacity-[0.03]">
           <div className="h-full w-full bg-[radial-gradient(circle_at_center,_var(--accent)_0%,_transparent_70%)]" />
