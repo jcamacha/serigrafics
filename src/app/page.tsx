@@ -79,22 +79,22 @@ export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
   const heroRef = useRef<HTMLElement>(null);
 
-  // Scroll-driven transforms — 250vh total, animaciones en primeros 18%, luego pausa
+  // Scroll-driven transforms — animaciones MUY temprano, luego pausa larga
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
   });
 
-  // Logo: escala 1.6→1 en primeros 12%, luego fade a 18%
-  const titleScale = useTransform(scrollYProgress, [0, 0.12], [1.6, 1]);
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.12, 0.18], [1, 1, 0.25]);
-  // Subtítulo: aparece 8%→14%
-  const subtitleOpacity = useTransform(scrollYProgress, [0.08, 0.14], [0, 1]);
-  // Botones: aparecen 11%→16%
-  const buttonsOpacity = useTransform(scrollYProgress, [0.11, 0.16], [0, 1]);
+  // Logo: escala 1.6→1 en primeros 5%, visible hasta 10%, luego fade
+  const titleScale = useTransform(scrollYProgress, [0, 0.05], [1.6, 1]);
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.08, 0.15], [1, 1, 0.2]);
+  // Subtítulo: 3%→8%
+  const subtitleOpacity = useTransform(scrollYProgress, [0.03, 0.08], [0, 1]);
+  // Botones: 5%→10%
+  const buttonsOpacity = useTransform(scrollYProgress, [0.05, 0.10], [0, 1]);
   // Slide-up sutil
-  const subtitleY = useTransform(scrollYProgress, [0.06, 0.14], [25, 0]);
-  const buttonsY = useTransform(scrollYProgress, [0.09, 0.16], [30, 0]);
+  const subtitleY = useTransform(scrollYProgress, [0.02, 0.08], [20, 0]);
+  const buttonsY = useTransform(scrollYProgress, [0.04, 0.10], [25, 0]);
 
   useEffect(() => {
     const timer = setInterval(() => {

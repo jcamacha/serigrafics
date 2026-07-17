@@ -57,18 +57,16 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      const threshold = window.innerHeight * 0.8;
+      setScrolled(window.scrollY > threshold);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const isHome = pathname === "/";
+  // Transparente hasta ~80vh de scroll (cubre todo el fade del hero)
   const isTransparent = isHome && !scrolled && !mobileOpen;
 
   const isActive = (href: string) => {
