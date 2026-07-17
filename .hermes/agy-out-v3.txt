@@ -1,0 +1,54 @@
+An update has been received from the running task 'npm run build':
+
+```
+▲ Next.js 16.2.10
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+ ✓ Collecting page data ...
+ ✓ Generating static pages (7/7)
+ ✓ Collecting build traces ...
+ ✓ Finalizing page directory ...
+
+Route (app)                              Size     First Load JS
+┌ L /                                    5.86 kB         142 kB
+├   /admin/login                         1.84 kB         141 kB
+├   /contacto                            2.39 kB         139 kB
+├   /nosotros                            1.55 kB         138 kB
+├   /rastreo                             171 B            78 kB
+└   /servicios                           2.23 kB         139 kB
++ First Load JS shared by all            135 kB
+  ├ chunks/318-ff3f044d5c9c9b4e.js       30.8 kB
+  ├ chunks/fd9d1056-b0728c68c17b8f9e.js  102 kB
+  ├ chunks/main-app-e0cc718501258667.js  221 B
+  └ css/ae8e6ce60ea8d357.css             2.64 kB
+
+○  (Static)   prerendered as static content
+λ  (Dynamic)  server-rendered on demand using Node.js
+```
+The build task has successfully completed!
+He completado con éxito todas las tareas requeridas para añadir las animaciones interactivas (hover y scroll-reveal) al proyecto Next.js 16:
+
+### 1. Animación Hover Underline (TAREA 1)
+* **Componente creado**: He creado [HoverLink.tsx](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web/src/components/HoverLink.tsx) con soporte para animar una barra inferior en hover (`scaleX(0)` -> `scaleX(1)`) y la opción de deshabilitarse si el link está activo.
+* **Integración en Header**: He reemplazado los links navegables de navegación principal (Home, Nosotros, Servicios, Contacto, y Rastreo si está activo) en [Header.tsx](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web/src/components/Header.tsx) tanto para escritorio como para móvil.
+* **Integración en Home**: Reemplacé los botones de acción principal en [page.tsx](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web/src/app/page.tsx) ("Ver servicios", "Solicitar cotización", "Contáctanos", "¿Tienes un proyecto similar?").
+
+### 2. Hover en Cards de Servicios y Portafolio (TAREA 2)
+* **Bento Grid (Servicios)**: Se añadieron las clases `hover:shadow-md hover:-translate-y-1 transition` a cada tarjeta de servicio en la página de inicio.
+* **Portafolio (Trabajos recientes)**: Se agregaron las clases `hover:shadow-md hover:-translate-y-1 hover:border-accent transition` a cada tarjeta de trabajo.
+
+### 3. Scroll-reveal en todas las páginas (TAREA 3)
+* **Nosotros**: Se envolvieron las secciones "Nuestra historia" y "Lo que nos distingue" con `SectionReveal` en [nosotros/page.tsx](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web/src/app/nosotros/page.tsx).
+* **Servicios**: Se envolvió cada bloque de servicio individual con `SectionReveal` aplicando un delay escalonado en base a su índice (`delay={idx * 0.1}`) y también la sección CTA final en [servicios/page.tsx](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web/src/app/servicios/page.tsx).
+* **Contacto**: Se envolvieron las secciones de WhatsApp, ContactForm y la de Visitános usando `SectionReveal` en [contacto/page.tsx](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web/src/app/contacto/page.tsx).
+
+### 4. Indicador de página activa en Header (TAREA 4)
+* Añadí un indicador animado (`motion.div` con `layoutId="activeNav"`) en la navegación de escritorio de [Header.tsx](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web/src/components/Header.tsx) que se desplaza suavemente entre las pestañas activas.
+
+### 5. Verificación de Compilación
+* Ejecuté la compilación de producción (`npm run build`) y el proyecto compila **correctamente sin ningún error** usando Next.js 16 y Turbopack.

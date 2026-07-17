@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import HoverLink from "./HoverLink";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-
 // Fase 2: gate condicional para items de tracking/admin
 const PHASE2 = process.env.NEXT_PUBLIC_PHASE2 === "true";
 
@@ -82,8 +82,9 @@ export default function Header() {
                 }
                 onMouseLeave={() => setOpenDropdown(null)}
               >
-                <Link
+                <HoverLink
                   href={item.href}
+                  active={isActive(item.href)}
                   className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                     isActive(item.href)
                       ? "text-[var(--accent)]"
@@ -108,7 +109,14 @@ export default function Header() {
                       />
                     </svg>
                   )}
-                </Link>
+                  {isActive(item.href) && (
+                    <motion.div
+                      layoutId="activeNav"
+                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent rounded"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </HoverLink>
 
                 <AnimatePresence>
                   {item.children && openDropdown === item.label && (
@@ -158,8 +166,9 @@ export default function Header() {
           <div className="md:hidden border-t border-[var(--border)] py-3 space-y-1 animate-dropdown">
             {navItems.map((item) => (
               <div key={item.href}>
-                <Link
+                <HoverLink
                   href={item.href}
+                  active={isActive(item.href)}
                   className={`block px-3 py-2 text-sm font-medium rounded-md ${
                     isActive(item.href)
                       ? "text-[var(--accent)]"
@@ -168,7 +177,7 @@ export default function Header() {
                   onClick={() => setMobileOpen(false)}
                 >
                   {item.label}
-                </Link>
+                </HoverLink>
                 {item.children && (
                   <div className="ml-4 space-y-1">
                     {item.children.map((child) => (

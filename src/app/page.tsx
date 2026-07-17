@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import HoverLink from "@/components/HoverLink";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionReveal from "@/components/SectionReveal";
@@ -84,18 +85,18 @@ export default function Home() {
             directo en cada proyecto.
           </p>
           <div className="mt-8 flex justify-center gap-4">
-            <Link
+            <HoverLink
               href="/servicios"
               className="inline-flex items-center rounded-lg bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white hover:bg-[var(--accent)]/90 transition-colors"
             >
               Ver servicios
-            </Link>
-            <Link
+            </HoverLink>
+            <HoverLink
               href="/contacto"
               className="inline-flex items-center rounded-lg border border-[var(--border)] px-6 py-3 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--muted)] transition-colors"
             >
               Solicitar cotización
-            </Link>
+            </HoverLink>
           </div>
         </div>
       </section>
@@ -118,7 +119,7 @@ export default function Home() {
               <Link
                 key={srv.titulo}
                 href={srv.href}
-                className="group rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 hover:border-[var(--accent)]/30 transition-all duration-300"
+                className="group rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 hover:border-[var(--accent)]/30 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
               >
                 <span className="text-3xl">{srv.icon}</span>
                 <h3 className="mt-4 font-heading text-lg font-semibold group-hover:text-[var(--accent)] transition-colors">
@@ -210,7 +211,7 @@ export default function Home() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     initial={{ opacity: 0, scale: 0.95 }}
-                    className="group relative overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)] aspect-[4/3] flex flex-col items-center justify-center p-4 text-center hover:border-[var(--accent)]/30 transition-all duration-300"
+                    className="group relative overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)] aspect-[4/3] flex flex-col items-center justify-center p-4 text-center transition-all duration-300 hover:shadow-md hover:-translate-y-1 hover:border-accent"
                   >
                     <p className="text-4xl mb-3 opacity-30">🖼️</p>
                     <h3 className="font-heading text-sm font-semibold group-hover:text-[var(--accent)] transition-colors">
@@ -225,12 +226,12 @@ export default function Home() {
             </AnimatePresence>
 
             <div className="text-center mt-10">
-              <Link
+              <HoverLink
                 href="/contacto"
                 className="inline-flex items-center rounded-lg border border-[var(--border)] px-6 py-3 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--muted)] transition-colors"
               >
                 ¿Tienes un proyecto similar? Cotízalo
-              </Link>
+              </HoverLink>
             </div>
           </div>
         </section>
@@ -315,12 +316,12 @@ export default function Home() {
             <p className="mt-4 text-[var(--muted-foreground)] max-w-md mx-auto">
               Cuéntanos tu proyecto y te damos una cotización sin compromiso.
             </p>
-            <Link
+            <HoverLink
               href="/contacto"
               className="mt-8 inline-flex items-center rounded-lg bg-[var(--accent)] px-8 py-3.5 text-sm font-semibold text-white hover:bg-[var(--accent)]/90 transition-colors"
             >
               Contáctanos
-            </Link>
+            </HoverLink>
           </div>
         </section>
       </SectionReveal>
