@@ -3,6 +3,7 @@ import { Fraunces, Manrope, JetBrains_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
+import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -57,6 +58,7 @@ export default function RootLayout({
       className={`${fraunces.variable} ${manrope.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
+        <SmoothScroll />
         <Header />
         <main className="flex-1">
           <ClientLayoutWrapper>{children}</ClientLayoutWrapper>

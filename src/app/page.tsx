@@ -76,6 +76,7 @@ const slides = [
 export default function Home() {
   const [filtroActivo, setFiltroActivo] = useState("todos");
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -84,6 +85,13 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    setMousePosition({ x, y });
+  };
+
   const trabajosFiltrados = filtroActivo === "todos"
     ? trabajos
     : trabajos.filter((trabajo) => trabajo.categoria === filtroActivo);
@@ -91,7 +99,10 @@ export default function Home() {
   return (
     <>
       {/* Hero Slider */}
-      <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+      <section
+        onMouseMove={handleMouseMove}
+        className="relative h-screen w-full overflow-hidden flex items-center justify-center"
+      >
         {slides.map((src, index) => (
           <div
             key={src}
@@ -105,6 +116,12 @@ export default function Home() {
               fill
               priority={index === 0}
               className="object-cover"
+              style={{
+                transform: index === currentSlide
+                  ? `translate(${(mousePosition.x - 0.5) * -2}%, ${(mousePosition.y - 0.5) * -2}%) scale(1.05)`
+                  : "none",
+                transition: "transform 0.6s ease-out",
+              }}
             />
           </div>
         ))}
