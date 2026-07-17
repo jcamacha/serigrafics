@@ -1,0 +1,31 @@
+Se han realizado todos los cambios solicitados para las tareas 1, 2 y 3:
+
+1. **Colores del tema**: Se actualizaron las variables `--accent` a `#8b7355` (beige oscuro) y `--accent-foreground` a `#faf7f2` (beige muy claro) en [globals.css](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web/src/app/globals.css).
+2. **Footer**: Se modificó el fondo a `#1a1a1a`, los textos apagados a `text-gray-400` y las cabeceras y enlaces a `text-white` en [Footer.tsx](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web/src/components/Footer.tsx).
+3. **Hero Slider**: Se reemplazó la sección principal en [page.tsx](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web/src/app/page.tsx) con un slider fullscreen que rota 3 imágenes de fondo cada 4 segundos con animación de fade, z-index configurado correctamente, textos e iconos en blanco/beige, y un overlay oscuro del 40%.
+
+Por favor, aprueba la ejecución del comando `npm run build` en tu terminal para verificar que todo compile correctamente.
+El proyecto se ha compilado exitosamente (`✓ Compiled successfully`). A continuación, el resumen de las tareas realizadas:
+
+### Tarea 1: Cambios de Colores (Accent)
+- **Archivo:** [src/app/globals.css](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web/src/app/globals.css)
+- **Modificación:** Se reemplazó el color de acento `--accent` por `#8b7355` (beige oscuro) y `--accent-foreground` por `#faf7f2` (beige claro).
+
+### Tarea 2: Footer en Gris Oscuro
+- **Archivo:** [src/components/Footer.tsx](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web/src/components/Footer.tsx)
+- **Modificación:** 
+  - Se cambió el color de fondo a `#1a1a1a` (gris oscuro).
+  - Los textos secundarios/muted pasaron a `text-gray-400`.
+  - Los headings y enlaces principales pasaron a `text-white`.
+  - Se mantuvo el borde superior con `border-[var(--border)]`.
+
+### Tarea 3: Slider Fullscreen en Hero
+- **Archivo:** [src/app/page.tsx](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web/src/app/page.tsx)
+- **Modificación:**
+  - Se implementó un contenedor con `h-screen relative overflow-hidden flex items-center justify-center`.
+  - Se configuró un carrusel que alterna de manera automática cada 4 segundos entre `/slide-1.jpg`, `/slide-2.jpg` y `/slide-3.jpg` usando `useState` y `useEffect`.
+  - Se usó el componente `Image` de Next.js con las propiedades `fill`, `priority={index === 0}` y `object-cover`.
+  - Se aplicó una transición suave de opacidad entre imágenes (`transition-opacity duration-1000`).
+  - Se añadió un overlay oscuro sutil (`bg-black/40 z-10`).
+  - Los textos "MásImagen" y descripción se configuraron en blanco sobre el slider con `z-20` para asegurar legibilidad.
+  - Se estilizaron los botones a blanco/beige ("Ver servicios" con fondo beige `--accent`, "Solicitar cotización" con borde blanco e inversión de colores al hacer hover).
