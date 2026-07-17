@@ -5,6 +5,7 @@ import HoverLink from "@/components/HoverLink";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionReveal from "@/components/SectionReveal";
+import AccordionFAQ from "@/components/AccordionFAQ";
 
 const servicios = [
   {
@@ -237,7 +238,7 @@ export default function Home() {
         </section>
       </SectionReveal>
 
-      {/* FAQ — IndustryPrintShop inspired */}
+      {/* FAQ — con animación de expansión */}
       <SectionReveal delay={0.2}>
         <section className="border-t border-[var(--border)]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
@@ -249,27 +250,7 @@ export default function Home() {
                 Respuestas rápidas a lo que más nos preguntan.
               </p>
             </div>
-
-            <div className="max-w-2xl mx-auto divide-y divide-[var(--border)]">
-              {faqs.map((faq, i) => (
-                <details key={i} className="group py-5 cursor-pointer">
-                  <summary className="flex items-center justify-between font-heading font-semibold text-[var(--foreground)] list-none">
-                    {faq.q}
-                    <svg
-                      className="h-5 w-5 flex-shrink-0 text-[var(--muted-foreground)] group-open:rotate-180 transition-transform"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </summary>
-                  <p className="mt-3 text-sm text-[var(--muted-foreground)] leading-relaxed pr-8">
-                    {faq.a}
-                  </p>
-                </details>
-              ))}
-            </div>
+            <AccordionFAQ faqs={faqs} />
           </div>
         </section>
       </SectionReveal>
