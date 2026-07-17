@@ -79,14 +79,15 @@ export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
   const heroRef = useRef<HTMLElement>(null);
 
-  // Scroll-driven transforms
+  // Scroll-driven transforms — cubren todo el hero de 200vh
   const { scrollYProgress } = useScroll({
     target: heroRef,
-    offset: ["start start", "start center"],
+    offset: ["start start", "end start"],
   });
 
-  const titleOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-  const textOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  const textOpacity = useTransform(scrollYProgress, [0.4, 0.7], [0, 1]);
+  const textY = useTransform(scrollYProgress, [0.3, 0.7], [40, 0]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -154,10 +155,10 @@ export default function Home() {
         </div>
 
         {/* Contenido de texto posicionado en la MITAD INFERIOR (segundo h-screen) */}
-        <div className="relative z-20 h-screen flex items-center justify-center text-center text-white pointer-events-none">
+        <div className="relative z-20 h-screen flex items-center justify-center text-center text-white">
           <motion.div
-            style={{ opacity: textOpacity }}
-            className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pointer-events-auto"
+            style={{ opacity: textOpacity, y: textY }}
+            className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
           >
             <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6">
               Más<span className="text-[var(--accent)]">Imagen</span>
