@@ -14,45 +14,30 @@ interface ProductOption {
   precio?: number;
 }
 
-interface ProductoConfig {
-  nombre: string;
+export interface OrderFormProps {
+  productoNombre: string;
   precioBase: number;
   colores: ProductOption[];
-  tallas: ProductOption[];
+  tallas?: ProductOption[];
   cantidades: ProductOption[];
 }
 
-const PRODUCTO_EJEMPLO: ProductoConfig = {
-  nombre: "Gorra 47 Brand Trawler Cap",
-  precioBase: 320,
-  colores: [
-    { id: "negro", label: "Negro" },
-    { id: "blanco", label: "Blanco" },
-    { id: "azul-marino", label: "Azul marino" },
-    { id: "rojo", label: "Rojo" },
-  ],
-  tallas: [
-    { id: "unica", label: "Única (ajustable)" },
-  ],
-  cantidades: [
-    { id: "12", label: "12 piezas", precio: 320 },
-    { id: "36", label: "36 piezas", precio: 295 },
-    { id: "72", label: "72 piezas", precio: 275 },
-    { id: "144", label: "144 piezas", precio: 260 },
-    { id: "288", label: "288 piezas", precio: 248 },
-  ],
-};
-
-export default function OrderForm() {
-  const [color, setColor] = useState("");
-  const [talla, setTalla] = useState("unica");
-  const [cantidad, setCantidad] = useState("72");
+export default function OrderForm({
+  productoNombre,
+  precioBase,
+  colores,
+  tallas = [{ id: "unica", label: "Única (ajustable)" }],
+  cantidades,
+}: OrderFormProps) {
+  const [color, setColor] = useState(colores[0]?.id || "");
+  const [talla, setTalla] = useState(tallas[0]?.id || "");
+  const [cantidad, setCantidad] = useState(cantidades[0]?.id || "");
   const [tecnicas, setTecnicas] = useState<string[]>([]);
 
   const precioUnitario =
-    PRODUCTO_EJEMPLO.cantidades.find((c) => c.id === cantidad)?.precio ||
-    PRODUCTO_EJEMPLO.precioBase;
-  const total = precioUnitario * parseInt(cantidad);
+    cantidades.find((c) => c.id === cantidad)?.precio ||
+    precioBase;
+  const total = precioUnitario * parseInt(cantidad || "1");
 
   const toggleTecnica = (id: string) => {
     setTecnicas((prev) =>
@@ -64,51 +49,55 @@ export default function OrderForm() {
     <div className="max-w-2xl mx-auto space-y-8">
       {/* Producto */}
       <div>
-        <h1 className="font-heading text-2xl font-bold">{PRODUCTO_EJEMPLO.nombre}</h1>
+        <h1 className="font-heading text-2xl font-bold">{productoNombre}</h1>
         <p className="mt-1 text-sm text-[var(--muted-foreground)]">
           Personalización profesional para tu marca o evento.
         </p>
       </div>
 
       {/* Color */}
-      <div>
-        <label className="block text-sm font-semibold mb-3">Color</label>
-        <div className="flex flex-wrap gap-2">
-          {PRODUCTO_EJEMPLO.colores.map((c) => (
-            <button
-              key={c.id}
-              onClick={() => setColor(c.id)}
-              className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${
-                color === c.id
-                  ? "border-[var(--accent)] ring-1 ring-[var(--accent)] bg-[var(--accent)]/10"
-                  : "border-[var(--border)] hover:border-[var(--muted-foreground)]"
-              }`}
-            >
-              {c.label}
-            </button>
-          ))}
+      {colores.length > 0 && (
+        <div>
+          <label className="block text-sm font-semibold mb-3">Color</label>
+          <div className="flex flex-wrap gap-2">
+            {colores.map((c) => (
+              <button
+                key={c.id}
+                onClick={() => setColor(c.id)}
+                className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${
+                  color === c.id
+                    ? "border-[var(--accent)] ring-1 ring-[var(--accent)] bg-[var(--accent)]/10"
+                    : "border-[var(--border)] hover:border-[var(--muted-foreground)]"
+                }`}
+              >
+                {c.label}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Talla */}
-      <div>
-        <label className="block text-sm font-semibold mb-3">Talla</label>
-        <div className="flex flex-wrap gap-2">
-          {PRODUCTO_EJEMPLO.tallas.map((t) => (
-            <button
-              key={t.id}
-              onClick={() => setTalla(t.id)}
-              className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${
-                talla === t.id
-                  ? "border-[var(--accent)] ring-1 ring-[var(--accent)] bg-[var(--accent)]/10"
-                  : "border-[var(--border)] hover:border-[var(--muted-foreground)]"
-              }`}
-            >
-              {t.label}
-            </button>
-          ))}
+      {tallas.length > 0 && (
+        <div>
+          <label className="block text-sm font-semibold mb-3">Talla</label>
+          <div className="flex flex-wrap gap-2">
+            {tallas.map((t) => (
+              <button
+                key={t.id}
+                onClick={() => setTalla(t.id)}
+                className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${
+                  talla === t.id
+                    ? "border-[var(--accent)] ring-1 ring-[var(--accent)] bg-[var(--accent)]/10"
+                    : "border-[var(--border)] hover:border-[var(--muted-foreground)]"
+                }`}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Técnica de personalización */}
       <div>
@@ -144,24 +133,26 @@ export default function OrderForm() {
       </div>
 
       {/* Cantidad */}
-      <div>
-        <label className="block text-sm font-semibold mb-3">Cantidad</label>
-        <div className="flex flex-wrap gap-2">
-          {PRODUCTO_EJEMPLO.cantidades.map((c) => (
-            <button
-              key={c.id}
-              onClick={() => setCantidad(c.id)}
-              className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${
-                cantidad === c.id
-                  ? "border-[var(--accent)] ring-1 ring-[var(--accent)] bg-[var(--accent)]/10"
-                  : "border-[var(--border)] hover:border-[var(--muted-foreground)]"
-              }`}
-            >
-              {c.label}
-            </button>
-          ))}
+      {cantidades.length > 0 && (
+        <div>
+          <label className="block text-sm font-semibold mb-3">Cantidad</label>
+          <div className="flex flex-wrap gap-2">
+            {cantidades.map((c) => (
+              <button
+                key={c.id}
+                onClick={() => setCantidad(c.id)}
+                className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${
+                  cantidad === c.id
+                    ? "border-[var(--accent)] ring-1 ring-[var(--accent)] bg-[var(--accent)]/10"
+                    : "border-[var(--border)] hover:border-[var(--muted-foreground)]"
+                }`}
+              >
+                {c.label}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Resumen */}
       <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 space-y-3">
