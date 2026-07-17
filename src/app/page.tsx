@@ -135,9 +135,9 @@ export default function Home() {
         </section>
       </SectionReveal>
 
-      {/* Portafolio — MSP/RealThread inspired */}
+      {/* Portafolio */}
       <SectionReveal delay={0.1}>
-        <section className="border-t border-[var(--border)]">
+        <section id="portafolio" className="border-t border-[var(--border)]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
             <div className="text-center mb-12">
               <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
@@ -240,7 +240,7 @@ export default function Home() {
 
       {/* FAQ — con animación de expansión */}
       <SectionReveal delay={0.2}>
-        <section className="border-t border-[var(--border)]">
+        <section id="faq" className="border-t border-[var(--border)]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
             <div className="text-center mb-12">
               <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
