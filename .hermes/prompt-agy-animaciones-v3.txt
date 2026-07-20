@@ -1,0 +1,55 @@
+/goal Añadir animaciones interactivas hover + scroll a TODAS las páginas de este proyecto Next.js 16. NO modifiques lógica de negocio, solo añade animaciones.
+
+Trabaja en /mnt/c/Users/juanp/Desktop/mas-imagen-web/
+PRIMER COMANDO: cd /mnt/c/Users/juanp/Desktop/mas-imagen-web
+
+El proyecto YA tiene framer-motion instalado y YA tiene SectionReveal.tsx.
+
+## TAREA 1: Hover underline animation en TODOS los links navegables
+
+Crear src/components/HoverLink.tsx:
+- Componente "use client" que recibe href, children, className?
+- Renderiza un <Link> de next/link con position relative
+- Debajo del texto, un motion.div que es una barrita horizontal (h-[2px] bg-accent)
+- La barrita empieza con scaleX(0) y en hover hace scaleX(1) con origin-left
+- transition: duration 0.3
+
+Reemplazar TODOS los <Link> que sean navegación principal con <HoverLink> en:
+- src/components/Header.tsx: los items del menú (Home, Nosotros, Servicios, Contacto, Rastreo)
+- src/app/page.tsx: los botones "Ver servicios", "Solicitar cotización", "Contáctanos", "¿Tienes un proyecto similar?"
+- NO reemplazar links del dropdown ni del footer (esos solo hover de color)
+
+## TAREA 2: Hover effect en cards de servicios y portafolio
+
+En src/app/page.tsx:
+- Las cards de servicios (Bento Grid): añadir hover:shadow-md y hover:-translate-y-1 transition
+- Las cards del portafolio: mismo efecto + hover:border-accent
+
+## TAREA 3: Scroll-reveal en TODAS las páginas
+
+Ya existe SectionReveal en src/components/SectionReveal.tsx. Ahora envolver secciones en:
+
+### src/app/nosotros/page.tsx:
+- Importar SectionReveal
+- Envolver la sección "Nuestra historia" y "Lo que nos distingue" con SectionReveal
+
+### src/app/servicios/page.tsx:
+- Importar SectionReveal
+- Envolver CADA servicio (serigrafia, tampografia, etc.) con SectionReveal delay escalonado (0, 0.1, 0.2...)
+- También la sección CTA final
+
+### src/app/contacto/page.tsx:
+- Importar SectionReveal
+- Envolver WhatsApp section, ContactForm, y Visitános con SectionReveal
+
+## TAREA 4: Nav items en Header con indicador de página activa
+
+En src/components/Header.tsx:
+- El link activo (isActive) ya cambia de color. Añadir una barrita horizontal debajo usando motion.div
+- La barrita solo aparece en el item activo: width 100%, height 2px, bg-accent, rounded
+- Animar con layoutId para que se desplace suavemente entre tabs
+
+## VERIFICACIÓN
+npm run build DEBE compilar sin errores.
+
+CRITICO: NO guardes reportes. NO uses /artifact. Si falla dime el error exacto.
