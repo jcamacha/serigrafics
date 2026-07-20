@@ -90,18 +90,6 @@ export default function ContactoInfo() {
           </p>
         </div>
       </div>
-
-      <div className="flex items-start gap-3">
-        <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[var(--muted)] text-sm shrink-0">
-          ✉️
-        </span>
-        <div>
-          <h3 className="text-sm font-medium">Correo</h3>
-          <p className="text-sm text-[var(--muted-foreground)]">
-            {datos.correo}
-          </p>
-        </div>
-      </div>
     </div>
   );
 }
