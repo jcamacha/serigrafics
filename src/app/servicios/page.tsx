@@ -30,9 +30,8 @@ const serviciosDetalle = [
   {
     id: "tampografia",
     titulo: "Tampografía",
-    proximamente: true,
     descripcion:
-      "¿Necesitas imprimir en superficies curvas, irregulares o de difícil acceso? La tampografía es la solución precisa y versátil. Perfecta para detalles pequeños, logotipos finos y marcajes técnicos. Próximamente disponible en nuestro taller — déjanos tu proyecto y te avisamos en cuanto esté listo.",
+      "¿Necesitas imprimir en superficies curvas, irregulares o de difícil acceso? La tampografía es la solución precisa y versátil. Perfecta para detalles pequeños, logotipos finos y marcajes técnicos en tapas, bolígrafos, envases pequeños y piezas industriales.",
     imagenes: [
       "/tampografia-1.jpg",
     ],
@@ -118,11 +117,6 @@ export default function Servicios() {
                   <h2 className="font-heading text-2xl font-bold tracking-tight sm:text-3xl">
                     {srv.titulo}
                   </h2>
-                  {srv.proximamente && (
-                    <span className="inline-flex items-center rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 text-xs font-medium text-amber-400">
-                      Próximamente
-                    </span>
-                  )}
                 </div>
 
                 <p className="text-base sm:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-3xl">
@@ -136,8 +130,8 @@ export default function Servicios() {
                       src={imgSrc}
                       alt={`${srv.titulo} - Muestra ${imgIdx + 1}`}
                       className={srv.imagenes.length > 1
-                        ? "w-64 sm:w-80 h-48 flex-shrink-0 rounded-xl object-cover snap-center shadow-md"
-                        : "w-full h-48 sm:h-64 rounded-xl object-cover shadow-md"
+                        ? "w-64 sm:w-80 h-48 flex-shrink-0 rounded-xl object-contain snap-center shadow-md bg-white p-2"
+                        : "w-full max-h-64 rounded-xl object-contain shadow-md bg-white p-4"
                       }
                     />
                   ))}
