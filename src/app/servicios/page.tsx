@@ -11,64 +11,93 @@ export const metadata: Metadata = {
 const serviciosDetalle = [
   {
     id: "serigrafia",
-    titulo: "Serigrafía en botellas y envases",
+    titulo: "Serigrafía",
     descripcion:
-      "Técnica de impresión industrial de alta precisión especializada en botellas cilíndricas, envases de vidrio, termos y contenedores de plástico o metal. Ofrecemos acabados de alta durabilidad y resistencia al lavado.",
-    usos: [
-      "Botellas cilíndricas de vidrio y plástico",
-      "Envases de vidrio para bebidas, licores y cosmética",
-      "Termos, vasos y envases promocionales",
-      "Playeras y textiles (servicio secundario)",
+      "Tu marca merece verse impecable. Nuestra serigrafía industrial logra impresiones nítidas, duraderas y con colores sólidos que resisten el uso diario. Desde botellas de vidrio hasta envases cilíndricos, cada pieza recibe el mismo cuidado artesanal. Ideal para producciones en volumen donde la calidad no se negocia.",
+    imagenes: [
+      "/serigrafia-1.jpg",
+      "/serigrafia-2.jpg",
+      "/serigrafia-3.jpg",
     ],
-    destacado: true,
+    usos: [
+      "Botellas de vidrio y plástico",
+      "Termos y vasos",
+      "Envases cosméticos",
+      "Empaques premium",
+      "Productos promocionales",
+    ],
   },
   {
     id: "tampografia",
     titulo: "Tampografía",
-    descripcion:
-      "Sistema de impresión indirecta ideal para botellas pequeñas, tapas, frascos y superficies curvas o de difícil acceso. Permite lograr detalles finos en áreas no planas.",
-    usos: [
-      "Botellas pequeñas y frascos cosméticos",
-      "Tapas y cierres de envases",
-      "Superficies curvas e irregulares",
-      "Artículos promocionales (plumas, llaveros, USBs)",
-    ],
     proximamente: true,
+    descripcion:
+      "¿Necesitas imprimir en superficies curvas, irregulares o de difícil acceso? La tampografía es la solución precisa y versátil. Perfecta para detalles pequeños, logotipos finos y marcajes técnicos. Próximamente disponible en nuestro taller — déjanos tu proyecto y te avisamos en cuanto esté listo.",
+    imagenes: [
+      "/tampografia-1.jpg",
+      "/tampografia-1.jpg",
+      "/tampografia-1.jpg",
+    ],
+    usos: [
+      "Tapas y cápsulas",
+      "Bolígrafos y llaveros",
+      "Envases pequeños",
+      "Piezas industriales",
+      "Electrónicos",
+    ],
   },
   {
     id: "grabado-laser",
     titulo: "Grabado láser",
     descripcion:
-      "Marcado de alta precisión con tecnología láser. Ideal para termos metálicos, botellas de acero inoxidable, metal, madera y acrílico con un acabado permanente e imborrable.",
+      "Elegancia permanente. El grabado láser marca tus productos con una precisión imposible de igualar. Sin tintas, sin desgaste: solo luz y material fundidos en un acabado premium. Ideal para branding de alto impacto en termos, botellas metálicas y regalos corporativos que hablan por sí solos.",
+    imagenes: [
+      "/grabado-1.jpg",
+      "/grabado-1.jpg",
+      "/grabado-1.jpg",
+    ],
     usos: [
-      "Termos metálicos y botellas de acero",
-      "Cilindros de aluminio y vasos térmicos",
-      "Trofeos, placas y reconocimientos",
-      "Personalización permanente de regalos empresariales",
+      "Termos y botellas metálicas",
+      "Placas y reconocimientos",
+      "Regalos corporativos",
+      "Artículos de piel",
+      "Madera y acrílico",
     ],
   },
   {
     id: "sublimacion",
     titulo: "Sublimación",
     descripcion:
-      "Transferencia de tinta a todo color mediante calor y presión. Aplica a botellas plásticas, termos con recubrimiento de polímero, tazas y una amplia variedad de promocionales.",
+      "Colores vibrantes que no se despintan. La sublimación fusiona la tinta con el material a nivel molecular, creando impresiones fotográficas resistentes al lavado y al tiempo. Perfecta para tazas, botellas plásticas y artículos promocionales a todo color.",
+    imagenes: [
+      "/sublimacion-1.jpg",
+      "/sublimacion-1.jpg",
+      "/sublimacion-1.jpg",
+    ],
     usos: [
-      "Botellas plásticas y termos deportivos",
-      "Tazas y recipientes personalizados",
-      "Rompecabezas, mouse pads y llaveros",
-      "Playeras y promocionales textiles",
+      "Tazas y termos plásticos",
+      "Playeras deportivas",
+      "Rompecabezas y mousepads",
+      "Artículos promocionales",
+      "Regalos personalizados",
     ],
   },
   {
     id: "lonas",
     titulo: "Lonas",
     descripcion:
-      "Impresión de gran formato en lona de alta resistencia. Perfectas para publicidad exterior, ferias, eventos y fachadas comerciales.",
+      "Comunica en grande. Nuestras lonas publicitarias de alta resistencia están diseñadas para exteriores exigentes: sol, lluvia y viento. Impresión de gran formato con colores intensos que capturan la atención. Desde ferias hasta fachadas comerciales.",
+    imagenes: [
+      "/lonas-1.jpg",
+      "/lonas-1.jpg",
+      "/lonas-1.jpg",
+    ],
     usos: [
-      "Lonas publicitarias para exteriores",
-      "Backdrops para eventos y ferias",
-      "Pendones y banners promocionales",
-      "Señalización para construcciones y obras",
+      "Publicidad exterior",
+      "Backdrops para eventos",
+      "Pendones y banners",
+      "Ferias y exposiciones",
+      "Señalización de obra",
     ],
   },
 ];
@@ -92,49 +121,59 @@ export default function Servicios() {
               id={srv.id}
               className="scroll-mt-20"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div>
-                  <h2 className="font-heading text-2xl font-bold tracking-tight flex items-center gap-3">
+              <div className="space-y-6">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <h2 className="font-heading text-2xl font-bold tracking-tight sm:text-3xl">
                     {srv.titulo}
-                    {srv.proximamente && (
-                      <span className="inline-flex items-center rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 text-xs font-medium text-amber-400">
-                        Próximamente
-                      </span>
-                    )}
                   </h2>
-                  <p className="mt-4 text-[var(--muted-foreground)] leading-relaxed">
-                    {srv.descripcion}
-                  </p>
+                  {srv.proximamente && (
+                    <span className="inline-flex items-center rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 text-xs font-medium text-amber-400">
+                      Próximamente
+                    </span>
+                  )}
                 </div>
 
-                <div className="lg:col-span-2">
-                  <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
-                    <h3 className="text-sm font-semibold text-[var(--muted-foreground)] uppercase tracking-wider mb-4">
-                      Aplicaciones comunes
-                    </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {srv.usos.map((uso) => (
-                        <div
-                          key={uso}
-                          className="flex items-start gap-2 text-sm text-[var(--muted-foreground)]"
+                <p className="text-base sm:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-3xl">
+                  {srv.descripcion}
+                </p>
+
+                <div className="overflow-x-auto flex gap-4 snap-x mandatory py-2">
+                  {srv.imagenes.map((imgSrc, imgIdx) => (
+                    <img
+                      key={imgIdx}
+                      src={imgSrc}
+                      alt={`${srv.titulo} - Muestra ${imgIdx + 1}`}
+                      className="w-64 sm:w-80 h-48 flex-shrink-0 rounded-xl object-cover snap-center shadow-md"
+                    />
+                  ))}
+                </div>
+
+                <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
+                  <h3 className="text-sm font-semibold text-[var(--muted-foreground)] uppercase tracking-wider mb-4">
+                    Ideal para:
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                    {srv.usos.map((uso) => (
+                      <div
+                        key={uso}
+                        className="flex items-start gap-2 text-sm text-[var(--muted-foreground)]"
+                      >
+                        <svg
+                          className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--accent)]"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
                         >
-                          <svg
-                            className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--accent)]"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                          {uso}
-                        </div>
-                      ))}
-                    </div>
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                        {uso}
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -147,7 +186,7 @@ export default function Servicios() {
       <SectionReveal delay={0}>
         <div className="mt-20 text-center border-t border-[var(--border)] pt-16">
           <h2 className="font-heading text-2xl font-bold">
-            ¿No sabes qué servicio necesitas para tus botellas o envases?
+            ¿No sabes qué servicio necesitas?
           </h2>
           <p className="mt-3 text-[var(--muted-foreground)]">
             Contáctanos y te orientamos sin costo sobre el proceso de impresión ideal.
@@ -163,3 +202,4 @@ export default function Servicios() {
     </div>
   );
 }
+
