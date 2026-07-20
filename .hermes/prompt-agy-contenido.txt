@@ -1,0 +1,36 @@
+/goal Reescribir contenido del sitio Más Imagen con misión, visión, valores y enfoque en impresión de botellas. Trabaja en /mnt/c/Users/juanp/Desktop/mas-imagen-web/
+
+PRIMER COMANDO: cd /mnt/c/Users/juanp/Desktop/mas-imagen-web
+
+## CONTEXTO
+Más Imagen es un taller mexicano de impresiones. Aunque ofrece varios servicios, su ESPECIALIDAD es la impresión sobre botellas (vidrio y plástico), termos, vasos y envases. Atiende tanto a industria (destilerías, beverage, cosmética) como a clientes promocionales.
+
+NO es un taller textil. El foco es BOTELLAS y ENVASES. La serigrafía textil es un servicio secundario.
+
+## TAREA 1: Reescribir src/app/nosotros/page.tsx
+- Mantener la estructura actual (historia + valores con checkmarks)
+- Añadir sección MISIÓN al inicio: "Brindar soluciones de impresión industrial de alta calidad para botellas, envases y productos promocionales, combinando tecnología de precisión con atención personalizada."
+- Añadir sección VISIÓN después de misión: "Ser el taller de impresión de referencia en México para la decoración de botellas y envases, reconocido por calidad, innovación y cumplimiento."
+- Añadir sección VALORES (4-5 checkmarks): Calidad, Atención personalizada, Compromiso con plazos, Innovación, Cuidado del detalle
+- Reescribir la historia: "Más de [X] años de experiencia en impresión industrial. Comenzamos como un taller de serigrafía y evolucionamos para especializarnos en la decoración de botellas, termos y envases para las industrias de bebidas, cosmética y promocionales."
+
+## TAREA 2: Reescribir src/app/page.tsx (Home)
+- Subtítulo del hero: "Especialistas en impresión sobre botellas, termos y envases. Calidad industrial con trato personalizado."
+- Sección de servicios: renombrar "Serigrafía" → "Serigrafía en botellas", añadir más texto descriptivo en cada card
+- Añadir UNA NUEVA sección breve entre servicios y portafolio llamada "Confían en nosotros" con 6 bullet points: "Más de [X] años de experiencia", "Tecnología UV/LED de alta precisión", "Tintas libres de metales pesados", "Impresión de 1 a 4 colores", "Muestras previas sin costo", "Envíos a toda la república"
+
+## TAREA 3: Reescribir src/app/servicios/page.tsx
+- Para Serigrafía: añadir mención específica a botellas cilíndricas, envases de vidrio, termos
+- Para Tampografía: añadir que es ideal para botellas pequeñas, tapas, superficies curvas
+- Para Grabado láser: añadir que es ideal para termos metálicos, botellas de acero
+- Para Sublimación: mantener, pero mencionar que aplica a botellas plásticas y termos
+- Para Lonas: mantener igual
+
+## TAREA 4: Ajustar src/app/page.tsx — portafolio
+- Cambiar el orden de los trabajos en el array para priorizar botellas y termos
+- Primeros 4 items del portafolio: Botellas de vidrio, Termos grabados, Tazas personalizadas, Vasos cuberos
+
+## VERIFICACIÓN
+npm run build DEBE compilar sin errores.
+
+CRITICO: NO guardes reportes. NO uses /artifact. Devuelve resumen en stdout.

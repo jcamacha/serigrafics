@@ -10,26 +10,26 @@ import AccordionFAQ from "@/components/AccordionFAQ";
 
 const servicios = [
   {
-    titulo: "Serigrafía",
-    desc: "Impresión de alta calidad sobre textiles, plásticos, vidrio y más.",
+    titulo: "Serigrafía en botellas",
+    desc: "Impresión industrial de alta definición sobre botellas de vidrio, plástico, termos, vasos y envases cilíndricos.",
     href: "/servicios#serigrafia",
-    icon: "🖨️",
+    icon: "🍾",
   },
   {
     titulo: "Grabado láser",
-    desc: "Marcado y grabado de precisión en metal, madera, acrílico y cuero.",
+    desc: "Marcado permanente de alta precisión en termos metálicos, botellas de acero inoxidable, metal y acrílico.",
     href: "/servicios#grabado-laser",
     icon: "⚡",
   },
   {
     titulo: "Sublimación",
-    desc: "Transferencia de imágenes a todo color sobre playeras, tazas y artículos promocionales.",
+    desc: "Transferencia de imágenes a todo color sobre botellas plásticas, termos, tazas y artículos promocionales.",
     href: "/servicios#sublimacion",
     icon: "🎨",
   },
   {
     titulo: "Lonas",
-    desc: "Lonas publicitarias de gran formato para exteriores e interiores.",
+    desc: "Impresión publicitaria de gran formato en lona de alta resistencia para publicidad exterior e interior.",
     href: "/servicios#lonas",
     icon: "🏗️",
   },
@@ -38,11 +38,11 @@ const servicios = [
 const faqs = [
   {
     q: "¿Cuál es el pedido mínimo?",
-    a: "Depende de la técnica. En serigrafía pedimos mínimo 10 piezas. Para sublimación y grabado láser aceptamos desde 1 pieza. Contáctanos para casos especiales.",
+    a: "Depende de la técnica. En serigrafía para botellas y envases pedimos mínimo 10 piezas. Para sublimación y grabado láser aceptamos desde 1 pieza. Contáctanos para proyectos industriales o tirajes especiales.",
   },
   {
     q: "¿Cuánto tardan en entregar?",
-    a: "La mayoría de los pedidos se entregan en 3 a 7 días hábiles después de aprobar el diseño. Pedidos grandes o urgentes tienen prioridad — pregúntanos.",
+    a: "La mayoría de los pedidos se entregan en 3 a 7 días hábiles después de aprobar el diseño y muestras. Pedidos grandes o urgentes tienen prioridad — pregúntanos.",
   },
   {
     q: "¿Qué formatos de archivo aceptan para los diseños?",
@@ -50,20 +50,20 @@ const faqs = [
   },
   {
     q: "¿Hacen envíos a toda la república?",
-    a: "Sí. Enviamos por paquetería a cualquier parte de México. El costo depende del peso, volumen y destino. Pedidos mayores a $2,500 tienen envío desde $50.",
+    a: "Sí. Enviamos por paquetería a cualquier parte de México. El costo depende del peso, volumen y destino.",
   },
   {
     q: "¿Puedo ver una muestra antes del pedido completo?",
-    a: "Claro. Podemos hacer una pieza muestra para que apruebes colores, registro y calidad antes de producir el tiraje completo. La muestra tiene costo, pero se descuenta del pedido final.",
+    a: "Claro. Ofrecemos muestras previas para garantizar el tono, registro y adhesión adecuados en tus botellas o envases antes de producir el tiraje completo.",
   },
 ];
 
 const trabajos = [
-  { nombre: "Playeras corporativas", servicio: "Serigrafía", categoria: "serigrafia" },
-  { nombre: "Tazas personalizadas", servicio: "Sublimación", categoria: "sublimacion" },
+  { nombre: "Botellas de vidrio", servicio: "Serigrafía en botellas", categoria: "serigrafia" },
   { nombre: "Termos grabados", servicio: "Grabado láser", categoria: "grabado-laser" },
+  { nombre: "Tazas personalizadas", servicio: "Sublimación", categoria: "sublimacion" },
+  { nombre: "Vasos cuberos", servicio: "Serigrafía en botellas", categoria: "serigrafia" },
   { nombre: "Lona publicitaria", servicio: "Lonas", categoria: "lonas" },
-  { nombre: "Uniformes deportivos", servicio: "Serigrafía", categoria: "serigrafia" },
   { nombre: "Llaveros metálicos", servicio: "Grabado láser", categoria: "grabado-laser" },
 ];
 
@@ -147,8 +147,7 @@ export default function Home() {
               Más<span className="text-[var(--accent)]">Imagen</span>
             </motion.h1>
             <p className="mt-6 text-lg sm:text-xl text-gray-200 max-w-xl mx-auto">
-              Taller de impresiones con años de experiencia. Calidad y trato
-              directo en cada proyecto.
+              Especialistas en impresión sobre botellas, termos y envases. Calidad industrial con trato personalizado.
             </p>
             <div className="mt-8 flex justify-center gap-4">
               <Link
@@ -176,8 +175,7 @@ export default function Home() {
               Nuestros servicios
             </h2>
             <p className="mt-3 text-[var(--muted-foreground)] max-w-lg mx-auto">
-              Cubrimos todo el espectro de impresión y marcado para tu negocio o
-              proyecto personal.
+              Especializados en decoración de botellas y envases, además de servicios de marcado y gran formato.
             </p>
           </div>
 
@@ -201,6 +199,39 @@ export default function Home() {
         </section>
       </SectionReveal>
 
+      {/* Confían en nosotros */}
+      <SectionReveal delay={0.05}>
+        <section className="border-t border-[var(--border)] bg-[var(--card)]/50 py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+                Confían en nosotros
+              </h2>
+              <p className="mt-3 text-[var(--muted-foreground)] max-w-lg mx-auto">
+                Garantía de calidad y precisión industrial para tus proyectos.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {[
+                "Más de 15 años de experiencia",
+                "Tecnología UV/LED de alta precisión",
+                "Tintas libres de metales pesados",
+                "Impresión de 1 a 4 colores",
+                "Muestras previas sin costo",
+                "Envíos a toda la república",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3 rounded-lg border border-[var(--border)] bg-[var(--card)] p-4 shadow-sm">
+                  <svg className="h-5 w-5 flex-shrink-0 text-[var(--accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="font-medium text-sm text-[var(--foreground)]">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </SectionReveal>
+
       {/* Portafolio */}
       <SectionReveal delay={0.1}>
         <section id="portafolio" className="border-t border-[var(--border)]">
@@ -210,8 +241,7 @@ export default function Home() {
                 Trabajos recientes
               </h2>
               <p className="mt-3 text-[var(--muted-foreground)] max-w-lg mx-auto">
-                Una muestra de lo que hacemos. Cada pieza con el cuidado que tu
-                proyecto merece.
+                Una muestra de nuestras impresiones en botellas, envases y promocionales.
               </p>
             </div>
 

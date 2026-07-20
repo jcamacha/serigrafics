@@ -5,20 +5,20 @@ import SectionReveal from "@/components/SectionReveal";
 export const metadata: Metadata = {
   title: "Servicios — Más Imagen",
   description:
-    "Serigrafía, grabado láser, sublimación, lonas y tampografía. Conoce todos nuestros servicios de impresión.",
+    "Especialistas en impresión de botellas, envases de vidrio y plástico, termos, grabado láser, tampografía, sublimación y lonas.",
 };
 
 const serviciosDetalle = [
   {
     id: "serigrafia",
-    titulo: "Serigrafía",
+    titulo: "Serigrafía en botellas y envases",
     descripcion:
-      "Técnica de impresión milenaria perfeccionada. Utilizamos mallas de alta precisión para transferir tinta a casi cualquier superficie: textiles, plásticos, vidrio, metal y más.",
+      "Técnica de impresión industrial de alta precisión especializada en botellas cilíndricas, envases de vidrio, termos y contenedores de plástico o metal. Ofrecemos acabados de alta durabilidad y resistencia al lavado.",
     usos: [
-      "Playeras, uniformes y ropa corporativa",
-      "Botellas, vasos y artículos promocionales",
-      "Señalización y letreros industriales",
-      "Etiquetas y empaques personalizados",
+      "Botellas cilíndricas de vidrio y plástico",
+      "Envases de vidrio para bebidas, licores y cosmética",
+      "Termos, vasos y envases promocionales",
+      "Playeras y textiles (servicio secundario)",
     ],
     destacado: true,
   },
@@ -26,12 +26,12 @@ const serviciosDetalle = [
     id: "tampografia",
     titulo: "Tampografía",
     descripcion:
-      "Sistema de impresión indirecta ideal para superficies irregulares, curvas o de difícil acceso. Próximamente disponible en nuestro taller.",
+      "Sistema de impresión indirecta ideal para botellas pequeñas, tapas, frascos y superficies curvas o de difícil acceso. Permite lograr detalles finos en áreas no planas.",
     usos: [
+      "Botellas pequeñas y frascos cosméticos",
+      "Tapas y cierres de envases",
+      "Superficies curvas e irregulares",
       "Artículos promocionales (plumas, llaveros, USBs)",
-      "Piezas industriales y médicas",
-      "Juguetes y artículos deportivos",
-      "Electrónicos y carcasas",
     ],
     proximamente: true,
   },
@@ -39,24 +39,24 @@ const serviciosDetalle = [
     id: "grabado-laser",
     titulo: "Grabado láser",
     descripcion:
-      "Marcado de alta precisión con tecnología láser. Ideal para personalización permanente en metal, madera, acrílico, cuero y más materiales.",
+      "Marcado de alta precisión con tecnología láser. Ideal para termos metálicos, botellas de acero inoxidable, metal, madera y acrílico con un acabado permanente e imborrable.",
     usos: [
+      "Termos metálicos y botellas de acero",
+      "Cilindros de aluminio y vasos térmicos",
       "Trofeos, placas y reconocimientos",
-      "Artículos de piel: carteras, cinturones, porta documentos",
-      "Señalización corporativa y letreros",
-      "Personalización de regalos empresariales",
+      "Personalización permanente de regalos empresariales",
     ],
   },
   {
     id: "sublimacion",
     titulo: "Sublimación",
     descripcion:
-      "Transferencia de tinta a todo color mediante calor y presión. Los colores penetran el material, creando impresiones vibrantes que no se agrietan ni se despintan.",
+      "Transferencia de tinta a todo color mediante calor y presión. Aplica a botellas plásticas, termos con recubrimiento de polímero, tazas y una amplia variedad de promocionales.",
     usos: [
-      "Playeras, gorras y ropa deportiva",
-      "Tazas, termos y botellas",
+      "Botellas plásticas y termos deportivos",
+      "Tazas y recipientes personalizados",
       "Rompecabezas, mouse pads y llaveros",
-      "Playeras conmemorativas para eventos",
+      "Playeras y promocionales textiles",
     ],
   },
   {
@@ -81,8 +81,7 @@ export default function Servicios() {
           Nuestros <span className="text-[var(--accent)]">servicios</span>
         </h1>
         <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
-          Conoce cada uno de nuestros procesos. Todos los trabajos se realizan
-          con materiales de calidad y atención personalizada.
+          Conoce cada uno de nuestros procesos de impresión y decoración sobre botellas, envases y promocionales.
         </p>
       </div>
 
@@ -148,10 +147,10 @@ export default function Servicios() {
       <SectionReveal delay={0}>
         <div className="mt-20 text-center border-t border-[var(--border)] pt-16">
           <h2 className="font-heading text-2xl font-bold">
-            ¿No sabes qué servicio necesitas?
+            ¿No sabes qué servicio necesitas para tus botellas o envases?
           </h2>
           <p className="mt-3 text-[var(--muted-foreground)]">
-            Contáctanos y te orientamos sin costo.
+            Contáctanos y te orientamos sin costo sobre el proceso de impresión ideal.
           </p>
           <Link
             href="/contacto"
