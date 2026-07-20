@@ -27,42 +27,52 @@ const servicios = [
   },
 ];
 
+const faqs = [
+  {
+    q: "¿Cuál es el pedido mínimo?",
+    a: "Depende de la técnica. En serigrafía pedimos mínimo 10 piezas. Para sublimación y grabado láser aceptamos desde 1 pieza. Contáctanos para casos especiales.",
+  },
+  {
+    q: "¿Cuánto tardan en entregar?",
+    a: "La mayoría de los pedidos se entregan en 3 a 7 días hábiles después de aprobar el diseño. Pedidos grandes o urgentes tienen prioridad — pregúntanos.",
+  },
+  {
+    q: "¿Qué formatos de archivo aceptan para los diseños?",
+    a: "Preferimos vectores: PDF, AI, SVG o CDR. También aceptamos PNG y JPG en alta resolución (300 DPI mínimo). Si tienes duda, mándanos lo que tengas y lo revisamos.",
+  },
+  {
+    q: "¿Hacen envíos a toda la república?",
+    a: "Sí. Enviamos por paquetería a cualquier parte de México. El costo depende del peso, volumen y destino. Pedidos mayores a $2,500 tienen envío desde $50.",
+  },
+  {
+    q: "¿Puedo ver una muestra antes del pedido completo?",
+    a: "Claro. Podemos hacer una pieza muestra para que apruebes colores, registro y calidad antes de producir el tiraje completo. La muestra tiene costo, pero se descuenta del pedido final.",
+  },
+];
+
+const trabajos = [
+  { nombre: "Playeras corporativas", servicio: "Serigrafía" },
+  { nombre: "Tazas personalizadas", servicio: "Sublimación" },
+  { nombre: "Termos grabados", servicio: "Grabado láser" },
+  { nombre: "Lona publicitaria", servicio: "Lonas" },
+  { nombre: "Uniformes deportivos", servicio: "Serigrafía" },
+  { nombre: "Llaveros metálicos", servicio: "Grabado láser" },
+];
+
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-[var(--border)]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
-          <div className="max-w-2xl">
-            <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-              Damos vida a
-              <span className="text-[var(--accent)]"> tus ideas</span>
-            </h1>
-            <p className="mt-6 text-lg leading-relaxed text-[var(--muted-foreground)] max-w-xl">
-              Somos un taller de impresiones con años de experiencia en
-              serigrafía, grabado láser, sublimación y lonas. Cada proyecto
-              recibe atención personalizada.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/servicios"
-                className="inline-flex items-center rounded-lg bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white hover:bg-[var(--accent)]/90 transition-colors"
-              >
-                Ver servicios
-              </Link>
-              <Link
-                href="/contacto"
-                className="inline-flex items-center rounded-lg border border-[var(--border)] px-6 py-3 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--muted)] transition-colors"
-              >
-                Solicitar cotización
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Value badges — MSP-inspired */}
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {/* Value badges — ahora son la primera impresión */}
+      <section className="border-b border-[var(--border)]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+          <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl text-center">
+            Más<span className="text-[var(--accent)]">Imagen</span>
+          </h1>
+          <p className="mt-4 text-lg text-[var(--muted-foreground)] text-center max-w-xl mx-auto">
+            Taller de impresiones con años de experiencia. Calidad y trato
+            directo en cada proyecto.
+          </p>
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
             {[
               { label: "CALIDAD", arrow: "GARANTIZADA" },
               { label: "TRATO", arrow: "DIRECTO" },
@@ -70,7 +80,7 @@ export default function Home() {
             ].map(({ label, arrow }) => (
               <div
                 key={label}
-                className="group rounded-xl border border-[var(--border)] bg-[var(--card)]/50 px-5 py-4 text-center hover:border-[var(--accent)]/30 transition-all duration-300"
+                className="rounded-xl border border-[var(--border)] bg-[var(--card)]/50 px-5 py-4 text-center hover:border-[var(--accent)]/30 transition-all duration-300"
               >
                 <span className="font-heading text-sm font-semibold tracking-wider text-[var(--foreground)]">
                   {label}
@@ -82,11 +92,20 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Decoración sutil */}
-        <div className="absolute right-0 top-0 -z-10 h-full w-1/2 opacity-[0.03]">
-          <div className="h-full w-full bg-[radial-gradient(circle_at_center,_var(--accent)_0%,_transparent_70%)]" />
+          <div className="mt-8 flex justify-center gap-4">
+            <Link
+              href="/servicios"
+              className="inline-flex items-center rounded-lg bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white hover:bg-[var(--accent)]/90 transition-colors"
+            >
+              Ver servicios
+            </Link>
+            <Link
+              href="/contacto"
+              className="inline-flex items-center rounded-lg border border-[var(--border)] px-6 py-3 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--muted)] transition-colors"
+            >
+              Solicitar cotización
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -118,6 +137,113 @@ export default function Home() {
               </p>
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* Portafolio — MSP/RealThread inspired */}
+      <section className="border-t border-[var(--border)]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-center mb-12">
+            <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+              Trabajos recientes
+            </h2>
+            <p className="mt-3 text-[var(--muted-foreground)] max-w-lg mx-auto">
+              Una muestra de lo que hacemos. Cada pieza con el cuidado que tu
+              proyecto merece.
+            </p>
+          </div>
+
+          {/* FIXME: reemplazar con imágenes reales cuando estén disponibles */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4">
+            {trabajos.map((trabajo) => (
+              <div
+                key={trabajo.nombre}
+                className="group relative overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)] aspect-[4/3] flex flex-col items-center justify-center p-4 text-center hover:border-[var(--accent)]/30 transition-all duration-300"
+              >
+                <p className="text-4xl mb-3 opacity-30">🖼️</p>
+                <h3 className="font-heading text-sm font-semibold group-hover:text-[var(--accent)] transition-colors">
+                  {trabajo.nombre}
+                </h3>
+                <p className="text-xs text-[var(--muted-foreground)] mt-1">
+                  {trabajo.servicio}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Link
+              href="/contacto"
+              className="inline-flex items-center rounded-lg border border-[var(--border)] px-6 py-3 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--muted)] transition-colors"
+            >
+              ¿Tienes un proyecto similar? Cotízalo
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ — IndustryPrintShop inspired */}
+      <section className="border-t border-[var(--border)]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-center mb-12">
+            <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+              Preguntas frecuentes
+            </h2>
+            <p className="mt-3 text-[var(--muted-foreground)] max-w-lg mx-auto">
+              Respuestas rápidas a lo que más nos preguntan.
+            </p>
+          </div>
+
+          <div className="max-w-2xl mx-auto divide-y divide-[var(--border)]">
+            {faqs.map((faq, i) => (
+              <details key={i} className="group py-5 cursor-pointer">
+                <summary className="flex items-center justify-between font-heading font-semibold text-[var(--foreground)] list-none">
+                  {faq.q}
+                  <svg
+                    className="h-5 w-5 flex-shrink-0 text-[var(--muted-foreground)] group-open:rotate-180 transition-transform"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <p className="mt-3 text-sm text-[var(--muted-foreground)] leading-relaxed pr-8">
+                  {faq.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Garantía — RealThread inspired */}
+      <section className="border-t border-[var(--border)]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="font-heading text-2xl font-bold tracking-tight">
+              Garantizamos calidad, precisión y entrega
+            </h2>
+            <p className="mt-4 text-[var(--muted-foreground)]">
+              Cada pedido pasa por revisión de diseño, control de calidad y
+              empaque cuidadoso.
+            </p>
+            <ul className="mt-8 space-y-3 text-left max-w-sm mx-auto">
+              {[
+                "Revisión de diseño sin costo",
+                "Materiales de primera calidad",
+                "Registro y color preciso",
+                "Entrega puntual garantizada",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-[var(--muted-foreground)]">
+                  <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
