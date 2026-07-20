@@ -1,0 +1,28 @@
+/goal Seleccionar 10 imágenes más al azar de las carpetas del taller y añadirlas al portafolio. Trabaja en /mnt/c/Users/juanp/Desktop/mas-imagen-web/
+
+PRIMER COMANDO: cd /mnt/c/Users/juanp/Desktop/mas-imagen-web
+
+## PASO 1: Copiar 10 imágenes adicionales
+Las imágenes YA seleccionadas están en public/portfolio/. NO repitas esas.
+
+Elige 10 imágenes DIFERENTES de:
+- /mnt/d/IMPRESION VIDRIO/ 
+- /mnt/d/Serigrafia/
+
+Que NO estén ya en public/portfolio/. Elige al azar entre las que quedan.
+
+Copia las 10 a public/portfolio/ con nombres descriptivos.
+
+## PASO 2: Añadir al array trabajos en src/app/page.tsx
+Lee el array `trabajos` actual. Tiene 12 elementos. Añade los 10 nuevos al final.
+Mismo formato: { nombre: "...", servicio: "...", categoria: "...", img: "/portfolio/..." }
+
+Clasifica cada imagen en la categoría correcta:
+- Botellas de vidrio → "serigrafia"
+- Tazas, playeras, sublimación → "sublimacion"  
+- Lonas → "lonas"
+
+## VERIFICACIÓN
+npm run build DEBE compilar sin errores.
+
+CRITICO: NO guardes reportes. NO uses /artifact.

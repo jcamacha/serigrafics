@@ -1,0 +1,25 @@
+I'm waiting for the `npm run build` verification task to complete. Once finished, I'll review the output logs and provide you with a final summary.
+He implementado de forma exitosa las tareas solicitadas en el proyecto local [mas-imagen-web](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web). El comando `npm run build` compiló correctamente la aplicación web de Next.js sin reportar advertencias ni errores.
+
+A continuación, se detalla el resumen de los cambios realizados:
+
+### 1. Integración de Lenis (Smooth Scroll)
+* Se instaló la biblioteca `lenis` mediante la ejecución de `npm install lenis`.
+* Se creó el componente de cliente [SmoothScroll.tsx](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web/src/components/SmoothScroll.tsx), configurando Lenis con los parámetros requeridos (`lerp: 0.1`, `duration: 1.2`, `smoothWheel: true`) y utilizando un bucle basado en `requestAnimationFrame` para animar el scroll de manera fluida globalmente.
+* Se importó e insertó el componente [SmoothScroll.tsx](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web/src/components/SmoothScroll.tsx) en el componente raíz [layout.tsx](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web/src/app/layout.tsx) como el primer hijo de la etiqueta `<body>` (ubicado justo antes del elemento `<Header />`).
+
+### 2. Navbar Flotante Inteligente (Header)
+* Modificamos [Header.tsx](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web/src/components/Header.tsx) para controlar dinámicamente un estado `scrolled` mediante un listener del evento `scroll` que se activa al superar los 50px de recorrido vertical (`window.scrollY > 50`).
+* Agregamos la verificación de la ruta actual utilizando `usePathname()` para aplicar el comportamiento transparente únicamente en la página de inicio (`pathname === "/"`).
+* **Estados Visuales**:
+  * **Estando en Home y scroll < 50px**: Se aplican las clases `fixed top-0 left-0 right-0 z-50 bg-transparent border-transparent`. Los enlaces de navegación del menú y las secciones del logo adquieren clases color `text-white hover:text-white/80` y el subtítulo `"Desde [AÑO]"` cambia a un color semitransparente legible sobre el slider oscuro del Hero.
+  * **Al hacer scroll (> 50px) o en otras páginas**: Recupera el estilo original sólido con borde inferior, desenfoque de fondo y los colores del tema (`border-b border-[var(--border)] bg-[var(--background)]/95 backdrop-blur`).
+  * **Comportamiento en móvil**: Si el menú de navegación móvil se expande (`mobileOpen === true`), la transparencia se desactiva de forma dinámica garantizando la completa legibilidad de las opciones.
+  * Las transiciones de color y bordes se suavizaron con la clase `transition-all duration-300` / `transition-colors duration-300`.
+* Se actualizó [ClientLayoutWrapper.tsx](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web/src/components/ClientLayoutWrapper.tsx) para inyectar dinámicamente la clase `pt-16` en páginas distintas a la Home (`pathname !== "/"`), compensando el espacio que ocupa la cabecera ahora que posee comportamiento de posición fija (`fixed`), evitando que los encabezados de las páginas secundarias queden ocultos.
+
+### 3. Efecto Parallax en las Diapositivas del Hero
+* Se modificó la página principal [page.tsx](file:///mnt/c/Users/juanp/Desktop/mas-imagen-web/src/app/page.tsx) agregando el estado `mousePosition` (`{ x, y }`) inicializado en el centro de la pantalla (`{ x: 0.5, y: 0.5 }`).
+* Implementamos un detector de movimiento `onMouseMove` sobre el contenedor principal `<section>` del Slider del Hero, calculando en tiempo real las coordenadas del puntero de forma porcentual (escala de `0` a `1`).
+* Se aplicó la transformación en línea (`transform: translate(...)`) con un escalado base de control (`scale(1.05)`) en el componente `<Image>` de la diapositiva activa. La imagen se desplaza de manera sutil (en un rango máximo de -1% a 1% con respecto a la posición del mouse).
+* El movimiento se suaviza empleando una transición inline de CSS con el valor `transition: transform 0.6s ease-out`.

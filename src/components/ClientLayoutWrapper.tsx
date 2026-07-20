@@ -10,6 +10,7 @@ interface ClientLayoutWrapperProps {
 
 export default function ClientLayoutWrapper({ children }: ClientLayoutWrapperProps) {
   const pathname = usePathname();
+  const isHome = pathname === "/";
 
   return (
     <AnimatePresence mode="wait">
@@ -19,6 +20,7 @@ export default function ClientLayoutWrapper({ children }: ClientLayoutWrapperPro
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -8 }}
         transition={{ duration: 0.35 }}
+        className={isHome ? "" : "pt-16"}
       >
         {children}
       </motion.div>

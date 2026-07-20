@@ -1,0 +1,58 @@
+/goal Integrar Fase 2 completa con productos de ejemplo, calculadora, formulario de pedido y habilitar tracking. Trabaja en /mnt/c/Users/juanp/Desktop/mas-imagen-web/
+
+PRIMER COMANDO: cd /mnt/c/Users/juanp/Desktop/mas-imagen-web
+
+## TAREA 1: Activar Fase 2
+- En .env, cambiar NEXT_PUBLIC_PHASE2=false a NEXT_PUBLIC_PHASE2=true
+- Esto hará que "Rastreo" aparezca automáticamente en Header y Footer
+
+## TAREA 2: Crear página de Productos (/productos)
+Crear src/app/productos/page.tsx:
+- Metadata: title "Productos — Más Imagen"
+- Grid de 4 productos de ejemplo con foto placeholder, nombre, descripción corta y botón "Personalizar"
+- Productos:
+  1. Vaso cubero — Sublimación — Desde $85 MXN
+  2. Taza cerámica — Sublimación — Desde $95 MXN  
+  3. Botella térmica — Grabado láser — Desde $180 MXN
+  4. Playera algodón — Serigrafía — Desde $120 MXN
+- Cada producto es un link a /productos/[slug]
+- Usa íconos emoji como placeholder de imagen (🥤 ☕ 🧴 👕)
+- Diseño: grid 2x2 en desktop, 1 columna en mobile. Cards con border, hover:shadow-md hover:-translate-y-1
+- NO uses framer-motion aquí, solo Tailwind
+
+## TAREA 3: Páginas de producto individual (/productos/vaso-cubero, etc.)
+Crear 4 páginas dinámicas o estáticas:
+- src/app/productos/vaso-cubero/page.tsx
+- src/app/productos/taza-ceramica/page.tsx
+- src/app/productos/botella-termica/page.tsx
+- src/app/productos/playera-algodon/page.tsx
+
+Cada página debe:
+- Tener metadata específica
+- Mostrar nombre, descripción, precio base, técnica de personalización
+- Incluir el componente OrderForm (importar desde @/components/futuro/OrderForm)
+- El OrderForm debe recibir props: productoNombre, precioBase, colores, cantidades
+- Modifica OrderForm para aceptar props en lugar de datos hardcodeados
+
+## TAREA 4: Página de Cotización (/cotizacion)
+Crear src/app/cotizacion/page.tsx:
+- Metadata: title "Cotización — Más Imagen"
+- Importar y renderizar QuoteCalculator desde @/components/futuro/QuoteCalculator
+- Título: "Calculadora de cotización"
+- Subtítulo: "Ajusta las opciones y obtén un estimado al instante"
+
+## TAREA 5: Añadir links al Header
+En src/components/Header.tsx, añadir a baseItems (entre FAQ y Contacto):
+- { label: "Productos", href: "/productos" }
+- { label: "Cotización", href: "/cotizacion" }
+
+## TAREA 6: Modificar OrderForm para aceptar props
+Lee src/components/futuro/OrderForm.tsx
+- Elimina PRODUCTO_EJEMPLO hardcodeado
+- Añade interface OrderFormProps con: productoNombre, precioBase, colores, tallas, cantidades
+- Usa las props en lugar de PRODUCTO_EJEMPLO
+
+## VERIFICACIÓN
+npm run build DEBE compilar sin errores.
+
+CRITICO: NO guardes reportes en archivo. NO uses /artifact. Si falla dime el error exacto.

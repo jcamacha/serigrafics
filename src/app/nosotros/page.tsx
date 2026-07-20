@@ -10,49 +10,63 @@ export default function Nosotros() {
           Sobre <span className="text-[var(--accent)]">nosotros</span>
         </h1>
         <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
-          Conoce la historia detrás de Más Imagen.
+          Conoce nuestra misión, visión y la historia detrás de Más Imagen.
         </p>
       </div>
 
-      {/* Historia */}
-      <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
+      {/* Misión y Visión */}
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
         <SectionReveal delay={0}>
+          <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-8 h-full">
+            <h2 className="font-heading text-2xl font-semibold text-[var(--accent)]">Misión</h2>
+            <p className="mt-4 text-[var(--muted-foreground)] leading-relaxed">
+              Brindar soluciones de impresión industrial de alta calidad para botellas, envases y productos promocionales, combinando tecnología de precisión con atención personalizada.
+            </p>
+          </div>
+        </SectionReveal>
+
+        <SectionReveal delay={0.1}>
+          <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-8 h-full">
+            <h2 className="font-heading text-2xl font-semibold text-[var(--accent)]">Visión</h2>
+            <p className="mt-4 text-[var(--muted-foreground)] leading-relaxed">
+              Ser el taller de impresión de referencia en México para la decoración de botellas y envases, reconocido por calidad, innovación y cumplimiento.
+            </p>
+          </div>
+        </SectionReveal>
+      </div>
+
+      {/* Historia y Valores */}
+      <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <SectionReveal delay={0.2}>
           <div>
             <h2 className="font-heading text-2xl font-semibold">Nuestra historia</h2>
             <div className="mt-6 space-y-4 text-[var(--muted-foreground)] leading-relaxed">
               <p>
-                Más Imagen nació como un pequeño taller de serigrafía con la
-                visión de ofrecer impresiones de calidad a precios accesibles.
-                Desde nuestros inicios, nos ha movido la pasión por transformar
-                ideas en productos tangibles.
+                Más de 15 años de experiencia en impresión industrial. Comenzamos como un taller de serigrafía y evolucionamos para especializarnos en la decoración de botellas, termos y envases para las industrias de bebidas, cosmética y promocionales.
               </p>
               <p>
-                A lo largo de los años hemos perfeccionado nuestras técnicas,
-                incorporando nuevas tecnologías como el grabado láser y la
-                sublimación para ampliar nuestra oferta de servicios.
+                A lo largo de los años hemos incorporado tecnologías avanzadas para ofrecer acabados de alta resistencia y definición sobre vidrio, plástico y metal.
               </p>
               <p>
-                Hoy, nuestro compromiso sigue siendo el mismo: atención
-                personalizada, entrega puntual y un resultado que supere las
-                expectativas de cada cliente.
+                Hoy, nuestro compromiso sigue siendo el mismo: atención personalizada, máxima precisión en cada tiraje y cumplimiento puntual con cada cliente.
               </p>
             </div>
           </div>
         </SectionReveal>
 
-        <SectionReveal delay={0.1}>
+        <SectionReveal delay={0.3}>
           <div className="space-y-8">
             <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-8">
               <h3 className="font-heading text-xl font-semibold">
-                Lo que nos distingue
+                Valores
               </h3>
               <ul className="mt-4 space-y-3 text-sm text-[var(--muted-foreground)]">
                 {[
-                  "Experiencia comprobada en el ramo de la serigrafía",
-                  "Atención personalizada a cada cliente y proyecto",
-                  "Materiales de primera calidad para acabados duraderos",
-                  "Entrega puntual, cumpliendo los plazos acordados",
-                  "Precios competitivos sin sacrificar calidad",
+                  "Calidad",
+                  "Atención personalizada",
+                  "Compromiso con plazos",
+                  "Innovación",
+                  "Cuidado del detalle",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2">
                     <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
