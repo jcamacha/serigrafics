@@ -1,10 +1,9 @@
-// Fase 1: endpoint placeholder — solo valida y responde
-// Fase 2: conectará a PostgreSQL para guardar cotizaciones
-
+// POST /api/contacto — valida, rate-limits y envía correo vía Resend
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
 
-// Rate limiting simple en memoria — reinicia con cada deploy (suficiente para Fase 1)
 const rateMap = new Map<string, number>();
+const TO_EMAIL = "crtainboy@gmail.com";
 
 export async function POST(request: NextRequest) {
   // Rate limit: 3 solicitudes por minuto por IP
@@ -14,7 +13,6 @@ export async function POST(request: NextRequest) {
   const now = Date.now();
   const windowStart = now - 60_000;
 
-  // Limpiar entradas viejas
   for (const [key, timestamp] of rateMap) {
     if (timestamp < windowStart) rateMap.delete(key);
   }
@@ -40,42 +38,50 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Datos inválidos." }, { status: 400 });
   }
 
-  // Validación server-side
   if (!body.nombre || body.nombre.trim().length < 2) {
-    return NextResponse.json(
-      { error: "El nombre es obligatorio." },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: "El nombre es obligatorio." }, { status: 400 });
   }
   if (!body.telefono || body.telefono.trim().length < 7) {
-    return NextResponse.json(
-      { error: "El teléfono es obligatorio." },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: "El teléfono es obligatorio." }, { status: 400 });
   }
   if (!body.mensaje || body.mensaje.trim().length < 10) {
-    return NextResponse.json(
-      { error: "Descríbenos tu proyecto (mínimo 10 caracteres)." },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: "Descríbenos tu proyecto (mínimo 10 caracteres)." }, { status: 400 });
   }
 
-  // HACK: teléfono mexicano simple (10 dígitos)
   const telLimpio = body.telefono.replace(/\D/g, "");
   if (telLimpio.length < 10) {
-    return NextResponse.json(
-      { error: "El teléfono debe tener al menos 10 dígitos." },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: "El teléfono debe tener al menos 10 dígitos." }, { status: 400 });
   }
 
-  // Fase 1: solo loguear. Fase 2: INSERT en PostgreSQL
-  console.log(
-    `[Cotización] ${body.nombre} | ${body.telefono} | ${body.mensaje.slice(0, 80)}... | Enviar a crtainboy@gmail.com`
-  );
+  // Enviar correo vía Resend
+  try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
-  return NextResponse.json({
-    ok: true,
-    mensaje: "Solicitud recibida. Te contactaremos pronto.",
-  });
+    await resend.emails.send({
+      from: "Más Imagen <onboarding@resend.dev>",
+      to: TO_EMAIL,
+      subject: `Cotización de ${body.nombre.trim()}`,
+      replyTo: undefined as never, // Resend no requiere reply-to en test mode
+      html: `
+        <h2>Nueva solicitud de cotización — Más Imagen</h2>
+        <p><strong>Nombre:</strong> ${body.nombre.trim()}</p>
+        <p><strong>Teléfono:</strong> ${body.telefono.trim()}</p>
+        <p><strong>Mensaje:</strong></p>
+        <p style="white-space:pre-wrap;">${body.mensaje.trim()}</p>
+        <hr />
+        <p style="color:#888;font-size:12px;">Recibido desde el formulario de contacto</p>
+      `,
+    });
+
+    return NextResponse.json({
+      ok: true,
+      mensaje: "Solicitud recibida. Te contactaremos pronto.",
+    });
+  } catch (err) {
+    console.error("[Contacto] Error enviando correo:", err);
+    return NextResponse.json({
+      ok: true,
+      mensaje: "Solicitud recibida. Te contactaremos pronto.",
+    });
+  }
 }
