@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
 
   // Fase 1: solo loguear. Fase 2: INSERT en PostgreSQL
   console.log(
-    `[Cotización] ${body.nombre} | ${body.telefono} | ${body.mensaje.slice(0, 80)}...`
+    `[Cotización] ${body.nombre} | ${body.telefono} | ${body.mensaje.slice(0, 80)}... | Enviar a crtainboy@gmail.com`
   );
 
   return NextResponse.json({

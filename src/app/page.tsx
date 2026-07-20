@@ -3,8 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import HoverLink from "@/components/HoverLink";
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import SectionReveal from "@/components/SectionReveal";
 import AccordionFAQ from "@/components/AccordionFAQ";
 
@@ -77,15 +77,6 @@ export default function Home() {
   const [filtroActivo, setFiltroActivo] = useState("todos");
   const [currentSlide, setCurrentSlide] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
-  const heroRef = useRef<HTMLElement>(null);
-
-  // Solo el logo responde al scroll — texto y botones siempre visibles
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-
-  const titleScale = useTransform(scrollYProgress, [0, 0.05], [1.6, 1]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -107,62 +98,61 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero — sticky slider con scroll-driven reveal */}
-      <section ref={heroRef} className="relative h-[250vh]">
-        {/* Slider fijo mientras se scrollea la sección */}
-        <div
-          onMouseMove={handleMouseMove}
-          className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center"
-        >
-          {slides.map((src, index) => (
-            <div
-              key={src}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                index === currentSlide ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              <Image
-                src={src}
-                alt={`Slide ${index + 1}`}
-                fill
-                priority={index === 0}
-                className="object-cover"
-                style={{
-                  transform: index === currentSlide
-                    ? `translate(${(mousePosition.x - 0.5) * -8}%, ${(mousePosition.y - 0.5) * -8}%) scale(1.08)`
-                    : "none",
-                  transition: "transform 0.8s ease-out",
-                }}
-              />
-            </div>
-          ))}
-          <div className="absolute inset-0 bg-black/40 z-10" />
+      {/* Hero — slider con animación al cargar */}
+      <section
+        onMouseMove={handleMouseMove}
+        className="relative h-screen w-full overflow-hidden flex items-center justify-center"
+      >
+        {slides.map((src, index) => (
+          <div
+            key={src}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentSlide ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <Image
+              src={src}
+              alt={`Slide ${index + 1}`}
+              fill
+              priority={index === 0}
+              className="object-cover"
+              style={{
+                transform: index === currentSlide
+                  ? `translate(${(mousePosition.x - 0.5) * -8}%, ${(mousePosition.y - 0.5) * -8}%) scale(1.08)`
+                  : "none",
+                transition: "transform 0.8s ease-out",
+              }}
+            />
+          </div>
+        ))}
+        <div className="absolute inset-0 bg-black/40 z-10" />
 
-          {/* Contenido animado por scroll */}
-          <div className="relative z-20 text-center text-white px-4">
-            <motion.h1
-              style={{ scale: titleScale }}
-              className="font-heading text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight origin-center"
+        {/* Contenido animado al cargar */}
+        <div className="relative z-20 text-center text-white px-4">
+          <motion.h1
+            initial={{ scale: 1.3 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.6, delay: 1 }}
+            className="font-heading text-4xl sm:text-6xl lg:text-8xl font-bold tracking-tight origin-center"
+          >
+            Más<span className="text-[var(--accent)]">Imagen</span>
+          </motion.h1>
+          <p className="mt-6 text-lg sm:text-xl text-gray-200 max-w-xl mx-auto">
+            Especialistas en impresión sobre botellas, termos y envases. Calidad industrial con trato personalizado.
+          </p>
+          <div className="mt-8 flex justify-center gap-4">
+            <Link
+              href="/servicios"
+              className="inline-flex items-center rounded-lg bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white hover:bg-[var(--accent)]/90 transition-colors"
             >
-              Más<span className="text-[var(--accent)]">Imagen</span>
-            </motion.h1>
-            <p className="mt-6 text-lg sm:text-xl text-gray-200 max-w-xl mx-auto">
-              Especialistas en impresión sobre botellas, termos y envases. Calidad industrial con trato personalizado.
-            </p>
-            <div className="mt-8 flex justify-center gap-4">
-              <Link
-                href="/servicios"
-                className="inline-flex items-center rounded-lg bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white hover:bg-[var(--accent)]/90 transition-colors"
-              >
-                Ver servicios
-              </Link>
-              <Link
-                href="/contacto"
-                className="inline-flex items-center rounded-lg border border-white px-6 py-3 text-sm font-semibold text-white hover:bg-white hover:text-black transition-colors"
-              >
-                Solicitar cotización
-              </Link>
-            </div>
+              Ver servicios
+            </Link>
+            <Link
+              href="/contacto"
+              className="inline-flex items-center rounded-lg border border-white px-6 py-3 text-sm font-semibold text-white hover:bg-white hover:text-black transition-colors"
+            >
+              Solicitar cotización
+            </Link>
           </div>
         </div>
       </section>
@@ -211,13 +201,9 @@ export default function Home() {
                 Garantía de calidad y precisión industrial para tus proyectos.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
               {[
                 "Más de 15 años de experiencia",
-                "Tecnología UV/LED de alta precisión",
-                "Tintas libres de metales pesados",
-                "Impresión de 1 a 4 colores",
-                "Muestras previas sin costo",
                 "Envíos a toda la república",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-3 rounded-lg border border-[var(--border)] bg-[var(--card)] p-4 shadow-sm">
