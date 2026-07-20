@@ -112,11 +112,11 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero Slider */}
+      {/* Hero — slider fullscreen */}
       <section
         ref={heroRef}
         onMouseMove={handleMouseMove}
-        className="relative h-[150vh] w-full overflow-hidden flex items-center justify-center"
+        className="relative h-screen w-full overflow-hidden flex items-center justify-center"
       >
         {slides.map((src, index) => (
           <div
@@ -144,38 +144,35 @@ export default function Home() {
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/40 z-10" />
 
-        {/* Content — scroll-driven */}
-        <div className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-white">
-          <motion.h1
-            style={{ scale: titleScale, opacity: titleOpacity }}
-            className="font-heading text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white origin-center"
-          >
+        {/* Título grande centrado */}
+        <div className="relative z-20 text-center text-white">
+          <h1 className="font-heading text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white">
             Más<span className="text-[var(--accent)]">Imagen</span>
-          </motion.h1>
-          <motion.p
-            style={{ opacity: subtitleOpacity, y: subtitleY }}
-            className="mt-6 text-lg sm:text-xl text-gray-200 max-w-xl mx-auto"
-          >
+          </h1>
+        </div>
+      </section>
+
+      {/* Texto y botones — sección blanca debajo del hero */}
+      <section className="bg-white py-16 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-lg sm:text-xl text-[var(--muted-foreground)] max-w-xl mx-auto leading-relaxed">
             Taller de impresiones con años de experiencia. Calidad y trato
             directo en cada proyecto.
-          </motion.p>
-          <motion.div
-            style={{ opacity: buttonsOpacity, y: buttonsY }}
-            className="mt-8 flex justify-center gap-4"
-          >
-            <HoverLink
+          </p>
+          <div className="mt-8 flex justify-center gap-4">
+            <Link
               href="/servicios"
               className="inline-flex items-center rounded-lg bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white hover:bg-[var(--accent)]/90 transition-colors"
             >
               Ver servicios
-            </HoverLink>
-            <HoverLink
+            </Link>
+            <Link
               href="/contacto"
-              className="inline-flex items-center rounded-lg border border-white px-6 py-3 text-sm font-semibold text-white hover:bg-white hover:text-black transition-colors"
+              className="inline-flex items-center rounded-lg border border-[var(--border)] px-6 py-3 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--muted)] transition-colors"
             >
               Solicitar cotización
-            </HoverLink>
-          </motion.div>
+            </Link>
+          </div>
         </div>
       </section>
 
