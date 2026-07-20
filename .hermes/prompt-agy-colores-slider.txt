@@ -1,0 +1,33 @@
+/goal Cambiar colores del tema y añadir slider de imágenes fullscreen en hero. Trabaja en /mnt/c/Users/juanp/Desktop/mas-imagen-web/
+
+PRIMER COMANDO: cd /mnt/c/Users/juanp/Desktop/mas-imagen-web
+
+## TAREA 1: Cambiar color acento a beige oscuro
+En src/app/globals.css, línea ~22:
+- Cambiar --accent de #dc2626 a #8b7355 (beige oscuro cálido)
+- Cambiar --accent-foreground de #fef2f2 a #faf7f2 (beige muy claro)
+
+## TAREA 2: Footer gris oscuro
+En src/components/Footer.tsx:
+- Cambiar bg-[var(--background)] por bg-[#1a1a1a] en el footer
+- Cambiar text-[var(--muted-foreground)] por text-gray-400 en todo el footer
+- Cambiar text-[var(--foreground)] por text-white en headings y links del footer
+- Mantener el border-t con var(--border)
+
+## TAREA 3: Slider fullscreen en hero
+En src/app/page.tsx, reemplazar la sección del header (la primera section con "MásImagen" y botones) por:
+
+- Un contenedor fullscreen (h-screen o min-h-screen) con position relative
+- 3 imágenes de fondo que se alternan automáticamente cada 4 segundos con fade (usa useState + useEffect para el timer)
+- Las imágenes están en: /slide-1.jpg, /slide-2.jpg, /slide-3.jpg (ya existen en public/)
+- Usa Next.js Image con fill y object-cover
+- Overlay oscuro sutil sobre las imágenes (bg-black/40)
+- El texto "MásImagen" y subtítulo y botones deben ir centrados SOBRE la imagen, con z-10
+- El texto debe ser blanco (text-white) para contrastar con la imagen
+- Transición entre slides: opacity fade con transition de Tailwind (duration-1000)
+- Botones "Ver servicios" y "Solicitar cotización" en blanco/beige
+
+## VERIFICACIÓN
+npm run build DEBE compilar sin errores.
+
+CRITICO: NO guardes reportes. NO uses /artifact. Devuelve resumen en stdout.

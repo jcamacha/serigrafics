@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import HoverLink from "@/components/HoverLink";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionReveal from "@/components/SectionReveal";
 import AccordionFAQ from "@/components/AccordionFAQ";
@@ -66,8 +67,22 @@ const trabajos = [
   { nombre: "Llaveros metálicos", servicio: "Grabado láser", categoria: "grabado-laser" },
 ];
 
+const slides = [
+  "/slide-1.jpg",
+  "/slide-2.jpg",
+  "/slide-3.jpg",
+];
+
 export default function Home() {
   const [filtroActivo, setFiltroActivo] = useState("todos");
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   const trabajosFiltrados = filtroActivo === "todos"
     ? trabajos
@@ -75,13 +90,34 @@ export default function Home() {
 
   return (
     <>
-      {/* Header simple */}
-      <section className="border-b border-[var(--border)]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-          <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl text-center">
+      {/* Hero Slider */}
+      <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+        {slides.map((src, index) => (
+          <div
+            key={src}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentSlide ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <Image
+              src={src}
+              alt={`Slide ${index + 1}`}
+              fill
+              priority={index === 0}
+              className="object-cover"
+            />
+          </div>
+        ))}
+        
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/40 z-10" />
+
+        {/* Content */}
+        <div className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-white">
+          <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-6xl text-white">
             Más<span className="text-[var(--accent)]">Imagen</span>
           </h1>
-          <p className="mt-4 text-lg text-[var(--muted-foreground)] text-center max-w-xl mx-auto">
+          <p className="mt-4 text-lg text-gray-200 text-center max-w-xl mx-auto">
             Taller de impresiones con años de experiencia. Calidad y trato
             directo en cada proyecto.
           </p>
@@ -94,7 +130,7 @@ export default function Home() {
             </HoverLink>
             <HoverLink
               href="/contacto"
-              className="inline-flex items-center rounded-lg border border-[var(--border)] px-6 py-3 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--muted)] transition-colors"
+              className="inline-flex items-center rounded-lg border border-white px-6 py-3 text-sm font-semibold text-white hover:bg-white hover:text-black transition-colors"
             >
               Solicitar cotización
             </HoverLink>
