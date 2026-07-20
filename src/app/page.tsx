@@ -71,6 +71,16 @@ const trabajos = [
   { nombre: "Playera Serigrafiada", servicio: "Serigrafía textil", categoria: "serigrafia", img: "/portfolio/playera-serigrafia.jpeg" },
   { nombre: "Termo Personalizado", servicio: "Grabado láser", categoria: "grabado-laser", img: "/portfolio/termo-personalizado.jpeg" },
   { nombre: "Lona Publicitaria", servicio: "Impresión en lona", categoria: "lonas", img: "/portfolio/lona-publicitaria.jpeg" },
+  { nombre: "Botella Ámbar Cuerpo 500ml", servicio: "Serigrafía industrial", categoria: "serigrafia", img: "/portfolio/botella-ambar-cuerpo-500ml.png" },
+  { nombre: "Botella Ámbar Jabón 250ml", servicio: "Serigrafía en cristal", categoria: "serigrafia", img: "/portfolio/botella-ambar-manos.png" },
+  { nombre: "Botella Liverpool Pirámide", servicio: "Serigrafía en vidrio", categoria: "serigrafia", img: "/portfolio/botella-liverpool-piramide.png" },
+  { nombre: "Botella Bordalesa Tiante", servicio: "Serigrafía vitrificable", categoria: "serigrafia", img: "/portfolio/botella-bordalesa-tiante.png" },
+  { nombre: "Frasco Hydra Fix", servicio: "Serigrafía cosmética", categoria: "serigrafia", img: "/portfolio/frasco-hydra-fix.png" },
+  { nombre: "Lona Impresa Gran Formato", servicio: "Impresión en lona", categoria: "lonas", img: "/portfolio/lona-impresa-gran-formato.jpg" },
+  { nombre: "Playera Estampada Taller", servicio: "Sublimación textil", categoria: "sublimacion", img: "/portfolio/playera-estampada-taller.jpg" },
+  { nombre: "Lona Publicitaria Exterior", servicio: "Impresión en lona", categoria: "lonas", img: "/portfolio/lona-publicitaria-exterior.jpg" },
+  { nombre: "Taza Sublimada Color", servicio: "Sublimación de tazas", categoria: "sublimacion", img: "/portfolio/taza-sublimada-color.jpg" },
+  { nombre: "Playera Sublimada Diseño", servicio: "Sublimación textil", categoria: "sublimacion", img: "/portfolio/playera-sublimada-diseno.jpeg" },
 ];
 
 const slides = [
