@@ -82,15 +82,11 @@ export default function Home() {
   // Scroll-driven transforms
   const { scrollYProgress } = useScroll({
     target: heroRef,
-    offset: ["start start", "end start"],
+    offset: ["start start", "start center"],
   });
 
-  const titleScale = useTransform(scrollYProgress, [0, 0.5], [1.6, 1]);
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.5]);
-  const subtitleOpacity = useTransform(scrollYProgress, [0.15, 0.5], [0, 1]);
-  const buttonsOpacity = useTransform(scrollYProgress, [0.25, 0.5], [0, 1]);
-  const subtitleY = useTransform(scrollYProgress, [0, 0.5], [20, 0]);
-  const buttonsY = useTransform(scrollYProgress, [0, 0.5], [30, 0]);
+  const titleOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const textOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -116,65 +112,73 @@ export default function Home() {
       <section
         ref={heroRef}
         onMouseMove={handleMouseMove}
-        className="relative h-screen w-full overflow-hidden flex items-center justify-center"
+        className="relative h-[200vh] w-full"
       >
-        {slides.map((src, index) => (
-          <div
-            key={src}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <Image
-              src={src}
-              alt={`Slide ${index + 1}`}
-              fill
-              priority={index === 0}
-              className="object-cover"
-              style={{
-                transform: index === currentSlide
-                  ? `translate(${(mousePosition.x - 0.5) * -8}%, ${(mousePosition.y - 0.5) * -8}%) scale(1.08)`
-                  : "none",
-                transition: "transform 0.8s ease-out",
-              }}
-            />
-          </div>
-        ))}
-        
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/40 z-10" />
+        {/* Contenedor del slider (imágenes + overlay) sticky top-0 h-screen */}
+        <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
+          {slides.map((src, index) => (
+            <div
+              key={src}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                index === currentSlide ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <Image
+                src={src}
+                alt={`Slide ${index + 1}`}
+                fill
+                priority={index === 0}
+                className="object-cover"
+                style={{
+                  transform: index === currentSlide
+                    ? `translate(${(mousePosition.x - 0.5) * -8}%, ${(mousePosition.y - 0.5) * -8}%) scale(1.08)`
+                    : "none",
+                  transition: "transform 0.8s ease-out",
+                }}
+              />
+            </div>
+          ))}
+          
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/40 z-10" />
 
-        {/* Content — scroll-driven */}
-        <div className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-white">
-          <motion.h1
-            style={{ scale: titleScale, opacity: titleOpacity }}
-            className="font-heading text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white origin-center"
-          >
-            Más<span className="text-[var(--accent)]">Imagen</span>
-          </motion.h1>
-          <motion.p
-            style={{ opacity: subtitleOpacity, y: subtitleY }}
-            className="mt-6 text-lg sm:text-xl text-gray-200 max-w-xl mx-auto"
-          >
-            Taller de impresiones con años de experiencia. Calidad y trato
-            directo en cada proyecto.
-          </motion.p>
+          {/* Título gigante que se desvanece de 0 a 100vh de scroll */}
+          <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+            <motion.h1
+              style={{ opacity: titleOpacity }}
+              className="font-heading text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white origin-center text-center"
+            >
+              Más<span className="text-[var(--accent)]">Imagen</span>
+            </motion.h1>
+          </div>
+        </div>
+
+        {/* Contenido de texto posicionado en la MITAD INFERIOR (segundo h-screen) */}
+        <div className="relative z-20 h-screen flex items-center justify-center text-center text-white pointer-events-none">
           <motion.div
-            style={{ opacity: buttonsOpacity, y: buttonsY }}
-            className="mt-8 flex justify-center gap-4"
+            style={{ opacity: textOpacity }}
+            className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pointer-events-auto"
           >
-            <HoverLink
-              href="/servicios"
-              className="inline-flex items-center rounded-lg bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white hover:bg-[var(--accent)]/90 transition-colors"
-            >
-              Ver servicios
-            </HoverLink>
-            <HoverLink
-              href="/contacto"
-              className="inline-flex items-center rounded-lg border border-white px-6 py-3 text-sm font-semibold text-white hover:bg-white hover:text-black transition-colors"
-            >
-              Solicitar cotización
-            </HoverLink>
+            <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6">
+              Más<span className="text-[var(--accent)]">Imagen</span>
+            </h1>
+            <p className="text-lg sm:text-xl text-gray-200 max-w-xl mx-auto leading-relaxed">
+              Taller de impresiones con años de experiencia. Calidad y trato directo en cada proyecto.
+            </p>
+            <div className="mt-8 flex justify-center gap-4">
+              <HoverLink
+                href="/servicios"
+                className="inline-flex items-center rounded-lg bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white hover:bg-[var(--accent)]/90 transition-colors"
+              >
+                Ver servicios
+              </HoverLink>
+              <HoverLink
+                href="/contacto"
+                className="inline-flex items-center rounded-lg border border-white px-6 py-3 text-sm font-semibold text-white hover:bg-white hover:text-black transition-colors"
+              >
+                Solicitar cotización
+              </HoverLink>
+            </div>
           </motion.div>
         </div>
       </section>
