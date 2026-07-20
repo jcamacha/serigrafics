@@ -29,6 +29,8 @@ const baseItems: NavItem[] = [
       { label: "Lonas", href: "/servicios#lonas" },
     ],
   },
+  { label: "Portafolio", href: "/#portafolio" },
+  { label: "FAQ", href: "/#faq" },
   { label: "Contacto", href: "/contacto" },
 ];
 
