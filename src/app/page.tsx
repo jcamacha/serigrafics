@@ -59,12 +59,18 @@ const faqs = [
 ];
 
 const trabajos = [
-  { nombre: "Botellas de vidrio", servicio: "Serigrafía en botellas", categoria: "serigrafia" },
-  { nombre: "Termos grabados", servicio: "Grabado láser", categoria: "grabado-laser" },
-  { nombre: "Tazas personalizadas", servicio: "Sublimación", categoria: "sublimacion" },
-  { nombre: "Vasos cuberos", servicio: "Serigrafía en botellas", categoria: "serigrafia" },
-  { nombre: "Lona publicitaria", servicio: "Lonas", categoria: "lonas" },
-  { nombre: "Llaveros metálicos", servicio: "Grabado láser", categoria: "grabado-laser" },
+  { nombre: "Botella ámbar 250ml", servicio: "Serigrafía en cristal", categoria: "serigrafia", img: "/portfolio/botella-ambar-250ml.png" },
+  { nombre: "Botella Liverpool 750ml", servicio: "Impresión en vidrio", categoria: "serigrafia", img: "/portfolio/botella-liverpool-750ml.png" },
+  { nombre: "Botella Boston 500ml", servicio: "Serigrafía en botellas", categoria: "serigrafia", img: "/portfolio/botella-boston-500ml.png" },
+  { nombre: "Botella Bordalesa", servicio: "Serigrafía vitrificable", categoria: "serigrafia", img: "/portfolio/botella-bordalesa.png" },
+  { nombre: "Botella de Aluminio 500ml", servicio: "Impresión cilíndrica", categoria: "serigrafia", img: "/portfolio/botella-aluminio-500ml.png" },
+  { nombre: "Frasco Cuadrado", servicio: "Serigrafía en cristal", categoria: "serigrafia", img: "/portfolio/frasco-cuadrado.png" },
+  { nombre: "Frasco Moringa", servicio: "Serigrafía cosmética", categoria: "serigrafia", img: "/portfolio/frasco-moringa.jpg" },
+  { nombre: "Taza Sublimada", servicio: "Sublimación", categoria: "sublimacion", img: "/portfolio/taza-sublimada.png" },
+  { nombre: "Taza Personalizada", servicio: "Sublimación de tazas", categoria: "sublimacion", img: "/portfolio/taza-personalizada.png" },
+  { nombre: "Playera Serigrafiada", servicio: "Serigrafía textil", categoria: "serigrafia", img: "/portfolio/playera-serigrafia.jpeg" },
+  { nombre: "Termo Personalizado", servicio: "Grabado láser", categoria: "grabado-laser", img: "/portfolio/termo-personalizado.jpeg" },
+  { nombre: "Lona Publicitaria", servicio: "Impresión en lona", categoria: "lonas", img: "/portfolio/lona-publicitaria.jpeg" },
 ];
 
 const slides = [
@@ -324,7 +330,6 @@ export default function Home() {
               </button>
             </div>
 
-            {/* FIXME: reemplazar con imágenes reales cuando estén disponibles */}
             <AnimatePresence>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4">
                 {trabajosFiltrados.map((trabajo) => (
@@ -334,15 +339,23 @@ export default function Home() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     initial={{ opacity: 0, scale: 0.95 }}
-                    className="group relative overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)] aspect-[4/3] flex flex-col items-center justify-center p-4 text-center transition-all duration-300 hover:shadow-md hover:-translate-y-1 hover:border-accent"
+                    className="group relative overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)] aspect-[4/3] transition-all duration-300 hover:shadow-md hover:-translate-y-1 hover:border-[var(--accent)]/40"
                   >
-                    <p className="text-4xl mb-3 opacity-30">🖼️</p>
-                    <h3 className="font-heading text-sm font-semibold group-hover:text-[var(--accent)] transition-colors">
-                      {trabajo.nombre}
-                    </h3>
-                    <p className="text-xs text-[var(--muted-foreground)] mt-1">
-                      {trabajo.servicio}
-                    </p>
+                    <Image
+                      src={trabajo.img}
+                      alt={trabajo.nombre}
+                      fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-4 text-left">
+                      <h3 className="font-heading text-sm sm:text-base font-semibold text-white group-hover:text-[var(--accent)] transition-colors">
+                        {trabajo.nombre}
+                      </h3>
+                      <p className="text-xs text-gray-300 mt-0.5 font-medium">
+                        {trabajo.servicio}
+                      </p>
+                    </div>
                   </motion.div>
                 ))}
               </div>
