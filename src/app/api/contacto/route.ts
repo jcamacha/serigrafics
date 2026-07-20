@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const rateMap = new Map<string, number>();
+const dailyMap = new Map<string, number>(); // conteo diario por IP
+const DAILY_LIMIT = 5; // máximo 5 correos por IP por día
 const TO_EMAIL = "crtainboy@gmail.com";
 
 // --- Filtro anti-spam NLP básico ---
@@ -105,6 +107,17 @@ export async function POST(request: NextRequest) {
 
   rateMap.set(`${ip}-${now}`, now);
 
+  // Daily limit: máximo 5 correos por IP por día
+  const today = new Date().toDateString();
+  const dailyKey = `${ip}-${today}`;
+  const dailyCount = dailyMap.get(dailyKey) || 0;
+  if (dailyCount >= DAILY_LIMIT) {
+    return NextResponse.json(
+      { ok: true, mensaje: "Solicitud recibida. Te contactaremos pronto." },
+      { status: 200 }
+    );
+  }
+
   // Validar body
   let body: { nombre?: string; telefono?: string; mensaje?: string };
   try {
@@ -164,6 +177,9 @@ export async function POST(request: NextRequest) {
         <p style="color:#888;font-size:12px;">Recibido desde el formulario de contacto</p>
       `,
     });
+
+    // Incrementar contador diario
+    dailyMap.set(dailyKey, dailyCount + 1);
 
     return NextResponse.json({
       ok: true,
