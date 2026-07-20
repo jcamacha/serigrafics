@@ -49,7 +49,7 @@ export default function Contacto() {
               </p>
 
               <a
-                href="https://wa.me/5210000000000"
+                href="https://wa.me/525577196924"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 text-sm font-semibold text-white hover:bg-green-700 transition-colors"
