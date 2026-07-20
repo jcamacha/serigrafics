@@ -3,8 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import HoverLink from "@/components/HoverLink";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import SectionReveal from "@/components/SectionReveal";
 import AccordionFAQ from "@/components/AccordionFAQ";
 
@@ -77,6 +77,20 @@ export default function Home() {
   const [filtroActivo, setFiltroActivo] = useState("todos");
   const [currentSlide, setCurrentSlide] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
+  const heroRef = useRef<HTMLElement>(null);
+
+  // Scroll-driven transforms
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const titleScale = useTransform(scrollYProgress, [0, 0.5], [1.6, 1]);
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.5]);
+  const subtitleOpacity = useTransform(scrollYProgress, [0.15, 0.5], [0, 1]);
+  const buttonsOpacity = useTransform(scrollYProgress, [0.25, 0.5], [0, 1]);
+  const subtitleY = useTransform(scrollYProgress, [0, 0.5], [20, 0]);
+  const buttonsY = useTransform(scrollYProgress, [0, 0.5], [30, 0]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -100,6 +114,7 @@ export default function Home() {
     <>
       {/* Hero Slider */}
       <section
+        ref={heroRef}
         onMouseMove={handleMouseMove}
         className="relative h-screen w-full overflow-hidden flex items-center justify-center"
       >
@@ -118,9 +133,9 @@ export default function Home() {
               className="object-cover"
               style={{
                 transform: index === currentSlide
-                  ? `translate(${(mousePosition.x - 0.5) * -2}%, ${(mousePosition.y - 0.5) * -2}%) scale(1.05)`
+                  ? `translate(${(mousePosition.x - 0.5) * -8}%, ${(mousePosition.y - 0.5) * -8}%) scale(1.08)`
                   : "none",
-                transition: "transform 0.6s ease-out",
+                transition: "transform 0.8s ease-out",
               }}
             />
           </div>
@@ -129,16 +144,25 @@ export default function Home() {
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/40 z-10" />
 
-        {/* Content */}
+        {/* Content — scroll-driven */}
         <div className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-6xl text-white">
+          <motion.h1
+            style={{ scale: titleScale, opacity: titleOpacity }}
+            className="font-heading text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white origin-center"
+          >
             Más<span className="text-[var(--accent)]">Imagen</span>
-          </h1>
-          <p className="mt-4 text-lg text-gray-200 text-center max-w-xl mx-auto">
+          </motion.h1>
+          <motion.p
+            style={{ opacity: subtitleOpacity, y: subtitleY }}
+            className="mt-6 text-lg sm:text-xl text-gray-200 max-w-xl mx-auto"
+          >
             Taller de impresiones con años de experiencia. Calidad y trato
             directo en cada proyecto.
-          </p>
-          <div className="mt-8 flex justify-center gap-4">
+          </motion.p>
+          <motion.div
+            style={{ opacity: buttonsOpacity, y: buttonsY }}
+            className="mt-8 flex justify-center gap-4"
+          >
             <HoverLink
               href="/servicios"
               className="inline-flex items-center rounded-lg bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white hover:bg-[var(--accent)]/90 transition-colors"
@@ -151,7 +175,7 @@ export default function Home() {
             >
               Solicitar cotización
             </HoverLink>
-          </div>
+          </motion.div>
         </div>
       </section>
 
