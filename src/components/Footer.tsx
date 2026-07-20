@@ -3,7 +3,7 @@ import Link from "next/link";
 const PHASE2 = process.env.NEXT_PUBLIC_PHASE2 === "true";
 
 const serviciosLinks = [
-  { label: "Serigrafía", href: "/servicios#serigrafia" },
+  { label: "Serigrafía en botellas", href: "/servicios#serigrafia" },
   { label: "Tampografía", href: "/servicios#tampografia" },
   { label: "Grabado láser", href: "/servicios#grabado-laser" },
   { label: "Sublimación", href: "/servicios#sublimacion" },
@@ -30,8 +30,7 @@ export default function Footer() {
               Más<span className="text-[var(--accent)]">Imagen</span>
             </Link>
             <p className="mt-3 text-sm text-gray-400 max-w-xs">
-              Taller de impresiones con años de experiencia. Calidad y
-              compromiso en cada proyecto.
+              Especialistas en impresión sobre botellas, termos y envases.
             </p>
             <p className="mt-3 text-[10px] uppercase tracking-[0.2em] text-gray-400">
               Desde [AÑO]
