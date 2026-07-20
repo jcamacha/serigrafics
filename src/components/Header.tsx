@@ -98,7 +98,7 @@ export default function Header() {
                 ? "text-white/60 border-white/20"
                 : "text-[var(--muted-foreground)] border-[var(--border)]"
             }`}>
-              Desde [AÑO]
+              Desde 2010
             </span>
           </div>
 
