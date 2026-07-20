@@ -3,7 +3,7 @@
 import Link from "next/link";
 import HoverLink from "./HoverLink";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 // Fase 2: gate condicional para items de tracking/admin
 const PHASE2 = process.env.NEXT_PUBLIC_PHASE2 === "true";
@@ -53,6 +53,23 @@ export default function Header() {
   const pathname = usePathname();
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const isHome = pathname === "/";
+  const isTransparent = isHome && !scrolled && !mobileOpen;
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
@@ -60,17 +77,29 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--background)]/95 backdrop-blur supports-[backdrop-filter]:bg-[var(--background)]/80">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isTransparent
+        ? "bg-transparent border-transparent"
+        : "border-b border-[var(--border)] bg-[var(--background)]/95 backdrop-blur supports-[backdrop-filter]:bg-[var(--background)]/80"
+    }`}>
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-3">
             <Link
               href="/"
-              className="font-heading text-xl font-semibold tracking-tight text-[var(--foreground)] hover:text-[var(--accent)] transition-colors"
+              className={`font-heading text-xl font-semibold tracking-tight transition-colors duration-300 ${
+                isTransparent
+                  ? "text-white hover:text-white/80"
+                  : "text-[var(--foreground)] hover:text-[var(--accent)]"
+              }`}
             >
-              Más<span className="text-[var(--accent)]">Imagen</span>
+              Más<span className={`transition-colors duration-300 ${isTransparent ? "text-white" : "text-[var(--accent)]"}`}>Imagen</span>
             </Link>
-            <span className="hidden sm:inline-block text-[10px] uppercase tracking-[0.2em] text-[var(--muted-foreground)] border-l border-[var(--border)] pl-3">
+            <span className={`hidden sm:inline-block text-[10px] uppercase tracking-[0.2em] border-l pl-3 transition-colors duration-300 ${
+              isTransparent
+                ? "text-white/60 border-white/20"
+                : "text-[var(--muted-foreground)] border-[var(--border)]"
+            }`}>
               Desde [AÑO]
             </span>
           </div>
@@ -89,8 +118,10 @@ export default function Header() {
                 <HoverLink
                   href={item.href}
                   active={isActive(item.href)}
-                  className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
-                    isActive(item.href)
+                  className={`px-3 py-2 text-sm font-medium rounded-md transition-colors duration-300 ${
+                    isTransparent
+                      ? "text-white hover:text-white/80"
+                      : isActive(item.href)
                       ? "text-[var(--accent)]"
                       : "text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
                   }`}
@@ -151,7 +182,11 @@ export default function Header() {
           {/* Mobile menu button */}
           <button
             type="button"
-            className="md:hidden p-2 text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
+            className={`md:hidden p-2 transition-colors duration-300 ${
+              isTransparent
+                ? "text-white hover:text-white/80"
+                : "text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
+            }`}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Abrir menú"
           >

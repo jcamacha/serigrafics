@@ -1,0 +1,37 @@
+/goal Implementar navbar flotante transparente + parallax de cursor + smooth scroll. Trabaja en /mnt/c/Users/juanp/Desktop/mas-imagen-web/
+
+PRIMER COMANDO: cd /mnt/c/Users/juanp/Desktop/mas-imagen-web && npm install lenis
+
+## TAREA 1: Lenis smooth scroll
+- Instalar: npm install lenis
+- Crear src/components/SmoothScroll.tsx:
+  - "use client"
+  - useEffect que inicializa Lenis con: lerp: 0.1, duration: 1.2, smoothWheel: true
+  - Usa requestAnimationFrame para el loop de Lenis
+  - No renderiza nada visual, solo maneja el scroll
+- Importar SmoothScroll en src/app/layout.tsx, ponerlo como primer hijo de body (antes de Header)
+
+## TAREA 2: Navbar transparente que se vuelve sólida al scroll
+En src/components/Header.tsx:
+- Añadir useState para scrolled (boolean)
+- useEffect con scroll listener: si window.scrollY > 50, scrolled = true
+- Cuando NO ha hecho scroll (scrolled=false y está en home): bg-transparent, sin border-b, sin backdrop-blur
+- Cuando SÍ ha hecho scroll: el estilo actual (bg-white/95, backdrop-blur, border-b)
+- Los links de navegación deben ser text-white cuando está transparente (sobre la imagen)
+- El logo también text-white cuando está transparente
+- Transición suave con transition-all duration-300
+- Detectar si está en home con usePathname(): solo transparente en pathname === "/"
+
+## TAREA 3: Parallax sutil en imágenes del hero
+En src/app/page.tsx, modificar el slider:
+- Añadir un efecto parallax: las imágenes se mueven ligeramente al mover el mouse
+- Usar useState para mousePosition {x, y}
+- onMouseMove en el contenedor del hero: calcular posición relativa del mouse (0 a 1)
+- Aplicar transform: translate(-1%, -1%) a la imagen activa basado en mousePosition
+- Movimiento MUY sutil: máximo 2-3% de desplazamiento
+- Usar transition: transform 0.6s ease-out para suavizar
+
+## VERIFICACIÓN
+npm run build DEBE compilar sin errores.
+
+CRITICO: NO guardes reportes. NO uses /artifact. Devuelve resumen en stdout.
