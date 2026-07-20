@@ -62,9 +62,9 @@ const trabajos = [
 export default function Home() {
   return (
     <>
-      {/* Value badges — ahora son la primera impresión */}
+      {/* Header simple */}
       <section className="border-b border-[var(--border)]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl text-center">
             Más<span className="text-[var(--accent)]">Imagen</span>
           </h1>
@@ -72,26 +72,6 @@ export default function Home() {
             Taller de impresiones con años de experiencia. Calidad y trato
             directo en cada proyecto.
           </p>
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
-            {[
-              { label: "CALIDAD", arrow: "GARANTIZADA" },
-              { label: "TRATO", arrow: "DIRECTO" },
-              { label: "ENTREGA", arrow: "PUNTUAL" },
-            ].map(({ label, arrow }) => (
-              <div
-                key={label}
-                className="rounded-xl border border-[var(--border)] bg-[var(--card)]/50 px-5 py-4 text-center hover:border-[var(--accent)]/30 transition-all duration-300"
-              >
-                <span className="font-heading text-sm font-semibold tracking-wider text-[var(--foreground)]">
-                  {label}
-                </span>
-                <span className="mx-2 text-[var(--accent)]">→</span>
-                <span className="text-sm text-[var(--muted-foreground)]">
-                  {arrow}
-                </span>
-              </div>
-            ))}
-          </div>
           <div className="mt-8 flex justify-center gap-4">
             <Link
               href="/servicios"
