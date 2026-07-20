@@ -1,0 +1,70 @@
+/goal Reescribir src/app/servicios/page.tsx con textos comerciales persuasivos y carrusel de imágenes por servicio. Trabaja en /mnt/c/Users/juanp/Desktop/mas-imagen-web/
+
+PRIMER COMANDO: cd /mnt/c/Users/juanp/Desktop/mas-imagen-web
+
+## CONTEXTO
+Más Imagen es un taller mexicano de impresión especializado en botellas, envases, termos y promocionales. NO es textil.
+
+## ESTRUCTURA DE LA PÁGINA
+Cada servicio (<section>) debe tener:
+1. Título del servicio
+2. Párrafo persuasivo de venta (2-3 oraciones que enganchen, NO técnico, enfocado en beneficios)
+3. Carrusel horizontal de imágenes con scroll (3 imágenes por servicio)
+4. Lista de "Ideal para:" (aplicaciones comunes)
+
+## TEXTOS PERSUASIVOS (obligatorio usar estos)
+
+### Serigrafía
+"Tu marca merece verse impecable. Nuestra serigrafía industrial logra impresiones nítidas, duraderas y con colores sólidos que resisten el uso diario. Desde botellas de vidrio hasta envases cilíndricos, cada pieza recibe el mismo cuidado artesanal. Ideal para producciones en volumen donde la calidad no se negocia."
+
+Imágenes: /serigrafia-1.jpg, /serigrafia-2.jpg, /serigrafia-3.jpg
+
+Ideal para: Botellas de vidrio y plástico, Termos y vasos, Envases cosméticos, Empaques premium, Productos promocionales
+
+### Tampografía
+"¿Necesitas imprimir en superficies curvas, irregulares o de difícil acceso? La tampografía es la solución precisa y versátil. Perfecta para detalles pequeños, logotipos finos y marcajes técnicos. Próximamente disponible en nuestro taller — déjanos tu proyecto y te avisamos en cuanto esté listo."
+
+Badge: "Próximamente" (ámbar)
+
+Imágenes: /tampografia-1.jpg (usar 3 veces la misma mientras no haya más)
+
+Ideal para: Tapas y cápsulas, Bolígrafos y llaveros, Envases pequeños, Piezas industriales, Electrónicos
+
+### Grabado láser
+"Elegancia permanente. El grabado láser marca tus productos con una precisión imposible de igualar. Sin tintas, sin desgaste: solo luz y material fundidos en un acabado premium. Ideal para branding de alto impacto en termos, botellas metálicas y regalos corporativos que hablan por sí solos."
+
+Imágenes: /grabado-1.jpg (usar 3 veces)
+
+Ideal para: Termos y botellas metálicas, Placas y reconocimientos, Regalos corporativos, Artículos de piel, Madera y acrílico
+
+### Sublimación
+"Colores vibrantes que no se despintan. La sublimación fusiona la tinta con el material a nivel molecular, creando impresiones fotográficas resistentes al lavado y al tiempo. Perfecta para tazas, botellas plásticas y artículos promocionales a todo color."
+
+Imágenes: /sublimacion-1.jpg (usar 3 veces)
+
+Ideal para: Tazas y termos plásticos, Playeras deportivas, Rompecabezas y mousepads, Artículos promocionales, Regalos personalizados
+
+### Lonas
+"Comunica en grande. Nuestras lonas publicitarias de alta resistencia están diseñadas para exteriores exigentes: sol, lluvia y viento. Impresión de gran formato con colores intensos que capturan la atención. Desde ferias hasta fachadas comerciales."
+
+Imágenes: /lonas-1.jpg (usar 3 veces)
+
+Ideal para: Publicidad exterior, Backdrops para eventos, Pendones y banners, Ferias y exposiciones, Señalización de obra
+
+## CARRUSEL DE IMÁGENES
+Para cada servicio, crear un scroll horizontal con las 3 imágenes:
+- Contenedor con overflow-x-auto, flex, gap-4, snap-x mandatory
+- Cada imagen: w-64 sm:w-80 h-48 flex-shrink-0 rounded-xl object-cover snap-center
+- Sin controles de navegación, solo scroll nativo
+- Las imágenes tienen shadow-md
+
+## ESTRUCTURA EXISTENTE A MANTENER
+- Mantener el metadata export
+- Mantener los IDs de sección (#serigrafia, #tampografia, etc.) con scroll-mt-20
+- Mantener el CTA final "¿No sabes qué servicio necesitas?"
+- La sección de cada servicio ocupa el ancho completo
+
+## VERIFICACIÓN
+npm run build DEBE compilar sin errores.
+
+CRITICO: NO guardes reportes. NO uses /artifact.
