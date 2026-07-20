@@ -59,28 +59,18 @@ const faqs = [
 ];
 
 const trabajos = [
-  { nombre: "Botella ámbar 250ml", servicio: "Serigrafía en cristal", categoria: "serigrafia", img: "/portfolio/botella-ambar-250ml.png" },
-  { nombre: "Botella Liverpool 750ml", servicio: "Impresión en vidrio", categoria: "serigrafia", img: "/portfolio/botella-liverpool-750ml.png" },
-  { nombre: "Botella Boston 500ml", servicio: "Serigrafía en botellas", categoria: "serigrafia", img: "/portfolio/botella-boston-500ml.png" },
-  { nombre: "Botella Bordalesa", servicio: "Serigrafía vitrificable", categoria: "serigrafia", img: "/portfolio/botella-bordalesa.png" },
-  { nombre: "Botella de Aluminio 500ml", servicio: "Impresión cilíndrica", categoria: "serigrafia", img: "/portfolio/botella-aluminio-500ml.png" },
-  { nombre: "Frasco Cuadrado", servicio: "Serigrafía en cristal", categoria: "serigrafia", img: "/portfolio/frasco-cuadrado.png" },
-  { nombre: "Frasco Moringa", servicio: "Serigrafía cosmética", categoria: "serigrafia", img: "/portfolio/frasco-moringa.jpg" },
-  { nombre: "Taza Sublimada", servicio: "Sublimación", categoria: "sublimacion", img: "/portfolio/taza-sublimada.png" },
-  { nombre: "Taza Personalizada", servicio: "Sublimación de tazas", categoria: "sublimacion", img: "/portfolio/taza-personalizada.png" },
-  { nombre: "Playera Serigrafiada", servicio: "Serigrafía textil", categoria: "serigrafia", img: "/portfolio/playera-serigrafia.jpeg" },
-  { nombre: "Termo Personalizado", servicio: "Grabado láser", categoria: "grabado-laser", img: "/portfolio/termo-personalizado.jpeg" },
-  { nombre: "Lona Publicitaria", servicio: "Impresión en lona", categoria: "lonas", img: "/portfolio/lona-publicitaria.jpeg" },
-  { nombre: "Botella Ámbar Cuerpo 500ml", servicio: "Serigrafía industrial", categoria: "serigrafia", img: "/portfolio/botella-ambar-cuerpo-500ml.png" },
-  { nombre: "Botella Ámbar Jabón 250ml", servicio: "Serigrafía en cristal", categoria: "serigrafia", img: "/portfolio/botella-ambar-manos.png" },
+  { nombre: "Botella ámbar 250ml", servicio: "Serigrafía en vidrio", categoria: "serigrafia", img: "/portfolio/botella-ambar-250ml.png" },
+  { nombre: "Botella ámbar manos", servicio: "Serigrafía en vidrio", categoria: "serigrafia", img: "/portfolio/botella-ambar-manos.png" },
+  { nombre: "Botella ámbar 500ml", servicio: "Serigrafía en vidrio", categoria: "serigrafia", img: "/portfolio/botella-ambar-cuerpo-500ml.png" },
+  { nombre: "Botella aluminio 500ml", servicio: "Serigrafía cilíndrica", categoria: "serigrafia", img: "/portfolio/botella-aluminio-500ml.png" },
+  { nombre: "Botella Boston 500ml", servicio: "Serigrafía en vidrio", categoria: "serigrafia", img: "/portfolio/botella-boston-500ml.png" },
+  { nombre: "Botella Bordalesa", servicio: "Serigrafía en vidrio", categoria: "serigrafia", img: "/portfolio/botella-bordalesa.png" },
+  { nombre: "Botella Bordalesa Tiante", servicio: "Serigrafía en vidrio", categoria: "serigrafia", img: "/portfolio/botella-bordalesa-tiante.png" },
+  { nombre: "Botella Liverpool 750ml", servicio: "Serigrafía en vidrio", categoria: "serigrafia", img: "/portfolio/botella-liverpool-750ml.png" },
   { nombre: "Botella Liverpool Pirámide", servicio: "Serigrafía en vidrio", categoria: "serigrafia", img: "/portfolio/botella-liverpool-piramide.png" },
-  { nombre: "Botella Bordalesa Tiante", servicio: "Serigrafía vitrificable", categoria: "serigrafia", img: "/portfolio/botella-bordalesa-tiante.png" },
+  { nombre: "Frasco cuadrado", servicio: "Serigrafía en vidrio", categoria: "serigrafia", img: "/portfolio/frasco-cuadrado.png" },
   { nombre: "Frasco Hydra Fix", servicio: "Serigrafía cosmética", categoria: "serigrafia", img: "/portfolio/frasco-hydra-fix.png" },
-  { nombre: "Lona Impresa Gran Formato", servicio: "Impresión en lona", categoria: "lonas", img: "/portfolio/lona-impresa-gran-formato.jpg" },
-  { nombre: "Playera Estampada Taller", servicio: "Sublimación textil", categoria: "sublimacion", img: "/portfolio/playera-estampada-taller.jpg" },
-  { nombre: "Lona Publicitaria Exterior", servicio: "Impresión en lona", categoria: "lonas", img: "/portfolio/lona-publicitaria-exterior.jpg" },
-  { nombre: "Taza Sublimada Color", servicio: "Sublimación de tazas", categoria: "sublimacion", img: "/portfolio/taza-sublimada-color.jpg" },
-  { nombre: "Playera Sublimada Diseño", servicio: "Sublimación textil", categoria: "sublimacion", img: "/portfolio/playera-sublimada-diseno.jpeg" },
+  { nombre: "Frasco Moringa", servicio: "Serigrafía cosmética", categoria: "serigrafia", img: "/portfolio/frasco-moringa.jpg" },
 ];
 
 const slides = [
