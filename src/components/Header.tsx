@@ -31,6 +31,8 @@ const baseItems: NavItem[] = [
   },
   { label: "Portafolio", href: "/#portafolio" },
   { label: "FAQ", href: "/#faq" },
+  { label: "Productos", href: "/productos" },
+  { label: "Cotización", href: "/cotizacion" },
   { label: "Contacto", href: "/contacto" },
 ];
 
