@@ -46,7 +46,7 @@ export default function Footer() {
           <div>
             <h3 className="font-heading text-sm font-semibold text-white">Visítanos</h3>
             <div className="mt-3 space-y-3 text-sm text-gray-400">
-              <div><p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-1">Taller</p><p>Guadalupe Victoria, Edo. Méx.</p></div>
+              <div><p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-1">Taller</p><p>Ocoyoacac, Edo. Méx.</p></div>
               <div><p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-1">Teléfono</p><p>+52 55 7719 6924</p></div>
               <div><p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-1">Horario</p><p>3:00 PM – 9:00 PM</p></div>
             </div>
