@@ -33,7 +33,7 @@ export default function Footer() {
               Especialistas en impresión sobre botellas, termos y envases.
             </p>
             <p className="mt-3 text-[10px] uppercase tracking-[0.2em] text-gray-400">
-              Desde [AÑO]
+              Desde 2010
             </p>
           </div>
 
@@ -97,7 +97,7 @@ export default function Footer() {
                 <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-1">
                   Horario
                 </p>
-                <p>[Horario pendiente]</p>
+                <p>3:00 PM – 9:00 PM</p>
               </div>
             </div>
           </div>

@@ -13,25 +13,25 @@ const servicios = [
     titulo: "Serigrafía en botellas",
     desc: "Impresión industrial de alta definición sobre botellas de vidrio, plástico, termos, vasos y envases cilíndricos.",
     href: "/servicios#serigrafia",
-    icon: "🍾",
+    img: "/servicio-serigrafia.jpg",
   },
   {
     titulo: "Grabado láser",
     desc: "Marcado permanente de alta precisión en termos metálicos, botellas de acero inoxidable, metal y acrílico.",
     href: "/servicios#grabado-laser",
-    icon: "⚡",
+    img: "/servicio-laser.jpg",
   },
   {
     titulo: "Sublimación",
     desc: "Transferencia de imágenes a todo color sobre botellas plásticas, termos, tazas y artículos promocionales.",
     href: "/servicios#sublimacion",
-    icon: "🎨",
+    img: "/servicio-sublimacion.jpg",
   },
   {
     titulo: "Lonas",
     desc: "Impresión publicitaria de gran formato en lona de alta resistencia para publicidad exterior e interior.",
     href: "/servicios#lonas",
-    icon: "🏗️",
+    img: "/servicio-lonas.webp",
   },
 ];
 
@@ -174,9 +174,16 @@ export default function Home() {
               <Link
                 key={srv.titulo}
                 href={srv.href}
-                className="group rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 hover:border-[var(--accent)]/30 transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+                className="group rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 hover:border-[var(--accent)]/30 transition-all duration-300 hover:shadow-md hover:-translate-y-1 overflow-hidden"
               >
-                <span className="text-3xl">{srv.icon}</span>
+                <div className="relative w-full h-32 mb-4 overflow-hidden rounded-lg">
+                  <Image
+                    src={srv.img}
+                    alt={srv.titulo}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
                 <h3 className="mt-4 font-heading text-lg font-semibold group-hover:text-[var(--accent)] transition-colors">
                   {srv.titulo}
                 </h3>
