@@ -123,16 +123,13 @@ export default function Servicios() {
                   {srv.descripcion}
                 </p>
 
-                <div className={srv.imagenes.length > 1 ? "overflow-x-auto flex gap-4 snap-x mandatory py-2" : "py-2"}>
+                <div className="overflow-x-auto flex gap-4 snap-x mandatory py-2">
                   {srv.imagenes.map((imgSrc, imgIdx) => (
                     <img
                       key={imgIdx}
                       src={imgSrc}
                       alt={`${srv.titulo} - Muestra ${imgIdx + 1}`}
-                      className={srv.imagenes.length > 1
-                        ? "w-64 sm:w-80 h-48 flex-shrink-0 rounded-xl object-contain snap-center shadow-md bg-white p-2"
-                        : "w-full max-h-64 rounded-xl object-contain shadow-md bg-white p-4"
-                      }
+                      className="w-64 sm:w-80 h-48 flex-shrink-0 rounded-xl object-contain snap-center shadow-md bg-white p-2"
                     />
                   ))}
                 </div>
