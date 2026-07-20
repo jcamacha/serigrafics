@@ -85,16 +85,15 @@ export default function Home() {
     offset: ["start start", "end start"],
   });
 
-  // Logo: escala 1.6→1 en primeros 5%, visible hasta 10%, luego fade
+  // Logo: escala 1.6→1 en primeros 5%
   const titleScale = useTransform(scrollYProgress, [0, 0.05], [1.6, 1]);
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.08, 0.15], [1, 1, 0.2]);
-  // Subtítulo: 3%→8%
-  const subtitleOpacity = useTransform(scrollYProgress, [0.03, 0.08], [0, 1]);
-  // Botones: 5%→10%
-  const buttonsOpacity = useTransform(scrollYProgress, [0.05, 0.10], [0, 1]);
-  // Slide-up sutil
-  const subtitleY = useTransform(scrollYProgress, [0.02, 0.08], [20, 0]);
-  const buttonsY = useTransform(scrollYProgress, [0.04, 0.10], [25, 0]);
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.05, 0.10], [1, 1, 0.2]);
+  // Subtítulo: justo cuando el logo deja de encogerse (5%→10%)
+  const subtitleOpacity = useTransform(scrollYProgress, [0.05, 0.10], [0, 1]);
+  // Botones: ligeramente después (7%→12%)
+  const buttonsOpacity = useTransform(scrollYProgress, [0.07, 0.12], [0, 1]);
+  const subtitleY = useTransform(scrollYProgress, [0.04, 0.10], [20, 0]);
+  const buttonsY = useTransform(scrollYProgress, [0.06, 0.12], [25, 0]);
 
   useEffect(() => {
     const timer = setInterval(() => {
