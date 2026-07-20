@@ -63,11 +63,9 @@ export default function Contacto() {
           </SectionReveal>
 
           {/* ===== Formulario — SECUNDARIO ===== */}
-          <SectionReveal delay={0.1}>
             <div className="mt-6">
               <ContactForm />
             </div>
-          </SectionReveal>
         </div>
 
         {/* ===== Visítanos — INFO TERCIARIA ===== */}
