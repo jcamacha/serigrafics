@@ -79,21 +79,13 @@ export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
   const heroRef = useRef<HTMLElement>(null);
 
-  // Scroll-driven transforms — animaciones MUY temprano, luego pausa larga
+  // Solo el logo responde al scroll — texto y botones siempre visibles
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
   });
 
-  // Logo: escala 1.6→1 en primeros 5%
   const titleScale = useTransform(scrollYProgress, [0, 0.05], [1.6, 1]);
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.05, 0.10], [1, 1, 0.2]);
-  // Subtítulo: justo cuando el logo deja de encogerse (5%→10%)
-  const subtitleOpacity = useTransform(scrollYProgress, [0.05, 0.10], [0, 1]);
-  // Botones: ligeramente después (7%→12%)
-  const buttonsOpacity = useTransform(scrollYProgress, [0.07, 0.12], [0, 1]);
-  const subtitleY = useTransform(scrollYProgress, [0.04, 0.10], [20, 0]);
-  const buttonsY = useTransform(scrollYProgress, [0.06, 0.12], [25, 0]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -149,22 +141,16 @@ export default function Home() {
           {/* Contenido animado por scroll */}
           <div className="relative z-20 text-center text-white px-4">
             <motion.h1
-              style={{ scale: titleScale, opacity: titleOpacity }}
+              style={{ scale: titleScale }}
               className="font-heading text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight origin-center"
             >
               Más<span className="text-[var(--accent)]">Imagen</span>
             </motion.h1>
-            <motion.p
-              style={{ opacity: subtitleOpacity, y: subtitleY }}
-              className="mt-6 text-lg sm:text-xl text-gray-200 max-w-xl mx-auto"
-            >
+            <p className="mt-6 text-lg sm:text-xl text-gray-200 max-w-xl mx-auto">
               Taller de impresiones con años de experiencia. Calidad y trato
               directo en cada proyecto.
-            </motion.p>
-            <motion.div
-              style={{ opacity: buttonsOpacity, y: buttonsY }}
-              className="mt-8 flex justify-center gap-4"
-            >
+            </p>
+            <div className="mt-8 flex justify-center gap-4">
               <Link
                 href="/servicios"
                 className="inline-flex items-center rounded-lg bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white hover:bg-[var(--accent)]/90 transition-colors"
@@ -177,7 +163,7 @@ export default function Home() {
               >
                 Solicitar cotización
               </Link>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
