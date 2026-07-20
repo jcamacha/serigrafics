@@ -225,6 +225,39 @@ export default function Home() {
         </section>
       </SectionReveal>
 
+      {/* Marcas con las que hemos trabajado */}
+      <section className="border-t border-[var(--border)] bg-[var(--card)]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+          <p className="text-center text-xs uppercase tracking-[0.2em] text-[var(--muted-foreground)] mb-8">
+            Marcas que confían en nosotros
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
+            {[
+              { name: "Chemisette", url: "https://chemisette.com.mx/", logo: "https://chemisette-web.s3.us-west-2.amazonaws.com/uploads/chemisette/logo/logo-25ch.png" },
+              { name: "Desplastifícate", url: "https://www.desplastificate.com.mx/", logo: "https://www.desplastificate.com.mx/cdn/shop/files/desplastificate-logo_240x.svg?v=1758653646" },
+              { name: "Hopsis", url: "https://hopsis.com/", logo: "https://hopsis.com/cdn/shop/files/este_fucking1.png?v=1614293994" },
+              { name: "Moringa Fresh & Wild", url: "https://moringafreshandwild.com/", logo: "https://moringafreshandwild.com/wp-content/uploads/2022/11/Moringa-Site-Logo.png" },
+              { name: "MYS Stockholm", url: "https://mysstockholm.com/", logo: "https://mysstockholm.com/cdn/shop/files/logo_mys.png?v=1688685655&width=80" },
+            ].map((brand) => (
+              <a
+                key={brand.name}
+                href={brand.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+              >
+                <img
+                  src={brand.logo}
+                  alt={brand.name}
+                  className="h-8 sm:h-10 w-auto object-contain"
+                  loading="lazy"
+                />
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Portafolio */}
       <SectionReveal delay={0.1}>
         <section id="portafolio" className="border-t border-[var(--border)]">
