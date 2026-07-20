@@ -20,7 +20,8 @@ export default function Footer() {
   return (
     <footer className="border-t border-[var(--border)] bg-[var(--background)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Marca */}
           <div>
             <Link
               href="/"
@@ -32,8 +33,12 @@ export default function Footer() {
               Taller de impresiones con años de experiencia. Calidad y
               compromiso en cada proyecto.
             </p>
+            <p className="mt-3 text-[10px] uppercase tracking-[0.2em] text-[var(--muted-foreground)]">
+              Desde [AÑO]
+            </p>
           </div>
 
+          {/* Servicios */}
           <div>
             <h3 className="font-heading text-sm font-semibold text-[var(--foreground)]">
               Servicios
@@ -52,6 +57,7 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Empresa */}
           <div>
             <h3 className="font-heading text-sm font-semibold text-[var(--foreground)]">
               Empresa
@@ -68,6 +74,33 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* Ubicación — MSP-inspired */}
+          <div>
+            <h3 className="font-heading text-sm font-semibold text-[var(--foreground)]">
+              Visítanos
+            </h3>
+            <div className="mt-3 space-y-3 text-sm text-[var(--muted-foreground)]">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--muted-foreground)] mb-1">
+                  Taller
+                </p>
+                <p>[Dirección pendiente]</p>
+              </div>
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--muted-foreground)] mb-1">
+                  Teléfono
+                </p>
+                <p>[Teléfono pendiente]</p>
+              </div>
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--muted-foreground)] mb-1">
+                  Horario
+                </p>
+                <p>[Horario pendiente]</p>
+              </div>
+            </div>
           </div>
         </div>
 
