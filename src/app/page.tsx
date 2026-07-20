@@ -79,18 +79,22 @@ export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
   const heroRef = useRef<HTMLElement>(null);
 
-  // Scroll-driven transforms — título dura más antes del fade
+  // Scroll-driven transforms — 250vh total, animaciones en primeros 18%, luego pausa
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
   });
 
-  const titleScale = useTransform(scrollYProgress, [0, 0.5], [1.6, 1]);
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.4, 0.6], [1, 1, 0.3]);
-  const subtitleOpacity = useTransform(scrollYProgress, [0.35, 0.6], [0, 1]);
-  const buttonsOpacity = useTransform(scrollYProgress, [0.45, 0.65], [0, 1]);
-  const subtitleY = useTransform(scrollYProgress, [0.3, 0.6], [20, 0]);
-  const buttonsY = useTransform(scrollYProgress, [0.4, 0.6], [30, 0]);
+  // Logo: escala 1.6→1 en primeros 12%, luego fade a 18%
+  const titleScale = useTransform(scrollYProgress, [0, 0.12], [1.6, 1]);
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.12, 0.18], [1, 1, 0.25]);
+  // Subtítulo: aparece 8%→14%
+  const subtitleOpacity = useTransform(scrollYProgress, [0.08, 0.14], [0, 1]);
+  // Botones: aparecen 11%→16%
+  const buttonsOpacity = useTransform(scrollYProgress, [0.11, 0.16], [0, 1]);
+  // Slide-up sutil
+  const subtitleY = useTransform(scrollYProgress, [0.06, 0.14], [25, 0]);
+  const buttonsY = useTransform(scrollYProgress, [0.09, 0.16], [30, 0]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -112,66 +116,69 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero — slider fullscreen */}
-      <section
-        ref={heroRef}
-        onMouseMove={handleMouseMove}
-        className="relative h-screen w-full overflow-hidden flex items-center justify-center"
-      >
-        {slides.map((src, index) => (
-          <div
-            key={src}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <Image
-              src={src}
-              alt={`Slide ${index + 1}`}
-              fill
-              priority={index === 0}
-              className="object-cover"
-              style={{
-                transform: index === currentSlide
-                  ? `translate(${(mousePosition.x - 0.5) * -8}%, ${(mousePosition.y - 0.5) * -8}%) scale(1.08)`
-                  : "none",
-                transition: "transform 0.8s ease-out",
-              }}
-            />
-          </div>
-        ))}
-        
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/40 z-10" />
-
-        {/* Título grande centrado */}
-        <div className="relative z-20 text-center text-white">
-          <h1 className="font-heading text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white">
-            Más<span className="text-[var(--accent)]">Imagen</span>
-          </h1>
-        </div>
-      </section>
-
-      {/* Texto y botones — sección blanca debajo del hero */}
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-lg sm:text-xl text-[var(--muted-foreground)] max-w-xl mx-auto leading-relaxed">
-            Taller de impresiones con años de experiencia. Calidad y trato
-            directo en cada proyecto.
-          </p>
-          <div className="mt-8 flex justify-center gap-4">
-            <Link
-              href="/servicios"
-              className="inline-flex items-center rounded-lg bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white hover:bg-[var(--accent)]/90 transition-colors"
+      {/* Hero — sticky slider con scroll-driven reveal */}
+      <section ref={heroRef} className="relative h-[250vh]">
+        {/* Slider fijo mientras se scrollea la sección */}
+        <div
+          onMouseMove={handleMouseMove}
+          className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center"
+        >
+          {slides.map((src, index) => (
+            <div
+              key={src}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                index === currentSlide ? "opacity-100" : "opacity-0"
+              }`}
             >
-              Ver servicios
-            </Link>
-            <Link
-              href="/contacto"
-              className="inline-flex items-center rounded-lg border border-[var(--border)] px-6 py-3 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--muted)] transition-colors"
+              <Image
+                src={src}
+                alt={`Slide ${index + 1}`}
+                fill
+                priority={index === 0}
+                className="object-cover"
+                style={{
+                  transform: index === currentSlide
+                    ? `translate(${(mousePosition.x - 0.5) * -8}%, ${(mousePosition.y - 0.5) * -8}%) scale(1.08)`
+                    : "none",
+                  transition: "transform 0.8s ease-out",
+                }}
+              />
+            </div>
+          ))}
+          <div className="absolute inset-0 bg-black/40 z-10" />
+
+          {/* Contenido animado por scroll */}
+          <div className="relative z-20 text-center text-white px-4">
+            <motion.h1
+              style={{ scale: titleScale, opacity: titleOpacity }}
+              className="font-heading text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight origin-center"
             >
-              Solicitar cotización
-            </Link>
+              Más<span className="text-[var(--accent)]">Imagen</span>
+            </motion.h1>
+            <motion.p
+              style={{ opacity: subtitleOpacity, y: subtitleY }}
+              className="mt-6 text-lg sm:text-xl text-gray-200 max-w-xl mx-auto"
+            >
+              Taller de impresiones con años de experiencia. Calidad y trato
+              directo en cada proyecto.
+            </motion.p>
+            <motion.div
+              style={{ opacity: buttonsOpacity, y: buttonsY }}
+              className="mt-8 flex justify-center gap-4"
+            >
+              <Link
+                href="/servicios"
+                className="inline-flex items-center rounded-lg bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white hover:bg-[var(--accent)]/90 transition-colors"
+              >
+                Ver servicios
+              </Link>
+              <Link
+                href="/contacto"
+                className="inline-flex items-center rounded-lg border border-white px-6 py-3 text-sm font-semibold text-white hover:bg-white hover:text-black transition-colors"
+              >
+                Solicitar cotización
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>
