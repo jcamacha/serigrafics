@@ -7,20 +7,40 @@ const dailyMap = new Map<string, number>(); // conteo diario por IP
 const DAILY_LIMIT = 5; // máximo 5 correos por IP por día
 const TO_EMAIL = "crtainboy@gmail.com";
 
-// --- Filtro anti-spam NLP básico ---
+// --- Filtro anti-spam (EN + ES) + detector de idioma ---
 const SPAM_WORDS = [
+  // Inglés
   "viagra", "cialis", "casino", "poker", "blackjack", "lottery", "prize",
   "winner", "click here", "buy now", "free money", "work from home",
   "earn money", "SEO", "backlink", "guest post", "buy followers",
-  "crypto", "bitcoin", "blockchain", "investment", "loan",
-  "sex", "porn", "xxx", "escort", "dating",
+  "crypto", "bitcoin", "blockchain", "investment", "loan", "refinance",
+  "sex", "porn", "xxx", "escort", "dating", "hookup", "nude", "onlyfans",
   "seo services", "digital marketing agency", "link building",
+  "congratulations", "you have been selected", "claim your", "act now",
+  "limited offer", "exclusive deal", "100% free", "order now", "call now",
+  "weight loss", "diet pill", "muscle", "testosterone", "phentermine",
+  "payday", "debt", "bankruptcy", "insurance quote", "car donation",
+  // Español
+  "viagra", "cialis", "casino", "póker", "lotería", "premio", "ganador",
+  "haz clic aquí", "compra ahora", "dinero gratis", "trabaja desde casa",
+  "gana dinero", "seo", "backlink", "guest post", "comprar seguidores",
+  "cripto", "bitcoin", "blockchain", "inversión", "préstamo", "refinancia",
+  "sexo", "porno", "xxx", "scort", "citas", "onlyfans", "desnudo",
+  "servicios seo", "agencia marketing digital", "link building",
+  "felicidades", "has sido seleccionado", "reclama tu", "actúa ya",
+  "oferta limitada", "trato exclusivo", "100% gratis", "pide ahora",
+  "pérdida de peso", "pastilla para adelgazar", "músculo", "testosterona",
+  "préstamo rápido", "deuda", "bancarrota", "seguro de coche",
+  "curandero", "brujería", "amarres", "hechizo",
 ];
 
 const SPAM_PATTERNS = [
-  /https?:\/\/[^\s]+/gi,           // URLs (legítimos negocios no mandan links en primer contacto)
-  /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/, // emails en el mensaje
+  /https?:\/\/[^\s]+/gi,           // URLs
+  /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/, // emails en mensaje
 ];
+
+// Scripts no latinos (bloquear: cirílico, chino, japonés, árabe, etc.)
+const NON_LATIN = /[\u0400-\u04FF\u0600-\u06FF\u0900-\u097F\u1100-\u11FF\u3040-\u309F\u30A0-\u30FF\u3130-\u318F\uAC00-\uD7AF\u4E00-\u9FFF\u0E00-\u0E7F]/;
 
 function tokenize(text: string): string[] {
   return text
@@ -31,15 +51,19 @@ function tokenize(text: string): string[] {
 }
 
 function isSpam(nombre: string, mensaje: string): string | null {
-  const nombreTokens = tokenize(nombre);
   const mensajeTokens = tokenize(mensaje);
   const mensajeLower = mensaje.toLowerCase();
   const allText = `${nombre} ${mensaje}`.toLowerCase();
 
+  // 0. Detector de idioma: solo inglés y español (alfabeto latino)
+  if (NON_LATIN.test(nombre) || NON_LATIN.test(mensaje)) {
+    return "Solo se aceptan mensajes en español o inglés.";
+  }
+
   // 1. Palabras ofensivas / spam
   for (const word of SPAM_WORDS) {
     if (allText.includes(word)) {
-      return `Contenido no permitido detectado.`;
+      return "Contenido no permitido detectado.";
     }
   }
 
@@ -53,7 +77,7 @@ function isSpam(nombre: string, mensaje: string): string | null {
     return "Demasiados enlaces en el mensaje.";
   }
 
-  // 3. Mensaje muy corto o muy largo (bots típicamente mandan walls of text o mensajes vacíos)
+  // 3. Mensaje muy corto o muy largo
   if (mensajeTokens.length < 4) {
     return "Por favor describe tu proyecto con más detalle.";
   }
