@@ -5,14 +5,11 @@ import HoverLink from "./HoverLink";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-// Fase 2: gate condicional para items de tracking/admin
-const PHASE2 = process.env.NEXT_PUBLIC_PHASE2 === "true";
 
 interface NavItem {
   label: string;
   href: string;
   children?: { label: string; href: string }[];
-  phase2?: boolean;
 }
 
 const baseItems: NavItem[] = [
@@ -31,25 +28,11 @@ const baseItems: NavItem[] = [
   },
   { label: "Portafolio", href: "/#portafolio" },
   { label: "FAQ", href: "/#faq" },
-  { label: "Productos", href: "/productos" },
-  { label: "Cotización", href: "/cotizacion" },
   { label: "Contacto", href: "/contacto" },
 ];
 
-const phase2Items: NavItem[] = [
-  { label: "Rastreo", href: "/rastreo", phase2: true },
-];
-
-function getNavItems(): NavItem[] {
-  if (!PHASE2) return baseItems;
-  // Insertar "Rastreo" antes de "Contacto"
-  const items = [...baseItems];
-  items.splice(items.length - 1, 0, ...phase2Items);
-  return items;
-}
-
 export default function Header() {
-  const navItems = getNavItems();
+  const navItems = baseItems;
   const pathname = usePathname();
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -66,7 +49,6 @@ export default function Header() {
   }, []);
 
   const isHome = pathname === "/";
-  // Transparente hasta ~80vh de scroll (cubre todo el fade del hero)
   const isTransparent = isHome && !scrolled && !mobileOpen;
 
   const isActive = (href: string) => {
@@ -102,15 +84,12 @@ export default function Header() {
             </span>
           </div>
 
-          {/* Desktop */}
           <div className="hidden md:flex md:items-center md:gap-1">
             {navItems.map((item) => (
               <div
                 key={item.href}
                 className="relative"
-                onMouseEnter={() =>
-                  item.children && setOpenDropdown(item.label)
-                }
+                onMouseEnter={() => item.children && setOpenDropdown(item.label)}
                 onMouseLeave={() => setOpenDropdown(null)}
               >
                 <HoverLink
@@ -127,19 +106,10 @@ export default function Header() {
                   {item.label}
                   {item.children && (
                     <svg
-                      className={`ml-1 inline-block h-3 w-3 transition-transform ${
-                        openDropdown === item.label ? "rotate-180" : ""
-                      }`}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                      className={`ml-1 inline-block h-3 w-3 transition-transform ${openDropdown === item.label ? "rotate-180" : ""}`}
+                      fill="none" viewBox="0 0 24 24" stroke="currentColor"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   )}
                   {isActive(item.href) && (
@@ -150,7 +120,6 @@ export default function Header() {
                     />
                   )}
                 </HoverLink>
-
                 <AnimatePresence>
                   {item.children && openDropdown === item.label && (
                     <motion.div
@@ -161,12 +130,9 @@ export default function Header() {
                       className="absolute left-0 top-full mt-1 w-48 rounded-lg border border-[var(--border)] bg-[var(--card)] py-1 shadow-lg"
                     >
                       {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
+                        <Link key={child.href} href={child.href}
                           className="block px-4 py-2 text-sm text-[var(--muted-foreground)] hover:bg-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
-                          onClick={() => setOpenDropdown(null)}
-                        >
+                          onClick={() => setOpenDropdown(null)}>
                           {child.label}
                         </Link>
                       ))}
@@ -177,53 +143,32 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            type="button"
-            className={`md:hidden p-2 transition-colors duration-300 ${
-              isTransparent
-                ? "text-white hover:text-white/80"
-                : "text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
-            }`}
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Abrir menú"
-          >
+          <button type="button"
+            className={`md:hidden p-2 transition-colors duration-300 ${isTransparent ? "text-white hover:text-white/80" : "text-[var(--muted-foreground)] hover:text-[var(--foreground)]"}`}
+            onClick={() => setMobileOpen(!mobileOpen)} aria-label="Abrir menú">
             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {mobileOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
+              {mobileOpen
+                ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
             </svg>
           </button>
         </div>
 
-        {/* Mobile menu */}
         {mobileOpen && (
           <div className="md:hidden border-t border-[var(--border)] py-3 space-y-1 animate-dropdown">
             {navItems.map((item) => (
               <div key={item.href}>
-                <HoverLink
-                  href={item.href}
-                  active={isActive(item.href)}
-                  className={`block px-3 py-2 text-sm font-medium rounded-md ${
-                    isActive(item.href)
-                      ? "text-[var(--accent)]"
-                      : "text-[var(--muted-foreground)]"
-                  }`}
-                  onClick={() => setMobileOpen(false)}
-                >
+                <HoverLink href={item.href} active={isActive(item.href)}
+                  className={`block px-3 py-2 text-sm font-medium rounded-md ${isActive(item.href) ? "text-[var(--accent)]" : "text-[var(--muted-foreground)]"}`}
+                  onClick={() => setMobileOpen(false)}>
                   {item.label}
                 </HoverLink>
                 {item.children && (
                   <div className="ml-4 space-y-1">
                     {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
+                      <Link key={child.href} href={child.href}
                         className="block px-3 py-1.5 text-sm text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
-                        onClick={() => setMobileOpen(false)}
-                      >
+                        onClick={() => setMobileOpen(false)}>
                         {child.label}
                       </Link>
                     ))}
