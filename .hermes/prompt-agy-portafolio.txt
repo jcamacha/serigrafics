@@ -1,0 +1,56 @@
+/goal Integrar imágenes reales del portafolio de Más Imagen. Las imágenes están en dos carpetas. Selecciona las mejores, cópialas al proyecto, asígnales títulos descriptivos y actualiza el portafolio.
+
+PRIMER COMANDO: cd /mnt/c/Users/juanp/Desktop/mas-imagen-web
+
+## PASO 1: Copiar imágenes seleccionadas
+Las imágenes reales del negocio están en:
+- /mnt/d/IMPRESION VIDRIO/ (16 imágenes de botellas de vidrio impresas)
+- /mnt/d/Serigrafia/ (~47 imágenes de trabajos de serigrafía)
+
+Selecciona las 12 MEJORES imágenes (6 de cada carpeta). Criterios:
+- Que se vea claramente el producto impreso
+- Buena iluminación y enfoque
+- Que muestre variedad (diferentes tipos de botellas, ángulos, colores)
+- NO selecciones imágenes borrosas, muy pequeñas (< 30KB), o que no se entienda qué son
+
+Copia las 12 imágenes a: public/portfolio/
+Usa nombres descriptivos: botella-ambar.jpg, botella-liverpool.jpg, frasco-moringa.jpg, playera-negra.jpg, etc.
+
+## PASO 2: Asignar títulos
+Para cada imagen, asigna un título descriptivo en español basado en el nombre del archivo y lo que se ve:
+- Nombres de archivo como "AMBAR 250ML MANOS JABON.png" → "Botella ámbar 250ml"
+- "LIVERPOOL 750ML LAYA.png" → "Botella Liverpool 750ml"
+- "FRASCO MORINGA FONDO.jpg" → "Frasco Moringa"
+- "Sublimacion.png" → "Taza sublimada"
+- "taza-c-sharp-1024x683.png" → "Taza personalizada"
+- NO uses nombres genéricos como "Imagen 1" o "Foto 2"
+
+## PASO 3: Actualizar el portafolio en page.tsx
+En src/app/page.tsx, reemplazar el array `trabajos` actual (que tiene placeholders con 🖼️) por las 12 imágenes reales.
+
+El nuevo array debe tener este formato:
+```
+const trabajos = [
+  { nombre: "Botella ámbar 250ml", servicio: "Serigrafía en botellas", categoria: "serigrafia", img: "/portfolio/botella-ambar.jpg" },
+  ...
+];
+```
+
+- La propiedad `img` debe apuntar a /portfolio/nombre-archivo.jpg
+- Mantener las categorías: "serigrafia", "sublimacion", "grabado-laser", "lonas"
+- La mayoría serán "serigrafia" o "sublimacion"
+
+## PASO 4: Actualizar el JSX del portafolio
+En src/app/page.tsx, modificar el grid del portafolio para que:
+- Use <Image> de next/image en lugar del emoji 🖼️
+- Mismo formato que las cards de servicios: div con aspect-[4/3], overflow-hidden, rounded-xl
+- La imagen usa object-cover, hover:scale-105
+- El título y servicio se muestran debajo como overlay o texto
+
+## PASO 5: Asegurar que el filtro funciona
+El filtro actual (Todos, Serigrafía, Sublimación, etc.) debe seguir funcionando con el nuevo array.
+
+## VERIFICACIÓN
+npm run build DEBE compilar sin errores.
+
+CRITICO: NO guardes reportes. NO uses /artifact.
