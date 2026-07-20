@@ -35,8 +35,6 @@ const serviciosDetalle = [
       "¿Necesitas imprimir en superficies curvas, irregulares o de difícil acceso? La tampografía es la solución precisa y versátil. Perfecta para detalles pequeños, logotipos finos y marcajes técnicos. Próximamente disponible en nuestro taller — déjanos tu proyecto y te avisamos en cuanto esté listo.",
     imagenes: [
       "/tampografia-1.jpg",
-      "/tampografia-1.jpg",
-      "/tampografia-1.jpg",
     ],
     usos: [
       "Tapas y cápsulas",
@@ -52,8 +50,6 @@ const serviciosDetalle = [
     descripcion:
       "Elegancia permanente. El grabado láser marca tus productos con una precisión imposible de igualar. Sin tintas, sin desgaste: solo luz y material fundidos en un acabado premium. Ideal para branding de alto impacto en termos, botellas metálicas y regalos corporativos que hablan por sí solos.",
     imagenes: [
-      "/grabado-1.jpg",
-      "/grabado-1.jpg",
       "/grabado-1.jpg",
     ],
     usos: [
@@ -71,8 +67,6 @@ const serviciosDetalle = [
       "Colores vibrantes que no se despintan. La sublimación fusiona la tinta con el material a nivel molecular, creando impresiones fotográficas resistentes al lavado y al tiempo. Perfecta para tazas, botellas plásticas y artículos promocionales a todo color.",
     imagenes: [
       "/sublimacion-1.jpg",
-      "/sublimacion-1.jpg",
-      "/sublimacion-1.jpg",
     ],
     usos: [
       "Tazas y termos plásticos",
@@ -88,8 +82,6 @@ const serviciosDetalle = [
     descripcion:
       "Comunica en grande. Nuestras lonas publicitarias de alta resistencia están diseñadas para exteriores exigentes: sol, lluvia y viento. Impresión de gran formato con colores intensos que capturan la atención. Desde ferias hasta fachadas comerciales.",
     imagenes: [
-      "/lonas-1.jpg",
-      "/lonas-1.jpg",
       "/lonas-1.jpg",
     ],
     usos: [
@@ -137,13 +129,16 @@ export default function Servicios() {
                   {srv.descripcion}
                 </p>
 
-                <div className="overflow-x-auto flex gap-4 snap-x mandatory py-2">
+                <div className={srv.imagenes.length > 1 ? "overflow-x-auto flex gap-4 snap-x mandatory py-2" : "py-2"}>
                   {srv.imagenes.map((imgSrc, imgIdx) => (
                     <img
                       key={imgIdx}
                       src={imgSrc}
                       alt={`${srv.titulo} - Muestra ${imgIdx + 1}`}
-                      className="w-64 sm:w-80 h-48 flex-shrink-0 rounded-xl object-cover snap-center shadow-md"
+                      className={srv.imagenes.length > 1
+                        ? "w-64 sm:w-80 h-48 flex-shrink-0 rounded-xl object-cover snap-center shadow-md"
+                        : "w-full h-48 sm:h-64 rounded-xl object-cover shadow-md"
+                      }
                     />
                   ))}
                 </div>
