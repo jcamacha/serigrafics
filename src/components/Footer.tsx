@@ -85,13 +85,13 @@ export default function Footer() {
                 <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-1">
                   Taller
                 </p>
-                <p>[Dirección pendiente]</p>
+                <p>Guadalupe Victoria, Edo. Méx.</p>
               </div>
               <div>
                 <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-1">
                   Teléfono
                 </p>
-                <p>[Teléfono pendiente]</p>
+                <p>+52 55 7719 6924</p>
               </div>
               <div>
                 <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-1">

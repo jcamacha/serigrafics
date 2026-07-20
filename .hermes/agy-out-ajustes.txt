@@ -1,0 +1,23 @@
+! Se han completado todas las modificaciones solicitadas para los ajustes finales del sitio Más Imagen.
+
+### Resumen de cambios realizados:
+
+1. **Tarea 1 & 2: Hero & Logo Responsive en Mobile (`src/app/page.tsx`)**
+   - Reducido el tamaño del texto del logo en mobile a `text-4xl sm:text-6xl lg:text-8xl`.
+   - Eliminadas las dependencias de scroll (`useScroll`, `useTransform`, `heroRef`).
+   - El Hero se configuró con altura standard `h-screen` y animación de entrada directa en `motion.h1` (`initial={{ scale: 1.3 }}`, `animate={{ scale: 1 }}`).
+
+2. **Tarea 3: Sección "Confían en nosotros" (`src/app/page.tsx`)**
+   - Removidos los 4 items indicados.
+   - Se conservaron únicamente: `"Más de 15 años de experiencia"` y `"Envíos a toda la república"`.
+
+3. **Tarea 4: Datos de contacto**
+   - **`src/components/ContactoInfo.tsx`**:
+     - Teléfono actualizado a: `+52 55 7719 6924`.
+     - Dirección actualizada a: `Guadalupe Victoria, Estado de México`.
+   - **`src/app/api/contacto/route.ts`**:
+     - Log del servidor configurado para indicar envío a `crtainboy@gmail.com` (sin exponerlo en UI).
+   - **`src/components/Footer.tsx`**:
+     - Teléfono actualizado a: `+52 55 7719 6924`.
+     - Dirección actualizada a: `Guadalupe Victoria, Edo. Méx.`.
+Error: timeout waiting for response

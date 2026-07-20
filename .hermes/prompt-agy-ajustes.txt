@@ -1,0 +1,50 @@
+/goal Ajustes finales al sitio Más Imagen. Trabaja en /mnt/c/Users/juanp/Desktop/mas-imagen-web/
+
+PRIMER COMANDO: cd /mnt/c/Users/juanp/Desktop/mas-imagen-web
+
+## TAREA 1: Logo responsive en mobile — no desbordar
+En src/app/page.tsx, el h1 del logo en el hero tiene text-6xl sm:text-7xl lg:text-8xl. Reducir para mobile:
+- Cambiar a: text-4xl sm:text-6xl lg:text-8xl
+- La escala inicial de 1.6 puede ser demasiado en mobile. Ajustar titleScale dinámico: usar useTransform con valor inicial menor en pantallas pequeñas NO. Mejor: reducir el max scale a 1.3 en mobile.
+- SOLUCIÓN SIMPLE: cambia el valor inicial de titleScale a 1.3 en vez de 1.6, y el tamaño del texto a text-4xl sm:text-6xl lg:text-8xl
+
+## TAREA 2: Quitar pausa — al terminar el shrink, se puede bajar
+En src/app/page.tsx:
+- Cambiar h-[250vh] a h-[120vh] en el hero section
+- Quitar el offset ["start start", "end start"] y usar ["start start", "start end"] o simplemente hacer que la animación termine más rápido
+- Quitar el useScroll por completo ya que solo queda titleScale. Usar un approach más simple:
+  - motion.h1 con animate={{ scale: 1 }} initial={{ scale: 1.3 }}
+  - transition={{ duration: 0.6, delay: 1 }}
+  - Esto hará que el logo se encoja automáticamente después de 1 segundo, sin depender del scroll
+  - Cambiar el hero a h-screen normal (quitar el sticky 250vh)
+  - Ya NO usar useScroll ni useTransform para nada
+
+Si usas el approach simple de motion sin scroll, NO necesitas heroRef, useScroll, useTransform, ni ninguna de esas dependencias. Solo motion.h1 con animate/initial.
+
+## TAREA 3: Quitar bullets de "Confían en nosotros"
+En src/app/page.tsx, eliminar estos 4 items del array de la sección "Confían en nosotros":
+- "Muestras previas sin costo"
+- "Impresión de 1 a 4 colores"
+- "Tecnología UV/LED de alta precisión"
+- "Tintas libres de metales pesados"
+
+Dejar solo: "Más de [X] años de experiencia" y "Envíos a toda la república"
+
+## TAREA 4: Datos de contacto
+### Teléfono:
+En src/components/ContactoInfo.tsx, cambiar el placeholder [Teléfono pendiente] por "+52 55 7719 6924"
+
+### Dirección:
+En src/components/ContactoInfo.tsx, cambiar [Dirección pendiente] por "Guadalupe Victoria, Estado de México"
+
+### Email (OCULTO — solo para backend, NO visible):
+En src/app/api/contacto/route.ts, añadir al final del console.log que envíe a crtainboy@gmail.com. NO mostrar el email en la UI.
+
+### En el Footer (src/components/Footer.tsx):
+- Teléfono: +52 55 7719 6924
+- Dirección: Guadalupe Victoria, Edo. Méx.
+
+## VERIFICACIÓN
+npm run build DEBE compilar sin errores.
+
+CRITICO: NO guardes reportes. NO uses /artifact. Devuelve resumen en stdout.

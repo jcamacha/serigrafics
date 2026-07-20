@@ -13,9 +13,9 @@ function decode(encoded: string): string {
 
 // DATOS OFUSCADOS — reemplazar con los reales codificados en base64
 // Para codificar: btoa("texto real") en la consola del navegador
-const DIRECCION = decode("W0RpcmVjY2nDs24gZGVsIHRhbGxlciBwZW5kaWVudGVd");
+const DIRECCION = "Guadalupe Victoria, Estado de México";
 const HORARIO = decode("W0hvcmFyaW8gcGVuZGllbnRlXQ==");
-const TELEFONO = decode("W1RlbMOpZm9ubyBwZW5kaWVudGVd");
+const TELEFONO = "+52 55 7719 6924";
 const CORREO = decode("W0NvcnJlbyBwZW5kaWVudGVd");
 const WHATSAPP_NUM = "5210000000000"; // Sin ofuscar — wa.me lo requiere en el link
 
