@@ -1,0 +1,52 @@
+/goal Renombrar todo el sitio de "Más Imagen" / "MásImagen" a "Serigrafics". Es un cambio de marca completo. Trabaja en /mnt/c/Users/juanp/Desktop/mas-imagen-web/
+
+PRIMER COMANDO: cd /mnt/c/Users/juanp/Desktop/mas-imagen-web
+
+## CAMBIOS EXACTOS (no omitir ninguno)
+
+### layout.tsx
+- metadata title: "Serigrafics — Impresión Industrial y Serigrafía"
+- metadata description: "Taller de impresión industrial especializado en serigrafía, grabado láser, tampografía, sublimación y lonas. Calidad y experiencia en cada proyecto."
+
+### Header.tsx
+- Logo: cambiar "MásImagen" por "Serigrafics" (mantener mismo estilo: "Serigra" normal + "fics" en accent)
+- "Desde 2010" se mantiene igual
+
+### Footer.tsx
+- Logo: "Serigrafics"
+- Descripción: "Especialistas en impresión industrial sobre botellas, termos y envases."
+
+### page.tsx (Home)
+- Hero h1: "Serigrafics"
+- Todos los textos que digan "Más Imagen" o "MásImagen" → "Serigrafics"
+- El array de servicios, FAQs, etc. se mantienen igual
+
+### nosotros/page.tsx
+- Títulos y textos: cambiar "Más Imagen" → "Serigrafics"
+
+### servicios/page.tsx
+- metadata: "Servicios — Serigrafics"
+
+### contacto/page.tsx
+- metadata: "Contacto — Serigrafics"
+- WhatsApp: el texto del botón se mantiene igual
+
+### api/contacto/route.ts
+- from: "Serigrafics <onboarding@resend.dev>"
+- subject: mantener "Cotización de ${nombre}"
+- TO_EMAIL: crtainboy@gmail.com se mantiene
+
+### AGENTS.md
+- Título: "Serigrafics — Sitio Web"
+
+### package.json (si aplica)
+- name: "serigrafics-web"
+
+## BÚSQUEDA GLOBAL
+Ejecuta: grep -rn "Más Imagen\|MásImagen\|mas-imagen" src/ --include="*.tsx" --include="*.ts" --include="*.md"
+Y reemplaza TODOS los resultados.
+
+## VERIFICACIÓN
+npm run build DEBE compilar sin errores.
+
+CRITICO: NO guardes reportes. NO uses /artifact.

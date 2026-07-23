@@ -141,7 +141,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 1 }}
             className="font-heading text-4xl sm:text-6xl lg:text-8xl font-bold tracking-tight origin-center"
           >
-            Más<span className="text-[var(--accent)]">Imagen</span>
+            Serigra<span className="text-[var(--accent)]">fics</span>
           </motion.h1>
           <p className="mt-6 text-lg sm:text-xl text-gray-200 max-w-xl mx-auto">
             Especialistas en impresión sobre botellas, termos y envases. Calidad industrial con trato personalizado.

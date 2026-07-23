@@ -10,7 +10,7 @@ export default function Nosotros() {
           Sobre <span className="text-[var(--accent)]">nosotros</span>
         </h1>
         <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
-          Conoce nuestra misión, visión y la historia detrás de Más Imagen.
+          Conoce nuestra misión, visión y la historia detrás de Serigrafics.
         </p>
       </div>
 

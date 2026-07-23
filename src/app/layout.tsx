@@ -25,9 +25,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Más Imagen — Impresiones y Serigrafía",
+  title: "Serigrafics — Impresión Industrial y Serigrafía",
   description:
-    "Taller de impresiones especializado en serigrafía, grabado láser, sublimación y lonas. Calidad y experiencia en cada proyecto.",
+    "Taller de impresión industrial especializado en serigrafía, grabado láser, tampografía, sublimación y lonas. Calidad y experiencia en cada proyecto.",
   keywords: [
     "serigrafía",
     "impresiones",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     "CDMX",
   ],
   openGraph: {
-    title: "Más Imagen — Impresiones y Serigrafía",
+    title: "Serigrafics — Impresión Industrial y Serigrafía",
     description:
-      "Taller de impresiones especializado en serigrafía, grabado láser, sublimación y lonas.",
+      "Taller de impresión industrial especializado en serigrafía, grabado láser, tampografía, sublimación y lonas. Calidad y experiencia en cada proyecto.",
     type: "website",
     locale: "es_MX",
   },

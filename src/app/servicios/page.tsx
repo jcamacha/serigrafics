@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import SectionReveal from "@/components/SectionReveal";
 
 export const metadata: Metadata = {
-  title: "Servicios — Más Imagen",
+  title: "Servicios — Serigrafics",
   description:
     "Especialistas en impresión de botellas, envases de vidrio y plástico, termos, grabado láser, tampografía, sublimación y lonas.",
 };

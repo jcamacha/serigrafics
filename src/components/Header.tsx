@@ -73,7 +73,7 @@ export default function Header() {
                   : "text-[var(--foreground)] hover:text-[var(--accent)]"
               }`}
             >
-              Más<span className={`transition-colors duration-300 ${isTransparent ? "text-white" : "text-[var(--accent)]"}`}>Imagen</span>
+              Serigra<span className={`transition-colors duration-300 ${isTransparent ? "text-white" : "text-[var(--accent)]"}`}>fics</span>
             </Link>
             <span className={`hidden sm:inline-block text-[10px] uppercase tracking-[0.2em] border-l pl-3 transition-colors duration-300 ${
               isTransparent

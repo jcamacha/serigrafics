@@ -20,10 +20,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <Link href="/" className="font-heading text-lg font-semibold tracking-tight text-white">
-              Más<span className="text-[var(--accent)]">Imagen</span>
+              Serigra<span className="text-[var(--accent)]">fics</span>
             </Link>
             <p className="mt-3 text-sm text-gray-400 max-w-xs">
-              Especialistas en impresión sobre botellas, termos y envases.
+              Especialistas en impresión industrial sobre botellas, termos y envases.
             </p>
             <p className="mt-3 text-[10px] uppercase tracking-[0.2em] text-gray-400">Desde 2010</p>
           </div>
@@ -53,7 +53,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-10 pt-6 border-t border-[var(--border)] text-center text-xs text-gray-400">
-          &copy; {new Date().getFullYear()} Más Imagen. Todos los derechos reservados.
+          &copy; {new Date().getFullYear()} Serigrafics. Todos los derechos reservados.
         </div>
       </div>
     </footer>

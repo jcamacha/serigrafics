@@ -4,9 +4,9 @@ import ContactoInfo from "@/components/ContactoInfo";
 import SectionReveal from "@/components/SectionReveal";
 
 export const metadata: Metadata = {
-  title: "Contacto — Más Imagen",
+  title: "Contacto — Serigrafics",
   description:
-    "Ponte en contacto con Más Imagen. Cotiza tu proyecto por WhatsApp o formulario.",
+    "Ponte en contacto con Serigrafics. Cotiza tu proyecto por WhatsApp o formulario.",
 };
 
 export default function Contacto() {
@@ -86,7 +86,7 @@ export default function Contacto() {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Ubicación de Más Imagen"
+                  title="Ubicación de Serigrafics"
                 />
               </div>
 
