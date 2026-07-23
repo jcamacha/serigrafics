@@ -3,7 +3,7 @@ import Link from "next/link";
 import OrderForm from "@/components/futuro/OrderForm";
 
 export const metadata: Metadata = {
-  title: "Vaso Cubero Personalizado — Más Imagen",
+  title: "Vaso Cubero Personalizado — Serigrafics",
   description: "Personaliza vasos cuberos de vidrio con sublimación a todo color. Ideal para eventos y marcas.",
 };
 

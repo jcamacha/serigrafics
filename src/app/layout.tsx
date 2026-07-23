@@ -25,7 +25,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Más Imagen — Impresiones y Serigrafía",
+  title: "Serigrafics — Impresiones y Serigrafía",
   description:
     "Taller de impresiones especializado en serigrafía, grabado láser, sublimación y lonas. Calidad y experiencia en cada proyecto.",
   keywords: [
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     "CDMX",
   ],
   openGraph: {
-    title: "Más Imagen — Impresiones y Serigrafía",
+    title: "Serigrafics — Impresiones y Serigrafía",
     description:
       "Taller de impresiones especializado en serigrafía, grabado láser, sublimación y lonas.",
     type: "website",

@@ -1,5 +1,5 @@
 -- ============================================
--- Más Imagen — Esquema de Base de Datos (Fase 2)
+-- Serigrafics — Esquema de Base de Datos (Fase 2)
 -- PostgreSQL + PostgREST
 -- NO INTEGRAR hasta indicación explícita
 -- ============================================

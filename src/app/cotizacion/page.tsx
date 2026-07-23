@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import QuoteCalculator from "@/components/futuro/QuoteCalculator";
 
 export const metadata: Metadata = {
-  title: "Cotización — Más Imagen",
+  title: "Cotización — Serigrafics",
   description: "Calcula el costo estimado de tu pedido de forma instantánea. Ajusta las opciones y obtén un presupuesto de inmediato.",
 };
 

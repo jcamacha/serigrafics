@@ -104,7 +104,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 pt-6 border-t border-[var(--border)] text-center text-xs text-gray-400">
-          &copy; {new Date().getFullYear()} Más Imagen. Todos los derechos
+          &copy; {new Date().getFullYear()} Serigrafics. Todos los derechos
           reservados.
         </div>
       </div>

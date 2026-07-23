@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Productos — Más Imagen",
+  title: "Productos — Serigrafics",
   description: "Catálogo de productos personalizables con técnicas de sublimación, grabado láser y serigrafía.",
 };
 

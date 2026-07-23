@@ -3,7 +3,7 @@ import Link from "next/link";
 import OrderForm from "@/components/futuro/OrderForm";
 
 export const metadata: Metadata = {
-  title: "Playera Algodón Personalizada — Más Imagen",
+  title: "Playera Algodón Personalizada — Serigrafics",
   description: "Personaliza playeras de algodón premium con serigrafía tradicional de alta definición.",
 };
 

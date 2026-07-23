@@ -3,7 +3,7 @@ import Link from "next/link";
 import OrderForm from "@/components/futuro/OrderForm";
 
 export const metadata: Metadata = {
-  title: "Taza Cerámica Personalizada — Más Imagen",
+  title: "Taza Cerámica Personalizada — Serigrafics",
   description: "Personaliza tazas de cerámica de 11oz con sublimación a todo color. El regalo promocional perfecto.",
 };
 

@@ -3,7 +3,7 @@ import Link from "next/link";
 import OrderForm from "@/components/futuro/OrderForm";
 
 export const metadata: Metadata = {
-  title: "Botella Térmica Personalizada — Más Imagen",
+  title: "Botella Térmica Personalizada — Serigrafics",
   description: "Personaliza botellas térmicas de acero inoxidable con grabado láser de alta precisión.",
 };
 

@@ -150,12 +150,12 @@ export async function POST(request: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     await resend.emails.send({
-      from: "Más Imagen <onboarding@resend.dev>",
+      from: "Serigrafics <onboarding@resend.dev>",
       to: TO_EMAIL,
       subject: `Cotización de ${nombre}`,
       replyTo: undefined as never,
       html: `
-        <h2>Nueva solicitud de cotización — Más Imagen</h2>
+        <h2>Nueva solicitud de cotización — Serigrafics</h2>
         <p><strong>Nombre:</strong> ${nombre}</p>
         <p><strong>Teléfono:</strong> ${telefono}</p>
         <p><strong>Mensaje:</strong></p>
