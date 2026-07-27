@@ -3,7 +3,6 @@ import Link from "next/link";
 const serviciosLinks = [
   { label: "Serigrafía en botellas", href: "/servicios#serigrafia" },
   { label: "Tampografía", href: "/servicios#tampografia" },
-  { label: "Grabado láser", href: "/servicios#grabado-laser" },
   { label: "Sublimación", href: "/servicios#sublimacion" },
   { label: "Lonas", href: "/servicios#lonas" },
 ];

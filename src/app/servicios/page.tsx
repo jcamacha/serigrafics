@@ -5,7 +5,7 @@ import SectionReveal from "@/components/SectionReveal";
 export const metadata: Metadata = {
   title: "Servicios — Serigrafics",
   description:
-    "Especialistas en impresión de botellas, envases de vidrio y plástico, termos, grabado láser, tampografía, sublimación y lonas.",
+    "Especialistas en impresión de botellas, envases de vidrio y plástico, termos, tampografía, sublimación y lonas.",
 };
 
 const serviciosDetalle = [
@@ -41,22 +41,6 @@ const serviciosDetalle = [
       "Envases pequeños",
       "Piezas industriales",
       "Electrónicos",
-    ],
-  },
-  {
-    id: "grabado-laser",
-    titulo: "Grabado láser",
-    descripcion:
-      "Elegancia permanente. El grabado láser marca tus productos con una precisión imposible de igualar. Sin tintas, sin desgaste: solo luz y material fundidos en un acabado premium. Ideal para branding de alto impacto en termos, botellas metálicas y regalos corporativos que hablan por sí solos.",
-    imagenes: [
-      "/grabado-1.jpg",
-    ],
-    usos: [
-      "Termos y botellas metálicas",
-      "Placas y reconocimientos",
-      "Regalos corporativos",
-      "Artículos de piel",
-      "Madera y acrílico",
     ],
   },
   {

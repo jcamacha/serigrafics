@@ -21,7 +21,6 @@ const baseItems: NavItem[] = [
     children: [
       { label: "Serigrafía", href: "/servicios#serigrafia" },
       { label: "Tampografía", href: "/servicios#tampografia" },
-      { label: "Grabado láser", href: "/servicios#grabado-laser" },
       { label: "Sublimación", href: "/servicios#sublimacion" },
       { label: "Lonas", href: "/servicios#lonas" },
     ],

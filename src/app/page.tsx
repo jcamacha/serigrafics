@@ -16,12 +16,6 @@ const servicios = [
     img: "/servicio-serigrafia.jpg",
   },
   {
-    titulo: "Grabado láser",
-    desc: "Marcado permanente de alta precisión en termos metálicos, botellas de acero inoxidable, metal y acrílico.",
-    href: "/servicios#grabado-laser",
-    img: "/servicio-laser.jpg",
-  },
-  {
     titulo: "Sublimación",
     desc: "Transferencia de imágenes a todo color sobre botellas plásticas, termos, tazas y artículos promocionales.",
     href: "/servicios#sublimacion",
@@ -38,7 +32,7 @@ const servicios = [
 const faqs = [
   {
     q: "¿Cuál es el pedido mínimo?",
-    a: "Depende de la técnica. En serigrafía para botellas y envases pedimos mínimo 10 piezas. Para sublimación y grabado láser aceptamos desde 1 pieza. Contáctanos para proyectos industriales o tirajes especiales.",
+    a: "Depende de la técnica. En serigrafía para botellas y envases pedimos mínimo 10 piezas. Para sublimación aceptamos desde 1 pieza. Contáctanos para proyectos industriales o tirajes especiales.",
   },
   {
     q: "¿Cuánto tardan en entregar?",
@@ -307,16 +301,6 @@ export default function Home() {
                 }`}
               >
                 Sublimación
-              </button>
-              <button
-                onClick={() => setFiltroActivo("grabado-laser")}
-                className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors ${
-                  filtroActivo === "grabado-laser"
-                    ? "bg-black text-white border-black"
-                    : "border-gray-200 text-gray-500 hover:bg-gray-50"
-                }`}
-              >
-                Grabado láser
               </button>
               <button
                 onClick={() => setFiltroActivo("lonas")}
