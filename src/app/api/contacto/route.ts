@@ -5,7 +5,7 @@ import { Resend } from "resend";
 const rateMap = new Map<string, number>();
 const dailyMap = new Map<string, number>(); // conteo diario por IP
 const DAILY_LIMIT = 5; // máximo 5 correos por IP por día
-const TO_EMAIL = "crtainboy@gmail.com";
+const TO_EMAIL = "serigraficsc@gmail.com";
 
 // --- Filtro anti-spam (EN + ES) + detector de idioma ---
 const SPAM_WORDS = [
