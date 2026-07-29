@@ -1,0 +1,10 @@
+Aquí tienes los frames iniciales generados en formato inline (estilo documental y con iluminación fotorrealista de taller):
+
+### Imagen 1: Serigrafía textil
+![Serigrafía textil](/home/jcamach/.gemini/antigravity-cli/brain/65a89f73-c729-4dfa-a8d4-3c74aa27f263/serigrafia_textil_1785285992248.jpg)
+
+### Imagen 2: Sublimación
+![Sublimación](/home/jcamach/.gemini/antigravity-cli/brain/65a89f73-c729-4dfa-a8d4-3c74aa27f263/sublimacion_1785286004487.jpg)
+
+### Imagen 3: Serigrafía cilíndrica
+![Serigrafía cilíndrica](/home/jcamach/.gemini/antigravity-cli/brain/65a89f73-c729-4dfa-a8d4-3c74aa27f263/serigrafia_cilindrica_1785286016078.jpg)

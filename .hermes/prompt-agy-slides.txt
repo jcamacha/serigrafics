@@ -1,0 +1,12 @@
+/goal Genera 3 imágenes minimalistas para el slider de un sitio de serigrafía. NO guardes en archivo. Devuelve las imágenes inline.
+
+## Imagen 1
+Serigrafía minimalista. Una botella de vidrio ámbar con tinta blanca recién impresa. Fondo completamente negro sólido. Sin personas, sin manos, sin mesa, sin taller. Solo la botella flotando en oscuridad. Iluminación suave de estudio que resalta la textura de la tinta sobre el vidrio. Estilo producto premium.
+
+## Imagen 2
+Sublimación minimalista. Una taza blanca con un diseño impreso a color (degradado de azul a violeta). Fondo completamente blanco sólido. Sin personas, sin manos, sin mesa. Solo la taza flotando. Iluminación limpia de estudio. Estilo catálogo minimalista.
+
+## Imagen 3
+Lona publicitaria minimalista. Un detalle macro de tela de lona con colores vibrantes impresos (rojo, azul, amarillo). Fondo negro sólido. Sin personas, sin edificios, sin contexto. Solo la textura de la tela y la tinta. Estilo abstracto textil.
+
+CRITICO: Minimalismo absoluto. Sin personas. Sin manos. Sin mesas. Sin talleres. Sin ventanas. Fondo sólido de un solo color. El objeto debe ser el ÚNICO elemento en la imagen.

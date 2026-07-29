@@ -1,0 +1,12 @@
+/goal Genera UN frame inicial (imagen estática) para cada video de serigrafía. NO guardes en archivo. Devuelve las imágenes inline.
+
+## Imagen 1: Serigrafía textil
+Genera una imagen fotorrealista de: Primer plano de manos artesanas pasando un rasero sobre un marco de serigrafía. Tinta blanca sobre playera negra. Taller mexicano iluminado por luz natural de ventana. Polvo flotando en rayos de sol. Estilo documental, textura de película, sin aspecto CGI.
+
+## Imagen 2: Sublimación
+Genera una imagen fotorrealista de: Una prensa térmica abriéndose con vapor, revelando una taza blanca recién sublimada con un diseño a color (rojo intenso y verde bosque). Condensación en la placa metálica. Fondo de taller desenfocado. Iluminación fluorescente práctica. Sin aspecto CGI.
+
+## Imagen 3: Serigrafía cilíndrica
+Genera una imagen fotorrealista de: Máquina de serigrafía cilíndrica rotativa aplicando tinta dorada metálica sobre una botella de vidrio. La botella gira sobre rodillos de goma. Manos manchadas de tinta ajustando el registro. Atmósfera cálida de taller. Sin aspecto CGI.
+
+CRITICO: Las imágenes NO deben verse como CGI, renders 3D ni arte digital. Deben verse como fotografías reales tomadas con cámara profesional en un taller de verdad. Textura granulada, iluminación imperfecta, detalles industriales auténticos.
